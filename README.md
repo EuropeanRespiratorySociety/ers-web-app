@@ -1,5 +1,11 @@
-# Search Engine UI for the ERS
-This is the UI for the search engine
+# ERS web app
+This is a web app making full use of the [ERS API](https://github.com/EuropeanRespiratorySociety/api-ers)
+it provides:
+* Search UI
+* News
+* Profile
+* Interests
+* ...
 
 > A Vue.js project
 
