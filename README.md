@@ -1,4 +1,7 @@
 # ERS web app
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/EuropeanRespiratorySociety/ers-web-app.svg)](https://greenkeeper.io/)
+
 This is a web app making full use of the [ERS API](https://github.com/EuropeanRespiratorySociety/api-ers)
 it provides:
 * Search UI
