@@ -6,20 +6,25 @@
         <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-container>
               <v-card>
-              <v-card-media :src="photo" height="300px">
-                <v-layout column class="media">
-                    <v-card-title>
-                      <v-spacer></v-spacer>
-                      <v-btn icon dark class="mr-3" href="http://my.ersnet.org">
-                        <v-icon>edit</v-icon>
-                      </v-btn>
-                    </v-card-title>
-                    <v-spacer></v-spacer>
-                    <v-card-title v-if="name" :class="['white--text', ' pt-5']">
-                      <div class="display-1 pt-5">{{name}}</div>
-                    </v-card-title>
-                  </v-layout>
+                <v-card-media :src="photo" height="300px">
                 </v-card-media>
+
+                <v-toolbar prominent flat color="white" light>
+                  <v-btn
+                    href="http://my.ersnet.org"
+                    color="pink"
+                    fab
+                    dark
+                    absolute
+                    right
+                    top
+                  >
+                    <v-icon>edit</v-icon>
+                  </v-btn>
+                  <v-toolbar-title>{{name}}</v-toolbar-title>
+                </v-toolbar>
+
+                <v-divider></v-divider>
                 <v-list two-line>
                   <v-list-tile v-if="user.Mobile">
                     <v-list-tile-action>
@@ -79,15 +84,14 @@
                 </v-list>
                 <div v-if="preferences.interests.length > 0">
                   <v-divider></v-divider>
-                  <v-card-title primary-title>
-                    Intersts
-                  </v-card-title>
+                <v-toolbar prominent flat color="white" light>
+                  <v-toolbar-title>Interests</v-toolbar-title>
+                  <v-spacer></v-spacer>
+                  <v-btn flat to="/preferences">Change your interests</v-btn>
+                </v-toolbar>
                   <v-card-text>
                     <v-chip v-for="i in preferences.interests" :key="i">{{i}}</v-chip>
                   </v-card-text>
-                  <v-card-actions>
-                    <v-btn to="/preferences">Edit</v-btn>
-                  </v-card-actions>
                 </div>
                 <div v-if="preferences.interests.length === 0">
                   <v-divider></v-divider>
