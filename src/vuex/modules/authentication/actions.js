@@ -7,12 +7,12 @@ import * as types from './mutation-types'
 
 // Login user with email / password
 export const login = async ({ commit }, payload) => {
-  const { ok, data, error } = await sureThing(HTTP.post('/ers/contacts/login', payload))
+  const { ok, response, error } = await sureThing(HTTP.post('/ers/contacts/login', payload))
   // eslint-disable-next-line
   ok
     ? (
-        commit(types.LOGIN, data.data.accessToken), // eslint-disable-line
-        commit('user/SET_USER', data.data, {root: true}),// eslint-disable-line
+        commit(types.LOGIN, response.accessToken), // eslint-disable-line
+        commit('user/SET_USER', response, {root: true}),// eslint-disable-line
         commit(types.SET_ERROR, {message: null}) // eslint-disable-line
       ) // eslint-disable-line
     : commit(types.SET_ERROR, error)

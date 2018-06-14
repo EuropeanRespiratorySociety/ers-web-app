@@ -1,12 +1,16 @@
 <template>
-<v-container grid-list-md>
+<v-container>
   <v-layout row wrap class="wide">
     <h3 class="section-header">{{title|caps}}</h3>
     <v-container grid-list-md :class="[bgColor]" :style="[titleStyle, otherPaddings, {transition: '0.5s padding ease-out'}]">
       <div v-if="articles">
         <swiper @reachEnd="end" @reachBeginning="start" :options="swiperOption" :ref="title|slug">
           <swiper-slide v-for="post of articles" :key="post.slug">
-            <v-card hover>
+            <v-card
+              hover
+              :href="!parent ? post.page_url : null"
+              :to="parent ? `${parent}/${post.slug}` : null"
+            >
               <v-card-media v-if="post.image" :src="post.image" height="200px">
               </v-card-media>
               <v-card-title v-if="post.title" primary-title>
@@ -16,16 +20,9 @@
                 </div>
               </v-card-title>
               <v-card-text class="truncate" style="width:auto;">
-              <span v-if="post.shortLead" v-html="post.shortLead"></span>
-              <span v-if="post.authors"> {{post.authors.join(', ')}}</span>
+                <span v-if="post.shortLead" v-html="post.shortLead"></span>
+                <span v-if="post.authors"> {{post.authors.join(', ')}}</span>
               </v-card-text>
-              <v-card-actions>
-                <v-btn
-                  :href="!parent ? post.page_url : null"
-                  :to="parent ? `${parent}/${post.slug}` : null"
-                  flat
-                >More...</v-btn>
-              </v-card-actions>
             </v-card>
           </swiper-slide>
         </swiper>

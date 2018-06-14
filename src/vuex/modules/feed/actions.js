@@ -1,5 +1,5 @@
 import * as types from './mutation-types'
-import { HTTP } from '@/helpers/http'
+import { HTTP, sureThing } from '@/helpers/http'
 
 export const getHighlights = ({ commit, dispatch }) => {
   const route = 'highlights'
@@ -23,25 +23,33 @@ export const getHighlights = ({ commit, dispatch }) => {
     })
 }
 
-export const getFeed = ({ commit, dispatch }) => {
-  const route = 'feed?filterBy=no-highlights' // @TODO Change this to a boolean
+export const getInterests = async ({ commit }, data) => {
+  const { interest } = data
+  const { ok, response, error } = await sureThing(HTTP.get(`feed?filterBy=${interest}&limit=5`))
+  ok
+    ? commit(types.SET_INTEREST, { interest, response }, err => { console.log(err) })
+    : commit(types.SET_ERROR, { interest, error }, err => { console.log(err) })
+}
 
-  HTTP
-    .get(route)
-    .then(response => {
-      const data = response.data.data
+export const getFeed = async ({ commit, dispatch, rootState, state }, data = {}) => {
+  const { limit = 5 } = data
+  const { interests } = rootState.user.preferences
+  const { highlights } = state
+  // Setting highlights
+  commit(types.SET_INTEREST, {
+    interest: 'highlights',
+    response: {data: highlights}
+  }, err => { console.log(err) })
+  // Setting/Getting users intersts
+  interests.forEach(i => {
+    dispatch('getInterests', {interest: i})
+  })
 
-      dispatch('base/setOnline', {}, { root: true })
-      commit(types.SET_FEED, data, err => { console.log(err) })
-    })
-    .catch(e => {
-      console.log(e)
-      if (window.localStorage.getItem('vuex')) {
-        const restored = JSON.parse(window.localStorage.getItem('vuex'))
-        dispatch('base/setOffline', {}, { root: true })
-        commit('base/RESTORE_MUTATION', restored, { root: true }, err => { console.log(err) })
-      }
-    })
+  // adding highlights to feed
+  const { ok, response, error } = await sureThing(HTTP.get(`feed?filterBy=no-highlights&limit=${limit * (interests.length + 1)}`))
+  ok
+    ? commit(types.SET_FEED, {interests, limit, feed: response.data}, err => { console.log(err) })
+    : commit(types.SET_ERROR, { error }, err => { console.log(err) })
 }
 
 export const getLatestJournalArticles = ({ commit, dispatch }) => {

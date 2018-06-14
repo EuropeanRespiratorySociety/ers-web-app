@@ -1,9 +1,9 @@
 <template>
   <v-container grid-list-md>
-    <v-layout row wrap>
-      <v-flex xs12 sm12 md6 lg4
-        v-for="article in articles"
-        :key="article.slug">
+        <v-layout row wrap>
+          <v-flex xs12
+            v-for="article in articles"
+            :key="article.slug">
         <v-card
           hover
         >
@@ -14,9 +14,11 @@
           </v-card-media>
           <v-card-title
             v-if="article.title"
-            primary-title>
+            primary-title
+            class="title"
+          >
             <div>
-              <h3 class="mb-0 truncate">{{article.title | truncate}}</h3>
+              {{article.title | truncate}}
               <!--<span><v-icon class="published">query_builder</v-icon>{{article.createdOn}}</span>-->
             </div>
           </v-card-title>
@@ -42,11 +44,11 @@
 <script>
 import * as _ from 'lodash/truncate'
 export default {
-  name: 'card-feed',
+  name: 'cards',
   props: ['parent', 'articles'],
   filters: {
     truncate: function (value) {
-      return _(value, {length: 90, separator: '...'})
+      return _(value, {length: 120, separator: '...'})
     },
 
     caps: function (value) {
@@ -55,3 +57,10 @@ export default {
   }
 }
 </script>
+
+<style lang="css" scoped>
+  .title {
+    min-height: 88px;
+    max-height: 88px;
+  }
+</style>

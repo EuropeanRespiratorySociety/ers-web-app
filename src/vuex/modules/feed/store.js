@@ -12,7 +12,9 @@ export default {
     first: {},
     highlights: [],
     feed: [],
-    latestJournalArticles: []
+    interests: {},
+    latestJournalArticles: [],
+    error: null
   },
   mutations: mutations.default
 }

@@ -11,7 +11,7 @@
 
                 <v-toolbar prominent flat color="white" light>
                   <v-btn
-                    href="http://my.ersnet.org"
+                    href="https://my.ersnet.org/Profile/Main/Edit"
                     color="pink"
                     fab
                     dark

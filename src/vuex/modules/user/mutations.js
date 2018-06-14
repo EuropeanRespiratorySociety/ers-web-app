@@ -10,11 +10,11 @@ export default {
   },
 
   [types.SET_INTERESTS] (state, data) {
-    state.interests = [...data.data]
+    state.interests = [...data]
   },
 
   [types.SET_PREFERENCES] (state, data) {
-    state.preferences = {...data.data}
+    state.preferences = {...data}
   },
 
   [types.SET_STATUS] (state, data) {

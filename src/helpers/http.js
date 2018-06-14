@@ -11,7 +11,7 @@ export const sureThing = promise =>
   promise
     .then(data => ({
       ok: true,
-      data
+      response: data.data
     }))
     .catch(error => ({
       ok: false,

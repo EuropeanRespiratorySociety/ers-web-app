@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card>{{post | json }}
     <v-card-media v-if="post.image" height="250px" :src="post.image">
     </v-card-media>
     <v-btn icon @click.native="show = !show" style="float:right">
@@ -7,7 +7,7 @@
     </v-btn>
     <v-card-title>
       <div>
-        <div v-if="post._source.type" class="grey--text"><br />{{post._source.type.name}}</div>
+        <div v-if="post._source && post._source.type" class="grey--text"><br />{{post._source.type.name}}</div>
         <div class="headline">
           <v-icon style="margin:-5px 0 0 -5px;" color="red" v-if="post.access === 'restricted'">lock_outline</v-icon>
           <span v-html="post.title"></span>
