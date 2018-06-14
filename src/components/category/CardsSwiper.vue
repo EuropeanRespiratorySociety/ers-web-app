@@ -138,7 +138,7 @@ export default {
     margin-top: -40px;
     position: relative;
     margin-left: 20px;
-    z-index: 2;
+    z-index: 1;
   }
 
   .wide {

@@ -54,7 +54,7 @@
             <v-icon v-for="icon in item.icon" :key="icon">{{ icon }}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+            <v-list-tile-title v-html="item.title"></v-list-tile-title>
             <v-list-tile-sub-title v-if="item.subtitle"> {{ item.subtitle }} </v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>

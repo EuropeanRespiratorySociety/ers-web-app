@@ -2,6 +2,7 @@
   <v-toolbar
       app
       fixed
+      class="elevation-1"
     >
       <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
       <v-toolbar-title v-if="title">{{title}}</v-toolbar-title>

@@ -76,7 +76,10 @@ const router = new Router({
       path: '/nlp',
       name: 'NLP',
       component: Visualiser,
-      meta: { requiresAuth: true, requiresRole: 'admin' }
+      meta: { 
+        requiresAuth: true, 
+        requiresRole: 'admin:*' 
+      }
     },
     {
       path: '/not-authorized',

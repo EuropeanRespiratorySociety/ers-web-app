@@ -1,5 +1,5 @@
 <template>
-  <v-bottom-nav class="elevation-2" app :value="true" :active.sync="e1">
+  <v-bottom-nav class="elevation-1" app :value="true" :active.sync="e1">
     <!--  <v-btn flat value="recent">
         <span>Recent</span>
         <v-icon>history</v-icon>
@@ -38,6 +38,3 @@ export default {
   }
 }
 </script>
-
-<style>
-</style>

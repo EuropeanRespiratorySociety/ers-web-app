@@ -13,7 +13,8 @@ export default [
     external: true
   },
   {
-    title: 'Search',
+    title: '&beta; Search',
+    subtitle: 'Currently in beta',
     icon: ['s7-search icon'],
     path: '/search'
   },
