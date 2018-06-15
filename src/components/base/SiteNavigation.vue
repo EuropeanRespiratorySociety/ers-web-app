@@ -5,6 +5,7 @@
       light
       :mini-variant.sync="mini"
       disable-route-watcher
+      v-resize="onResize"
     >
 
       <v-toolbar flat class="transparent" :style="!mini? 'margin-bottom:10px;' : ''">
@@ -114,9 +115,16 @@ export default {
     }
   },
 
+  created () {
+    if (this.$vuetify.breakpoint.mdAndDown) {
+      this.setMobile(true)
+    }
+  },
+
   methods: {
     ...mapActions('base', [
-      'setDrawer'
+      'setDrawer',
+      'setMobile'
     ]),
 
     displayItem (item) {
@@ -135,6 +143,12 @@ export default {
 
     hasRole (role, permissions) {
       return permissions.includes(role)
+    },
+
+    onResize () {
+      this.$vuetify.breakpoint.mdAndDown
+        ? this.setMobile(true)
+        : this.setMobile(false)
     }
   },
 

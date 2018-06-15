@@ -26,5 +26,8 @@ export default {
 
   [types.SET_PARALLAX_IMG] (state, data) {
     state.parallaxImg = data
+  },
+  [types.SET_MOBILE] (state, data) {
+    state.isMobile = data
   }
 }
