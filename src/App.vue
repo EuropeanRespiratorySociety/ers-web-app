@@ -30,7 +30,7 @@ export default {
         return titleChunk ? `${titleChunk} - ${this.title}` : this.title
       },
       htmlAttrs: {
-        lang: 'en',
+        // lang: 'en',
         amp: undefined // "amp" has no value
       },
       noscript: [
@@ -60,7 +60,7 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style>
   .application {
       font-family: DinPro,Roboto,sans-serif;
       line-height: 1.5;

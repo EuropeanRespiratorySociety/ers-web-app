@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
   .title-wrapper {
     padding-bottom: 5px;
   }

@@ -1,9 +1,14 @@
 {
-    "env": {
-        "compiler": "none",
-        "tester": "none"
-    },
+    "env": {},
     "dependencies": {},
     "componentsDefaultDirectory": "components/{namespace}/{name}",
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "resolveModules": {
+        "modulesDirectories": [
+            "src"
+        ],
+        "aliases": {
+            "@": "src"
+        }
+    }
 }

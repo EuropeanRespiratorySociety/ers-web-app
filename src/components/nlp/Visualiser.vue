@@ -154,6 +154,6 @@ Kaplan reported from Washington.`,
 }
 </script>
 
-<style lang="css">
+<style>
 
 </style>

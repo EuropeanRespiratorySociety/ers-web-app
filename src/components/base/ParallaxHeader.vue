@@ -80,7 +80,7 @@ export default {
 
 </script>
 
-<style lang="css">
+<style>
 .transparent {
   background: transparent!important;
   background-size: cover;

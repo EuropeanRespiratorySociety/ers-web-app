@@ -117,7 +117,7 @@ export default {
 
 </script>
 
-<style lang="css" scoped>
+<style scoped>
   @import '../../../node_modules/swiper/dist/css/swiper.css';
 
   .truncate {

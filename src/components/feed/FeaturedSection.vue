@@ -38,7 +38,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
   .divider {
     margin: 30px 0 5px 0;
   }
