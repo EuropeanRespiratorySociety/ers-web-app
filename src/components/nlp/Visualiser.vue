@@ -19,33 +19,62 @@
         </v-flex>
       </v-layout>
   </v-container>
-  <v-container fluid v-if="result.length > 0">
+  <v-container fluid>
     <v-layout row>
-      <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+      <v-flex xs6 v-if="result.length > 0">
         <v-card>
+          <v-card-title >
+            Submitted text (General english vectors)
+          </v-card-title>
           <v-card-text v-html="result">
           </v-card-text>
         </v-card>
       </v-flex>
-    </v-layout>
-  </v-container>
-  <v-container fluid v-if="result2.length > 0">
-    <v-layout row>
-      <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+
+      <v-flex xs6 v-if="resultB.length > 0">
         <v-card>
-        <v-card-title><h3>ERS News</h3></v-card-title>
-          <v-card-text v-html="result2">
+          <v-card-title >
+            Submitted text (Pubmed vectors)
+          </v-card-title>
+          <v-card-text v-html="resultB">
           </v-card-text>
         </v-card>
       </v-flex>
     </v-layout>
   </v-container>
-  <v-container fluid v-if="result3.length > 0">
+  <v-container fluid >
     <v-layout row>
-      <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+      <v-flex xs6 v-if="result2.length > 0">
         <v-card>
-        <v-card-title><h3>Whashignton Post News</h3></v-card-title>
+        <v-card-title><h3>ERS News (general english vectors)</h3></v-card-title>
+          <v-card-text v-html="result2">
+          </v-card-text>
+        </v-card>
+      </v-flex>
+
+      <v-flex xs6 v-if="result2B.length > 0">
+        <v-card>
+        <v-card-title><h3>ERS News (pubmed vectors)</h3></v-card-title>
+          <v-card-text v-html="result2B">
+          </v-card-text>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
+  <v-container fluid>
+    <v-layout row>
+      <v-flex xs6 v-if="result3.length > 0">
+        <v-card>
+        <v-card-title><h3>Whashignton Post News (general english vectors)</h3></v-card-title>
           <v-card-text v-html="result3">
+          </v-card-text>
+        </v-card>
+      </v-flex>
+
+      <v-flex xs6 v-if="result3B.length > 0">
+        <v-card>
+        <v-card-title><h3>Whashignton Post News (pubmed vectors)</h3></v-card-title>
+          <v-card-text v-html="result3B">
           </v-card-text>
         </v-card>
       </v-flex>
@@ -133,8 +162,11 @@ In addition to monitoring the volcano's current activity, researchers are scouri
 
 Kaplan reported from Washington.`,
       result: '',
+      resultB: '',
       result2: '',
-      result3: ''
+      result2B: '',
+      result3: '',
+      result3B: ''
     }
   },
 
@@ -145,9 +177,12 @@ Kaplan reported from Washington.`,
       const r2 = await HTTP.post('/analyse', {text: this.text2})
       const r3 = await HTTP.post('/analyse', {text: this.text3})
 
-      this.result = r.data
-      this.result2 = r2.data
-      this.result3 = r3.data
+      this.result = r.data.ers
+      this.resultB = r.data.pubmed
+      this.result2 = r2.data.ers
+      this.result2B = r2.data.pubmed
+      this.result3 = r3.data.ers
+      this.result3B = r3.data.pubmed
       // console.log(d.render(r.data.text, r.data.ents, ['person', 'org', 'date']))
     }
   }
