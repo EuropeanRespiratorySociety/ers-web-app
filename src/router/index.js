@@ -111,4 +111,10 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+router.afterEach((to, from) => {
+  if (store.state.base.isMobile === true) {
+    store.dispatch('base/setDrawer', false, { root: true })
+  }
+})
+
 export default router

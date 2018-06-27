@@ -11,9 +11,9 @@ export const getArticle = ({ commit, dispatch, rootState }, payload) => {
     .then(response => {
       const item = response.data.data
       dispatch('base/setOnline')
-      if (rootState.base.isMobile) {
-        dispatch('base/setDrawer', false, { root: true })
-      }
+      // if (rootState.base.isMobile) {
+      //   dispatch('base/setDrawer', false, { root: true })
+      // }
       dispatch('base/setParallaxImg', item.image, { root: true })
       commit(types.SET_ARTICLE, { item, previous }, err => { console.log(err) })
     })
