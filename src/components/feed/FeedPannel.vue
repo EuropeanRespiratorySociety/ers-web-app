@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
   .divider {
     margin: 30px 0 20px 0;
   }

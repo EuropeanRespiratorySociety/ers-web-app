@@ -70,7 +70,7 @@ export default {
 }
 </script>
 
-<style scoped lang="css">
+<style scoped>
   .published {
     font-size:18px!important;
     padding-right:5px;

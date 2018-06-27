@@ -58,7 +58,7 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style scoped>
   .title {
     min-height: 88px;
     max-height: 88px;
