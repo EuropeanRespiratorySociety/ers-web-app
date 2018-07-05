@@ -14,7 +14,8 @@ export default {
     limit: 10,
     length: 0,
     offline: false,
-    parallaxImg: ''
+    parallaxImg: '',
+    isMobile: false
   },
   mutations: mutations.default
 }

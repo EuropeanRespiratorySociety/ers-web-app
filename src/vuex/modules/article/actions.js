@@ -2,7 +2,7 @@ import * as types from './mutation-types'
 import { HTTP } from '@/helpers/http'
 // import router from '@/router'
 
-export const getArticle = ({ commit, dispatch }, payload) => {
+export const getArticle = ({ commit, dispatch, rootState }, payload) => {
   const { endpoint, slug, previous } = payload
   const route = `${endpoint}/${slug}`
 
@@ -10,7 +10,10 @@ export const getArticle = ({ commit, dispatch }, payload) => {
     .get(route)
     .then(response => {
       const item = response.data.data
-      dispatch('base/setOnline', {}, { root: true })
+      dispatch('base/setOnline')
+      // if (rootState.base.isMobile) {
+      //   dispatch('base/setDrawer', false, { root: true })
+      // }
       dispatch('base/setParallaxImg', item.image, { root: true })
       commit(types.SET_ARTICLE, { item, previous }, err => { console.log(err) })
     })

@@ -3,13 +3,15 @@ import Router from 'vue-router'
 import Meta from 'vue-meta'
 import store from '../vuex/store'
 
-const SearchApp = () => import('@/components/search/SearchApp.vue')
+/* eslint-disable */
+const SearchApp = () => import('@/components/search/SearchApp.vue') // eslint-disable-next-line
 const ProfileApp = () => import('@/components/user/ProfileApp.vue')
 const Feed = () => import('@/components/feed/FeedApp.vue')
 const Article = () => import('@/components/article/ArticleApp.vue')
 const PreferencesApp = () => import('@/components/user/PreferencesApp.vue')
 const Visualiser = () => import('@/components/nlp/VisualiserApp.vue')
 const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
+/* eslint-enable */
 
 // import store from '../vuex/store'
 
@@ -76,9 +78,9 @@ const router = new Router({
       path: '/nlp',
       name: 'NLP',
       component: Visualiser,
-      meta: { 
-        requiresAuth: true, 
-        requiresRole: 'admin:*' 
+      meta: {
+        requiresAuth: true,
+        requiresRole: 'admin:*'
       }
     },
     {
@@ -108,6 +110,12 @@ router.beforeEach((to, from, next) => {
     next()
   } else {
     next() // make sure to always call next()!
+  }
+})
+
+router.afterEach((to, from) => {
+  if (store.state.base.isMobile === true) {
+    store.dispatch('base/setDrawer', false, { root: true })
   }
 })
 

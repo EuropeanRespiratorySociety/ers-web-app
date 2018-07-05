@@ -19,3 +19,7 @@ export const setOffline = ({ commit }) => {
 export const setParallaxImg = ({ commit }, data) => {
   commit(types.SET_PARALLAX_IMG, data)
 }
+
+export const setMobile = ({ commit }, data) => {
+  commit(types.SET_MOBILE, data)
+}
