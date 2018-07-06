@@ -44,7 +44,7 @@
       </v-tab>
       <v-tab style="color: #90CAF9!important" disabled key="education"
       >
-        Education
+        Ressources
       </v-tab>
     </v-tabs>
   </v-toolbar>
