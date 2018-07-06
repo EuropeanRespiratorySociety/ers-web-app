@@ -18,7 +18,9 @@ import VueGtm from 'vue-gtm'
 sync(store, router)
 
 Vue.use(Vuetify)
-Vue.use(VueGtm)
+Vue.use(VueGtm, {
+  vueRouter: router
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
