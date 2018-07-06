@@ -13,9 +13,12 @@ import router from './router'
 import store from './vuex/store'
 import './registerServiceWorker'
 
+import VueGtm from 'vue-gtm'
+
 sync(store, router)
 
 Vue.use(Vuetify)
+Vue.use(VueGtm)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

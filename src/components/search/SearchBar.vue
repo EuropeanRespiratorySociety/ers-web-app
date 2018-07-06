@@ -122,6 +122,13 @@ export default {
       if (this.query.length > 0) {
         this.setActiveTab(i)
         this.searchAll(this.query)
+        this.$gtm.trackEvent({
+          event: null, // Event type [default = 'interaction'] (Optional)
+          category: 'Search',
+          action: 'search',
+          label: 'query',
+          value: this.query
+        })
       } else {
         this.setActiveTab(i)
         this.resetResults()

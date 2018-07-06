@@ -37,7 +37,8 @@ const router = new Router({
     {
       path: '/search',
       name: 'Search',
-      component: SearchApp
+      component: SearchApp,
+      meta: { gtm: 'searchpage' }
     },
     {
       path: '/news/:slug',
