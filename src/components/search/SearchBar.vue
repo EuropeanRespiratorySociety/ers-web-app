@@ -123,7 +123,7 @@ export default {
         this.setActiveTab(i)
         this.searchAll(this.query)
         this.$gtm.trackEvent({
-          event: null, // Event type [default = 'interaction'] (Optional)
+          event: 'Search', // Event type [default = 'interaction'] (Optional)
           category: 'Search',
           action: 'search',
           label: 'query',
