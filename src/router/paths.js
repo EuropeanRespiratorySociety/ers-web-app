@@ -6,6 +6,12 @@ export default [
     role: 'admin:*'
   },
   {
+    title: 'Home',
+    icon: ['s7-home icon'],
+    path: 'https://www.ersnet.org',
+    external: true
+  },
+  {
     title: 'MyERS',
     subtitle: 'create or manage your account',
     icon: ['icon-my-ers icon'],
