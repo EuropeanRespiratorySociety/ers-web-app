@@ -9,7 +9,7 @@
     <v-toolbar-side-icon @click.stop="toggleDrawer"></v-toolbar-side-icon>
     <v-text-field
       prepend-icon="search"
-      :prepend-icon-cb="search"
+      @click:prepend="search"
       label="Search"
       solo-inverted
       class="mx-3"
