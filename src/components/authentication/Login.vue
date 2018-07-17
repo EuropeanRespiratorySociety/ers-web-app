@@ -109,6 +109,9 @@ export default {
       // hint member@somewhere.com member
       const credentials = { username: this.username, password: this.password }
       this.login(credentials)
+      if ('redirect' in this.$router.history.current.query) {
+        this.$router.push({path: this.$router.history.current.query.redirect})
+      }
     }
   },
 
