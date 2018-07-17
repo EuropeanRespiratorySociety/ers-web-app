@@ -28,9 +28,14 @@ export default {
       'logout'
     ]),
 
+    l () {
+      this.logout()
+      this.$router.push({path: '/'})
+    },
+
     submit () {
       this.isAuthenticated
-        ? this.logout()
+        ? this.l()
         : this.$router.push({ path: '/login' })
     }
   }
