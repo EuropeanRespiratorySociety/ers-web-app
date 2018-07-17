@@ -2,13 +2,12 @@
   <v-app>
     <site-navigation></site-navigation>
     <router-view></router-view>
-    <site-footer></site-footer>
   </v-app>
 </template>
 
 <script>
 import { mapState } from 'vuex'
-import SiteFooter from '@/components/base/SiteFooter.vue'
+// import SiteFooter from '@/components/base/SiteFooter.vue'
 import SiteNavigation from '@/components/base/SiteNavigation.vue'
 
 export default {
@@ -56,7 +55,7 @@ export default {
       return 'primary elevation-0'
     }
   },
-  components: { SiteFooter, SiteNavigation }
+  components: { SiteNavigation }
 }
 </script>
 

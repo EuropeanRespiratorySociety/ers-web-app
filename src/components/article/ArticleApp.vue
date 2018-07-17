@@ -1,6 +1,7 @@
 <script>
 import Highlights from './Article.vue'
 import ParallaxContainer from '@/components/base/ParallaxContainer.vue'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 
 export default {
   name: 'feed-app',
@@ -8,7 +9,8 @@ export default {
   render (h, c) {
     return [
       h(ParallaxContainer),
-      h(Highlights)
+      h(Highlights),
+      h(SiteFooter)
     ]
   }
 }

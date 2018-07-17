@@ -1,6 +1,7 @@
 <script>
 import SimpleHeader from '@/components/base/SimpleHeader.vue'
 import Visualiser from './Visualiser.vue'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 
 export default {
   name: 'visualiser-app',
@@ -10,9 +11,9 @@ export default {
       style: {
         width: '100%'
       }
-    }, [h('simple-header'), h('visualiser')])
+    }, [h('simple-header'), h('visualiser'), h(SiteFooter)])
   },
 
-  components: { SimpleHeader, Visualiser }
+  components: { SimpleHeader, Visualiser, SiteFooter }
 }
 </script>

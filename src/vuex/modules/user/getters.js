@@ -16,3 +16,21 @@ export const street = (state) => {
     ? [MainStreet1, MainStreet2, MainStreet3, MainStreet4].filter(i => i !== undefined).join(', ')
     : ''
 }
+
+export const interestsDiseases = (state) => {
+  return state.interests.reduce((a, c) => {
+    if (c.title === 'diseases') {
+      a.push(c.values)
+    }
+    return a
+  }, [])[0]
+}
+
+export const interestsMethods = (state) => {
+  return state.interests.reduce((a, c) => {
+    if (c.title === 'methods') {
+      a.push(c.values)
+    }
+    return a
+  }, [])[0]
+}

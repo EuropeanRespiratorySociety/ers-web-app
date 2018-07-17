@@ -3,7 +3,19 @@ export default [
     title: 'News',
     icon: ['s7-home icon'],
     path: '/news',
-    role: 'admin:*'
+    role: ['admin:*']
+  },
+  {
+    title: 'Vision',
+    icon: ['icon-vision icon'],
+    path: '/news',
+    role: ['admin:*']
+  },
+  {
+    title: 'AI',
+    icon: ['s7-vision icon'],
+    path: '/news',
+    role: ['admin:*', 'training:*']
   },
   {
     title: 'Home',
@@ -28,7 +40,7 @@ export default [
     title: 'NLP',
     icon: ['s7-shuffle icon'],
     path: '/nlp',
-    role: 'admin:*'
+    role: ['admin:*']
   },
   {
     title: 'Profile',

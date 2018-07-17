@@ -2,6 +2,7 @@
 // import store from '@/vuex/store'
 import SimpleHeader from '@/components/base/SimpleHeader.vue'
 import NotAuthorized from '@/components/errors/NotAuthorized.vue'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 
 export default {
   name: 'error-app',
@@ -11,9 +12,9 @@ export default {
       style: {
         width: '100%'
       }
-    }, [h('simple-header'), h('not-authorized')])
+    }, [h('simple-header'), h('not-authorized')], h(SiteFooter))
   },
 
-  components: { SimpleHeader, NotAuthorized }
+  components: { SimpleHeader, NotAuthorized, SiteFooter }
 }
 </script>

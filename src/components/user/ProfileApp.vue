@@ -1,6 +1,7 @@
 <script>
 // import store from '@/vuex/store'
 import SimpleHeader from '@/components/base/SimpleHeader.vue'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 import Login from '@/components/authentication/Login.vue'
 import UserProfile from '@/components/user/Profile.vue'
 import { mapGetters } from 'vuex'
@@ -15,7 +16,7 @@ export default {
       style: {
         width: '100%'
       }
-    }, [h('simple-header'), h(tag)])
+    }, [h('simple-header'), h(tag), h(SiteFooter)])
   },
 
   computed: {
@@ -24,6 +25,6 @@ export default {
     ])
   },
 
-  components: { SimpleHeader, Login, UserProfile }
+  components: { SimpleHeader, Login, UserProfile, SiteFooter }
 }
 </script>

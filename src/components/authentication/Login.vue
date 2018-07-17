@@ -1,4 +1,5 @@
 <template>
+<div>
 <transition mode="out-in">
   <v-content>
     <v-container fluid>
@@ -35,7 +36,7 @@
                       hint="At least 4 characters"
                       min="4"
                       :append-icon="e2 ? 'visibility' : 'visibility_off'"
-                      :append-icon-cb="() => (e2 = !e2)"
+                      @click:append="() => (e2 = !e2)"
                       v-model="password"
                       :type="e2 ? 'password' : 'text'"
                       counter
@@ -57,10 +58,13 @@
     </v-container>
   </v-content>
 </transition>
+  <site-footer></site-footer>
+  </div>
 </template>
 
 <script>
 import { mapActions, mapGetters } from 'vuex'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 
 export default {
   name: 'login',
@@ -68,7 +72,7 @@ export default {
     return {
       valid: false,
       alert: false,
-      e2: false,
+      e2: true,
       password: '',
       username: ''
       // emailRules: [
@@ -106,6 +110,10 @@ export default {
       const credentials = { username: this.username, password: this.password }
       this.login(credentials)
     }
+  },
+
+  components: {
+    SiteFooter
   }
 
 }

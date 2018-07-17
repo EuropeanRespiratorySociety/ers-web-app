@@ -9,9 +9,12 @@ export default {
   actions,
   getters,
   state: {
-    error: null,
-    token: null,
-    expiresOn: null
+    text: '',
+    _id: '',
+    diseases: '',
+    methods: '',
+    error: {},
+    status: ''
   },
   mutations: mutations.default
 }

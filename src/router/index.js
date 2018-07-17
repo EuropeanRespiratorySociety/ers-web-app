@@ -9,6 +9,7 @@ const ProfileApp = () => import('@/components/user/ProfileApp.vue')
 const Feed = () => import('@/components/feed/FeedApp.vue')
 const Article = () => import('@/components/article/ArticleApp.vue')
 const PreferencesApp = () => import('@/components/user/PreferencesApp.vue')
+const ClassifierTrainingApp = () => import('@/components/classifier-training/ClassifierTrainingApp.vue')
 const Visualiser = () => import('@/components/nlp/VisualiserApp.vue')
 const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
 /* eslint-enable */
@@ -31,7 +32,16 @@ const router = new Router({
       component: Feed,
       meta: {
         requiresAuth: true,
-        requiresRole: 'admin:*'
+        requiresRole: ['admin:*']
+      }
+    },
+    {
+      path: '/ai',
+      name: 'AI',
+      component: ClassifierTrainingApp,
+      meta: {
+        requiresAuth: true,
+        requiresRole: ['admin:*', 'training:*']
       }
     },
     {
@@ -46,7 +56,7 @@ const router = new Router({
       component: Article,
       meta: {
         requiresAuth: true,
-        requiresRole: 'admin:*'
+        requiresRole: ['admin:*']
       }
     },
     {
@@ -55,7 +65,7 @@ const router = new Router({
       component: Article,
       meta: {
         requiresAuth: true,
-        requiresRole: 'admin:*'
+        requiresRole: ['admin:*']
       }
     },
     {
@@ -81,7 +91,7 @@ const router = new Router({
       component: Visualiser,
       meta: {
         requiresAuth: true,
-        requiresRole: 'admin:*'
+        requiresRole: ['admin:*']
       }
     },
     {
@@ -95,6 +105,12 @@ const router = new Router({
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     const authenticated = store.getters['authentication/isAuthenticated']
+    const hasPermission = to.meta.requiresRole
+      ? to.meta.requiresRole.reduce((a, i) => {
+        if (store.state.user.permissions.includes(i)) a = true
+      }, false)
+      : false
+
     if (!authenticated) {
       next({
         path: '/login',
@@ -102,7 +118,7 @@ router.beforeEach((to, from, next) => {
       })
     }
 
-    if ((to.meta.requiresRole && !store.state.user.permissions.includes(to.meta.requiresRole)) && authenticated) {
+    if ((to.meta.requiresRole && hasPermission) && authenticated) {
       next({
         path: '/not-authorized',
         query: { redirect: to.fullPath }

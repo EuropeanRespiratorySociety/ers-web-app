@@ -7,6 +7,7 @@ import article from './modules/article/store'
 import authentication from './modules/authentication/store'
 import base from './modules/base/store'
 import category from './modules/category/store'
+import classifierTraining from './modules/classifier-training/store'
 import feed from './modules/feed/store'
 import search from './modules/search/store'
 import user from './modules/user/store'
@@ -25,6 +26,7 @@ export default new Vuex.Store({
     authentication,
     base,
     category,
+    classifierTraining,
     feed,
     search,
     user

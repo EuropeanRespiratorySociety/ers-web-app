@@ -1,11 +1,12 @@
 <template>
     <v-navigation-drawer
-      app
+      style="max-height:100%!important"
       v-model="drawer"
       light
       :mini-variant.sync="mini"
       disable-route-watcher
       v-resize="onResize"
+      app
     >
 
       <v-toolbar flat class="transparent" :style="!mini? 'margin-bottom:10px;' : ''">
@@ -142,7 +143,10 @@ export default {
     },
 
     hasRole (role, permissions) {
-      return permissions.includes(role)
+      return role.reduce((a, i) => {
+        if (permissions.includes(i)) a = true
+        return a
+      }, false)
     },
 
     onResize () {
@@ -180,10 +184,6 @@ export default {
 
   .logo-title {
     height: 112px !important;
-  }
-
-  .navigation-drawer {
-    max-height:100% !important;
   }
 
   .inline {

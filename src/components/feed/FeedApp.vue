@@ -10,6 +10,7 @@ import FeaturedSection from './FeaturedSection'
 import Cards from './Cards.vue'
 import Popular from '@/components/partials/PopularArticles.vue'
 import Network from '@/components/partials/NetworkNews.vue'
+import SiteFooter from '@/components/base/SiteFooter.vue'
 
 export default {
   name: 'feed-app',
@@ -20,7 +21,8 @@ export default {
     Cards,
     FeedContainer,
     // MainItem,
-    FeaturedSection },
+    FeaturedSection,
+    SiteFooter },
 
   render (h, c) {
     const { feed, interests } = c.parent.$store.state.feed
@@ -45,7 +47,8 @@ export default {
             }
           })
         })
-      ])
+      ]),
+      h(SiteFooter)
     ]
   }
 }
