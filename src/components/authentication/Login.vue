@@ -4,7 +4,7 @@
   <v-content>
     <v-container fluid>
       <v-layout row>
-        <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+        <v-flex xs12 sm12 md6 lg4 offset-md3 offset-lg4>
           <v-container>
             <v-alert
               class="error"
@@ -14,7 +14,7 @@
             >
               {{error}}
             </v-alert>
-            <v-card color="grey lighten-4" flat>
+            <v-card color="grey lighten-4">
             <v-card-text>
             <v-form v-model="valid">
               <v-container fluid>
@@ -46,12 +46,33 @@
                           :disabled="!valid"
                         > Login
                         </v-btn>
+                        <v-btn
+                          href="https://my.ersnet.org/Account/Register"
+                          flat
+                        > Sign up
+                        </v-btn>
                   </v-flex>
                 </v-layout>
               </v-container>
             </v-form>
             </v-card-text>
           </v-card>
+        </v-container>
+        </v-flex>
+      </v-layout>
+      <v-layout row>
+        <v-flex xs12 sm12 md6 lg4 offset-md3 offset-lg4>
+          <v-container>
+          <v-card flat>
+            <v-card-text>
+            <div class="body-1">
+              Need a myERS account? <a href="https://my.ersnet.org/Account/Register" target="_blank">Sign up</a>
+            </div>
+            <div class="body-1">
+              <a href="https://my.ersnet.org/Account/ForgotPassword" target="_blank">Forgotten your username or password?</a>
+            </div>
+              </v-card-text>
+            </v-card>
           </v-container>
         </v-flex>
       </v-layout>

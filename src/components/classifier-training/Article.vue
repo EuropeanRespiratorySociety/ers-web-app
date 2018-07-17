@@ -123,7 +123,6 @@ export default {
     // },
 
     status (value) {
-      console.log(value)
       if (value.length > 0) this.notification = true
     }
 

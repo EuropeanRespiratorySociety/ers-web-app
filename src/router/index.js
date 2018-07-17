@@ -9,6 +9,7 @@ const ProfileApp = () => import('@/components/user/ProfileApp.vue')
 const Feed = () => import('@/components/feed/FeedApp.vue')
 const Article = () => import('@/components/article/ArticleApp.vue')
 const PreferencesApp = () => import('@/components/user/PreferencesApp.vue')
+const AIApp = () => import('@/components/classifier-training/AIApp.vue')
 const ClassifierTrainingApp = () => import('@/components/classifier-training/ClassifierTrainingApp.vue')
 const Visualiser = () => import('@/components/nlp/VisualiserApp.vue')
 const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
@@ -38,6 +39,15 @@ const router = new Router({
     {
       path: '/ai',
       name: 'AI',
+      component: AIApp,
+      meta: {
+        requiresAuth: true,
+        requiresRole: ['admin:*', 'training:*']
+      }
+    },
+    {
+      path: '/ai/training-tool',
+      name: 'Training Tool',
       component: ClassifierTrainingApp,
       meta: {
         requiresAuth: true,

@@ -64,8 +64,4 @@ export default {
       font-family: DinPro,Roboto,sans-serif;
       line-height: 1.5;
   }
-
-  .card--flex-toolbar {
-    margin-top: -64px;
-  }
 </style>

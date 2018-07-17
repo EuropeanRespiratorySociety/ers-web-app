@@ -13,9 +13,24 @@ export default [
   },
   {
     title: 'AI',
-    icon: ['s7-vision icon'],
-    path: '/news',
-    role: ['admin:*', 'training:*']
+    icon: ['s7-light icon'],
+    group: true,
+    path: '/ai',
+    role: ['admin:*', 'training:*', 'myERS:*'],
+    items: [
+      {
+        title: 'Training tool',
+        icon: ['s7-shuffle icon'],
+        path: '/ai/training-tool',
+        role: ['admin:*', 'myERS:*']
+      },
+      {
+        title: 'NLP',
+        icon: ['s7-shuffle icon'],
+        path: '/nlp',
+        role: ['admin:*']
+      }
+    ]
   },
   {
     title: 'Home',
@@ -35,12 +50,6 @@ export default [
     subtitle: 'Currently in beta',
     icon: ['s7-search icon'],
     path: '/search'
-  },
-  {
-    title: 'NLP',
-    icon: ['s7-shuffle icon'],
-    path: '/nlp',
-    role: ['admin:*']
   },
   {
     title: 'Profile',
