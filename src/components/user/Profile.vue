@@ -6,7 +6,7 @@
         <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-container>
               <v-card>
-                <v-card-media :src="photo" height="300px">
+                <v-card-media v-if="photo" :src="photo" height="300px">
                 </v-card-media>
 
                 <v-toolbar prominent flat color="white" light>
@@ -141,21 +141,22 @@ export default {
       'isAuthenticated'
     ]),
 
-    ...mapState('user', [
-      'preferences'
-    ]),
-
     ...mapGetters('user', [
       'user',
       'name',
       'street'
     ]),
 
+    ...mapState('user', [
+      'preferences'
+    ]),
+
     photo () {
-      if (this.user) {
-        return this.user.PhotoUrl || 'https://source.unsplash.com/random/900x300'
-      }
-      return ''
+      // if (this.user) {
+      //   return this.user.PhotoUrl || 'https://source.unsplash.com/random/900x300'
+      // }
+      // return ''
+      return false
     }
   }
 
