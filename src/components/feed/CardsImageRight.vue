@@ -1,80 +1,85 @@
 <template>
-    <v-layout row wrap>
-      <v-flex xs12 md6
-        v-for="article in articles"
-        :key="article.slug">
-            <v-card
-              xs8
-              hover
-              :to="`${parent}/${article.slug}`"
+  <v-layout row wrap>
+    <v-flex 
+      v-for="article in articles" 
+      :key="article.slug"
+      xs12
+      md6>
+      <v-card
+        :to="`${parent}/${article.slug}`"
+        xs8
+        hover
+      >
+        <v-card-title
+          v-if="article.title"
+          primary-title
+          class="title-wrapper"
+        >
+          <div class="title">
+            {{article.title | truncate}}
+            <!--<span><v-icon class="published">query_builder</v-icon>{{article.createdOn}}</span>-->
+          </div>
+        </v-card-title>
+        <v-layout row>
+          <v-flex xs8>
+            <v-card-text 
+              v-if="article.createdOn"
+              class="truncate"
+              style="width:auto;"
             >
-              <v-card-title
-                v-if="article.title"
-                primary-title
-                class="title-wrapper"
-              >
-                <div class="title">
-                  {{article.title | truncate}}
-                  <!--<span><v-icon class="published">query_builder</v-icon>{{article.createdOn}}</span>-->
-                </div>
-              </v-card-title>
-              <v-layout row>
-                <v-flex xs8>
-                  <v-card-text class="truncate"
-                    v-if="article.createdOn"
-                    style="width:auto;"
-                  >
-                    <div class="lead">{{ article.shortLead | truncate(80)}}</div>
-                    <span class="grey--text">{{article.createdOn}}</span>
-                  </v-card-text>
-                </v-flex>
-                <v-flex xs4>
-                  <v-card-media
-                    contain
-                    v-if="article.image"
-                    :src="article.image"
-                    height="100px">
-                  </v-card-media>
-                </v-flex>
-              </v-layout>
-            </v-card>
-      </v-flex>
-    </v-layout>
+              <div class="lead">{{ article.shortLead | truncate(80)}}</div>
+              <span class="grey--text">{{article.createdOn}}</span>
+            </v-card-text>
+          </v-flex>
+          <v-flex xs4>
+            <v-card-media
+              v-if="article.image"
+              :src="article.image"
+              contain
+              height="100px"/>
+          </v-flex>
+        </v-layout>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-import * as _ from 'lodash/truncate'
+import * as _ from "lodash/truncate";
 export default {
-  name: 'cards-image-right',
-  props: ['parent', 'articles'],
+  name: "cards-image-right",
   filters: {
-    truncate: function (value, length = 100) {
-      return _(value, {length, separator: '...'})
+    truncate: function(value, length = 100) {
+      return _(value, { length, separator: "..." });
     },
 
-    caps: function (value) {
-      return value.toUpperCase()
+    caps: function(value) {
+      return value.toUpperCase();
     }
+  },
+  props: {
+    parent: { type: String, default: "" },
+    articles: { type: Array, default: () => [] }
   }
-}
+};
 </script>
 
 <style scoped>
-  .title-wrapper {
-    padding-bottom: 5px;
-  }
+.title-wrapper {
+  padding-bottom: 5px;
+}
 
-  .title {
-    min-height: 63px;
-    max-height: 63px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.title {
+  min-height: 63px;
+  max-height: 63px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-  .lead {
-    min-height: 63px;
-    max-height: 63px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.lead {
+  min-height: 63px;
+  max-height: 63px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

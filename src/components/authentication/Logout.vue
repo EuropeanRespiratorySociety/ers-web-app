@@ -1,46 +1,37 @@
 <template>
-    <v-btn
-      v-text="isAuthenticated ? 'Logout' : 'Login'"
-      @click="submit"
-      flat
-    >
-    </v-btn>
+  <v-btn
+    flat
+    @click="submit"
+    v-text="isAuthenticated ? 'Logout' : 'Login'"
+  />
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions, mapGetters } from "vuex";
 
 export default {
-  name: 'logout',
-  data () {
-    return {
-    }
+  name: "logout",
+  data() {
+    return {};
   },
 
   computed: {
-    ...mapGetters('authentication', [
-      'isAuthenticated'
-    ])
+    ...mapGetters("authentication", ["isAuthenticated"])
   },
 
   methods: {
-    ...mapActions('authentication', [
-      'logout'
-    ]),
+    ...mapActions("authentication", ["logout"]),
 
-    l () {
-      this.logout()
-      this.$router.push({path: '/'})
+    l() {
+      this.logout();
+      this.$router.push({ path: "/" });
     },
 
-    submit () {
-      this.isAuthenticated
-        ? this.l()
-        : this.$router.push({ path: '/login' })
+    submit() {
+      this.isAuthenticated ? this.l() : this.$router.push({ path: "/login" });
     }
   }
-
-}
+};
 </script>
 
 <style scoped>

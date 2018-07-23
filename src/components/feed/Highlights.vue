@@ -3,24 +3,18 @@
     v-if="highlights"
     :articles="highlights"
     parent="news"
-    title="Editor's Pick">
-  </cards-swiper>
+    title="Editor's Pick"/>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import CardsSwiper from '@/components/category/CardsSwiper.vue'
+import { mapState } from "vuex";
+import CardsSwiper from "@/components/category/CardsSwiper.vue";
 
 export default {
-  name: 'Highlights',
-
+  name: "Highlights",
+  components: { CardsSwiper },
   computed: {
-    ...mapState('feed', [
-      'highlights'
-    ])
-  },
-
-  components: { CardsSwiper }
-
-}
+    ...mapState("feed", ["highlights"])
+  }
+};
 </script>

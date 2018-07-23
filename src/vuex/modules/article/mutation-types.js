@@ -1,1 +1,1 @@
-export const SET_ARTICLE = 'SET_CATEGORY'
+export const SET_ARTICLE = "SET_CATEGORY";

@@ -1,42 +1,41 @@
 <template>
   <v-card>{{post | json }}
-    <v-card-media v-if="post.image" height="250px" :src="post.image">
-    </v-card-media>
-    <v-btn icon @click.native="show = !show" style="float:right">
+    <v-card-media v-if="post.image" :src="post.image" height="250px"/>
+    <v-btn icon style="float:right" @click.native="show = !show">
       <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
     </v-btn>
     <v-card-title>
       <div>
-        <div v-if="post._source && post._source.type" class="grey--text"><br />{{post._source.type.name}}</div>
+        <div v-if="post._source && post._source.type" class="grey--text"><br >{{post._source.type.name}}</div>
         <div class="headline">
-          <v-icon style="margin:-5px 0 0 -5px;" color="red" v-if="post.access === 'restricted'">lock_outline</v-icon>
-          <span v-html="post.title"></span>
+          <v-icon v-if="post.access === 'restricted'" style="margin:-5px 0 0 -5px;" color="red">lock_outline</v-icon>
+          <span v-html="post.title"/>
         </div>
       </div>
     </v-card-title>
     <v-card-text>
-        <div v-show="show">
-          <h4 v-if="post.dates">{{post.dates}} - {{post.location}}</h4>
-            <div v-if="post.authors">
-            <b>Authors: </b><span v-html="post.authors"></span>
-            </div>
-            <div v-if="post.chairs">
-              <b>Chairs: </b>
-              <span v-html="post.chairs"></span>
-            </div>
-            <div v-if="post._source.speakerText">
-              <b>Speaker: </b><span v-html="post._source.speakerText"></span>
-            </div>
-            <div v-if="post._source.aims">
-              <b>Aims: </b>
-              <span v-html="post._source.aims"></span>
-            </div>
-            <div v-if="post._source.audience">
-              <b>Audience: </b>
-              <span v-html="post._source.audience"></span>
-            </div>
-            <span v-if="post.lead" v-html="post.lead"></span>
+      <div v-show="show">
+        <h4 v-if="post.dates">{{post.dates}} - {{post.location}}</h4>
+        <div v-if="post.authors">
+          <b>Authors: </b><span v-html="post.authors"/>
         </div>
+        <div v-if="post.chairs">
+          <b>Chairs: </b>
+          <span v-html="post.chairs"/>
+        </div>
+        <div v-if="post._source.speakerText">
+          <b>Speaker: </b><span v-html="post._source.speakerText"/>
+        </div>
+        <div v-if="post._source.aims">
+          <b>Aims: </b>
+          <span v-html="post._source.aims"/>
+        </div>
+        <div v-if="post._source.audience">
+          <b>Audience: </b>
+          <span v-html="post._source.audience"/>
+        </div>
+        <span v-if="post.lead" v-html="post.lead"/>
+      </div>
       <div><v-chip v-for="track in post._source.tracks" :key="track._id">{{track.name}}</v-chip></div>
       <div><v-chip v-for="tag in post._source.tags" :key="tag._id">{{tag.name}}</v-chip></div>
       <v-chip v-if="post.type" outline color="primary">{{post.type}}</v-chip>
@@ -65,19 +64,19 @@
         target="_blank"
         flat color="primary"
         v-html="post.registerButton.text ? post.registerButton.text : 'Register'"
-        ></v-btn>
+      />
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 export default {
-  data () {
+  name: "card",
+  props: { post: { type: Object, default: () => {} } },
+  data() {
     return {
       show: false
-    }
-  },
-  props: ['post'],
-  name: 'card'
-}
+    };
+  }
+};
 </script>

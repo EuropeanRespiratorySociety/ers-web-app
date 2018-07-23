@@ -1,0 +1,65 @@
+/* first for Internet Explorer < 9 */
+@font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro.eot");
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Ita.eot");
+    font-style: italic;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Medium.eot");
+    font-weight: 500;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-MediumIta.eot");
+    font-weight: 500;
+    font-style: italic;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Bold.eot");
+    font-weight: bold;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-BoldIta.eot");
+    font-weight: bold;
+    font-style: italic;
+    }
+    
+    /* then for WOFF-capable browsers */
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro.woff") format("woff");
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Ita.woff") format("woff");
+    font-style: italic;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Medium.woff") format("woff");
+    font-weight: 500;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-MediumIta.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-Bold.woff") format("woff");
+    font-weight: bold;
+    }
+    @font-face {
+    font-family: 'DinPro';
+    src: url("./DINWebPro-BoldIta.woff") format("woff");
+    font-weight: bold;
+    font-style: italic;
+    }

@@ -1,16 +1,16 @@
 <template>
-<v-content>
-  <v-container fluid>
+  <v-content>
+    <v-container fluid>
       <v-layout row>
         <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
           <v-card>
             <v-card-text>
               <v-text-field
+                v-model="text"
                 name="input-7-1"
                 label="Text to analyse"
                 multi-line
-                v-model="text"
-              ></v-text-field>
+              />
             </v-card-text>
             <v-card-actions>
               <v-btn @click="submit">Submit</v-btn>
@@ -18,74 +18,68 @@
           </v-card>
         </v-flex>
       </v-layout>
-  </v-container>
-  <v-container fluid>
-    <v-layout row>
-      <v-flex xs6 v-if="result.length > 0">
-        <v-card>
-          <v-card-title >
-            Submitted text (General english vectors)
-          </v-card-title>
-          <v-card-text v-html="result">
-          </v-card-text>
-        </v-card>
-      </v-flex>
+    </v-container>
+    <v-container fluid>
+      <v-layout row>
+        <v-flex v-if="result.length > 0" xs6>
+          <v-card>
+            <v-card-title >
+              Submitted text (General english vectors)
+            </v-card-title>
+            <v-card-text v-html="result"/>
+          </v-card>
+        </v-flex>
 
-      <v-flex xs6 v-if="resultB.length > 0">
-        <v-card>
-          <v-card-title >
-            Submitted text (Pubmed vectors)
-          </v-card-title>
-          <v-card-text v-html="resultB">
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
-  <v-container fluid >
-    <v-layout row>
-      <v-flex xs6 v-if="result2.length > 0">
-        <v-card>
-        <v-card-title><h3>ERS News (general english vectors)</h3></v-card-title>
-          <v-card-text v-html="result2">
-          </v-card-text>
-        </v-card>
-      </v-flex>
+        <v-flex v-if="resultB.length > 0" xs6>
+          <v-card>
+            <v-card-title >
+              Submitted text (Pubmed vectors)
+            </v-card-title>
+            <v-card-text v-html="resultB"/>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <v-container fluid >
+      <v-layout row>
+        <v-flex v-if="result2.length > 0" xs6>
+          <v-card>
+            <v-card-title><h3>ERS News (general english vectors)</h3></v-card-title>
+            <v-card-text v-html="result2"/>
+          </v-card>
+        </v-flex>
 
-      <v-flex xs6 v-if="result2B.length > 0">
-        <v-card>
-        <v-card-title><h3>ERS News (pubmed vectors)</h3></v-card-title>
-          <v-card-text v-html="result2B">
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
-  <v-container fluid>
-    <v-layout row>
-      <v-flex xs6 v-if="result3.length > 0">
-        <v-card>
-        <v-card-title><h3>Whashignton Post News (general english vectors)</h3></v-card-title>
-          <v-card-text v-html="result3">
-          </v-card-text>
-        </v-card>
-      </v-flex>
+        <v-flex v-if="result2B.length > 0" xs6>
+          <v-card>
+            <v-card-title><h3>ERS News (pubmed vectors)</h3></v-card-title>
+            <v-card-text v-html="result2B"/>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+    <v-container fluid>
+      <v-layout row>
+        <v-flex v-if="result3.length > 0" xs6>
+          <v-card>
+            <v-card-title><h3>Whashignton Post News (general english vectors)</h3></v-card-title>
+            <v-card-text v-html="result3"/>
+          </v-card>
+        </v-flex>
 
-      <v-flex xs6 v-if="result3B.length > 0">
-        <v-card>
-        <v-card-title><h3>Whashignton Post News (pubmed vectors)</h3></v-card-title>
-          <v-card-text v-html="result3B">
-          </v-card-text>
-        </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
-</v-content>
+        <v-flex v-if="result3B.length > 0" xs6>
+          <v-card>
+            <v-card-title><h3>Whashignton Post News (pubmed vectors)</h3></v-card-title>
+            <v-card-text v-html="result3B"/>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
 // import { DisplaCyENT } from 'displacy-ent'
-import axios from 'axios'
+import axios from "axios";
 
 // const d = new DisplaCyENT('http://localhost:8000/analyse', {
 //   container: '#displacy',
@@ -93,15 +87,17 @@ import axios from 'axios'
 // })
 
 const HTTP = axios.create({
-  baseURL: 'http://localhost:8000'
-})
+  baseURL: "http://localhost:8000"
+});
 
 export default {
-  name: 'visualiser',
-  data () {
+  name: "visualiser",
+  data() {
     return {
-      text: 'The unaddressed palliative care needs of patients with advanced, nonmalignant, lung disease highlight the urgent requirement for new models of care. This study describes a new integrated respiratory and palliative care service and examines outcomes from this service. The Advanced Lung Disease Service (ALDS) is a long-term, multidisciplinary, integrated service. In this single-group cohort study, demographic and prospective outcome data were collected over 4 years, with retrospective evaluation of unscheduled healthcare usage. Of 171 patients included, 97 (56.7%) were male with mean age 75.9 years and 142 (83.0%) had chronic obstructive pulmonary disease. ALDS patients had severely reduced pulmonary function (median (interquartile range (IQR)) forced expiratory volume in 1 s 0.8 (0.6–1.1) L and diffusing capacity of the lung for carbon monoxide 37.5 (29.0–48.0) % pred) and severe breathlessness. All patients received nonpharmacological breathlessness management education and 74 (43.3%) were prescribed morphine for breathlessness (median dose 9 mg·day−1). There was a 52.4% reduction in the mean number of emergency department respiratory presentations in the year after ALDS care commenced (p=0.007). 145 patients (84.8%) discussed and/or completed an advance care plan. 61 patients died, of whom only 15 (24.6%) died in an acute hospital bed. While this was a single-group cohort study, integrated respiratory and palliative care was associated with improved end-of-life care and reduced unscheduled healthcare usage. Integrated respiratory and palliative care is associated with better end-of-life care for patients with advanced lung disease <http://ow.ly/mgkn30hlPXV>',
-      text2: "Pulmonary embolism (PE) management that does not adhere to guidelines for indications related to anticoagulation, thrombolytics and inferior vena cava filters is associated with worse patient outcomes, according to new research published in the European Respiratory Journal. A total of 2,096 patients with confirmed PE were included in the study, which had a prospective observational cohort design. Two investigators independently analysed each patient's chart and classified the management as adherent or non-adherent; 1,688 patients received care that adhered to management guidelines, while 408 patients received non-adherent management. The researchers then compared all-cause mortality, PE-related mortality, recurrent venous thromboembolism (VTE) and major bleeding events during the first month of follow-up after diagnosis in patients whose care adhered to guidelines versus patients whose care did not. The data showed that patients receiving non-adherent management were significantly more likely to experience all-cause or PE-related mortality during follow-up; risk of death from any cause among patients with non-adherent management was 2-times higher, and the risk of PE-specific death was about 5-times higher than in patients with adherent management. Non-adherent management was also a significant independent predictor of recurrent VTE and major bleeding. Using cohort data of 34,380 PE patients from the RIETE registry, the prognostic significance of non-adherent management in patients with acute symptomatic PE was confirmed. Clinicians most commonly did not adhere to management guidelines when patients were haemodynamically compromised, and when patients had an increased risk of bleeding.The authors conclude that management that does not adhere to evidence-based guidelines related to anticoagulation, use of thrombolytics and use of inferior vena cava filters frequently occurred, and was associated with worse outcomes in patients with acute PE. A potentially limiting factor to this study is the observational and non-randomised design, and that the conclusions are limited to the specific indications that the researchers used for defining deviation from management guidelines.",
+      text:
+        "The unaddressed palliative care needs of patients with advanced, nonmalignant, lung disease highlight the urgent requirement for new models of care. This study describes a new integrated respiratory and palliative care service and examines outcomes from this service. The Advanced Lung Disease Service (ALDS) is a long-term, multidisciplinary, integrated service. In this single-group cohort study, demographic and prospective outcome data were collected over 4 years, with retrospective evaluation of unscheduled healthcare usage. Of 171 patients included, 97 (56.7%) were male with mean age 75.9 years and 142 (83.0%) had chronic obstructive pulmonary disease. ALDS patients had severely reduced pulmonary function (median (interquartile range (IQR)) forced expiratory volume in 1 s 0.8 (0.6–1.1) L and diffusing capacity of the lung for carbon monoxide 37.5 (29.0–48.0) % pred) and severe breathlessness. All patients received nonpharmacological breathlessness management education and 74 (43.3%) were prescribed morphine for breathlessness (median dose 9 mg·day−1). There was a 52.4% reduction in the mean number of emergency department respiratory presentations in the year after ALDS care commenced (p=0.007). 145 patients (84.8%) discussed and/or completed an advance care plan. 61 patients died, of whom only 15 (24.6%) died in an acute hospital bed. While this was a single-group cohort study, integrated respiratory and palliative care was associated with improved end-of-life care and reduced unscheduled healthcare usage. Integrated respiratory and palliative care is associated with better end-of-life care for patients with advanced lung disease <http://ow.ly/mgkn30hlPXV>",
+      text2:
+        "Pulmonary embolism (PE) management that does not adhere to guidelines for indications related to anticoagulation, thrombolytics and inferior vena cava filters is associated with worse patient outcomes, according to new research published in the European Respiratory Journal. A total of 2,096 patients with confirmed PE were included in the study, which had a prospective observational cohort design. Two investigators independently analysed each patient's chart and classified the management as adherent or non-adherent; 1,688 patients received care that adhered to management guidelines, while 408 patients received non-adherent management. The researchers then compared all-cause mortality, PE-related mortality, recurrent venous thromboembolism (VTE) and major bleeding events during the first month of follow-up after diagnosis in patients whose care adhered to guidelines versus patients whose care did not. The data showed that patients receiving non-adherent management were significantly more likely to experience all-cause or PE-related mortality during follow-up; risk of death from any cause among patients with non-adherent management was 2-times higher, and the risk of PE-specific death was about 5-times higher than in patients with adherent management. Non-adherent management was also a significant independent predictor of recurrent VTE and major bleeding. Using cohort data of 34,380 PE patients from the RIETE registry, the prognostic significance of non-adherent management in patients with acute symptomatic PE was confirmed. Clinicians most commonly did not adhere to management guidelines when patients were haemodynamically compromised, and when patients had an increased risk of bleeding.The authors conclude that management that does not adhere to evidence-based guidelines related to anticoagulation, use of thrombolytics and use of inferior vena cava filters frequently occurred, and was associated with worse outcomes in patients with acute PE. A potentially limiting factor to this study is the observational and non-randomised design, and that the conclusions are limited to the specific indications that the researchers used for defining deviation from management guidelines.",
       text3: `VOLCANO, Hawaii — Hawaii's Kilauea volcano erupted explosively early Thursday, tossing boulders hundreds of feet and sending a plume of ash about 30,000 feet into the predawn sky.
 
       A webcam at the Hawaii Volcano Observatory caught the aftermath of the short-lived eruption on film: an onslaught of wet and dusty ash raining down on a darkened landscape. From the summit of Mauna Loa volcano, 20 miles away, cameras photographed an anvil-shaped plume billowing on the horizon.
@@ -161,34 +157,33 @@ Phreatic eruptions are “much more random,” Poland said. More than 30 people 
 In addition to monitoring the volcano's current activity, researchers are scouring data from Kilauea's extensive monitoring network — of tiltmeters, seismometers, and ground and aerial gas detectors — in search of any changes that preceded Thursday's event. Their hope is to pinpoint warning signs that could be used to predict phreatic eruptions in Hawaii and elsewhere.
 
 Kaplan reported from Washington.`,
-      result: '',
-      resultB: '',
-      result2: '',
-      result2B: '',
-      result3: '',
-      result3B: ''
-    }
+      result: "",
+      resultB: "",
+      result2: "",
+      result2B: "",
+      result3: "",
+      result3B: ""
+    };
   },
 
   methods: {
-    async submit () {
+    async submit() {
       // const r = await HTTP.get(`/analyse?text=${this.text}`)
-      const r = await HTTP.post('/analyse', {text: this.text})
-      const r2 = await HTTP.post('/analyse', {text: this.text2})
-      const r3 = await HTTP.post('/analyse', {text: this.text3})
+      const r = await HTTP.post("/analyse", { text: this.text });
+      const r2 = await HTTP.post("/analyse", { text: this.text2 });
+      const r3 = await HTTP.post("/analyse", { text: this.text3 });
 
-      this.result = r.data.ers
-      this.resultB = r.data.pubmed
-      this.result2 = r2.data.ers
-      this.result2B = r2.data.pubmed
-      this.result3 = r3.data.ers
-      this.result3B = r3.data.pubmed
+      this.result = r.data.ers;
+      this.resultB = r.data.pubmed;
+      this.result2 = r2.data.ers;
+      this.result2B = r2.data.pubmed;
+      this.result3 = r3.data.ers;
+      this.result3B = r3.data.pubmed;
       // console.log(d.render(r.data.text, r.data.ents, ['person', 'org', 'date']))
     }
   }
-}
+};
 </script>
 
 <style>
-
 </style>

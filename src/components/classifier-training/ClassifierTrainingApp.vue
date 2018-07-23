@@ -1,9 +1,9 @@
 <script>
-import SimpleHeader from '@/components/base/SimpleHeader'
-import Article from '@/components/classifier-training/Article'
+import SimpleHeader from "@/components/base/SimpleHeader";
+import Article from "@/components/classifier-training/Article";
 
 export default {
-  name: 'classifier-training-app',
+  name: "classifier-training-app",
   functional: true,
 
   components: {
@@ -11,13 +11,12 @@ export default {
     Article
   },
 
-  render (h, c) {
+  render(h) {
     return [
       // h(ParallaxContainer),
-      h(SimpleHeader, {props: {title: 'ERS Content Classifier'}}),
+      h(SimpleHeader, { props: { title: "ERS Content Classifier" } }),
       h(Article)
-    ]
+    ];
   }
-}
-
+};
 </script>

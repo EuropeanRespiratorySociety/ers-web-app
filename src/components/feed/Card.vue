@@ -5,8 +5,7 @@
     <v-card-media
       v-if="article.image"
       :src="article.image"
-      height="200px">
-    </v-card-media>
+      height="200px"/>
     <v-card-title
       v-if="article.title"
       primary-title
@@ -16,11 +15,11 @@
         {{article.title | truncate}}
       </div>
     </v-card-title>
-    <v-card-text class="truncate"
+    <v-card-text 
       v-if="article.shortLead"
-      v-html="article.shortLead"
-      style="width:auto;">
-    </v-card-text>
+      class="truncate"
+      style="width:auto;"
+      v-html="article.shortLead"/>
     <v-card-actions>
       <v-btn
         :to="`${parent}/${article.slug}`"
@@ -33,31 +32,34 @@
 </template>
 
 <script>
-import * as _ from 'lodash/truncate'
+import * as _ from "lodash/truncate";
 export default {
-  name: 'card',
-  props: ['parent', 'article'],
+  name: "card",
   filters: {
-    truncate: function (value, length = 100) {
-      return _(value, {length, separator: '...'})
+    truncate: function(value, length = 100) {
+      return _(value, { length, separator: "..." });
     },
 
-    caps: function (value) {
-      return value.toUpperCase()
+    caps: function(value) {
+      return value.toUpperCase();
     }
+  },
+  props: {
+    parent: { type: String, default: "" },
+    article: { type: Object, default: () => {} }
   }
-}
+};
 </script>
 
 <style scoped>
-  .title-wrapper {
-    padding-bottom: 5px;
-  }
+.title-wrapper {
+  padding-bottom: 5px;
+}
 
-  .title {
-    min-height: 63px;
-    max-height: 63px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.title {
+  min-height: 63px;
+  max-height: 63px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>

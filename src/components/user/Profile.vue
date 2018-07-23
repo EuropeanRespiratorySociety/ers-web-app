@@ -1,13 +1,12 @@
 <template>
   <transition mode="out-in">
-  <v-content>
-    <v-container fluid>
-      <v-layout row>
-        <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
+    <v-content>
+      <v-container fluid>
+        <v-layout row>
+          <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-container>
               <v-card>
-                <v-card-media v-if="photo" :src="photo" height="300px">
-                </v-card-media>
+                <v-card-media v-if="photo" :src="photo" height="300px"/>
 
                 <v-toolbar prominent flat color="white" light>
                   <v-btn
@@ -24,7 +23,7 @@
                   <v-toolbar-title>{{name}}</v-toolbar-title>
                 </v-toolbar>
 
-                <v-divider></v-divider>
+                <v-divider/>
                 <v-list two-line>
                   <v-list-tile v-if="user.Mobile">
                     <v-list-tile-action>
@@ -53,7 +52,7 @@
                       <v-list-tile-sub-title>Phone 2</v-list-tile-sub-title>
                     </v-list-tile-content>
                   </v-list-tile>
-                  <v-divider inset></v-divider>
+                  <v-divider inset/>
                   <v-list-tile>
                     <v-list-tile-action>
                       <v-icon color="indigo">mail</v-icon>
@@ -64,14 +63,13 @@
                     </v-list-tile-content>
                   </v-list-tile>
                   <v-list-tile>
-                    <v-list-tile-action>
-                    </v-list-tile-action>
+                    <v-list-tile-action/>
                     <v-list-tile-content v-if="user.SmtpAddress2">
                       <v-list-tile-title>{{user.SmtpAddress2}}</v-list-tile-title>
                       <v-list-tile-sub-title>Secondary email</v-list-tile-sub-title>
                     </v-list-tile-content>
                   </v-list-tile>
-                  <v-divider inset></v-divider>
+                  <v-divider inset/>
                   <v-list-tile>
                     <v-list-tile-action>
                       <v-icon color="indigo">location_on</v-icon>
@@ -83,18 +81,18 @@
                   </v-list-tile>
                 </v-list>
                 <div v-if="preferences.interests.length > 0">
-                  <v-divider></v-divider>
-                <v-toolbar prominent flat color="white" light>
-                  <v-toolbar-title>Interests</v-toolbar-title>
-                  <v-spacer></v-spacer>
-                  <v-btn flat to="/preferences">Change your interests</v-btn>
-                </v-toolbar>
+                  <v-divider/>
+                  <v-toolbar prominent flat color="white" light>
+                    <v-toolbar-title>Interests</v-toolbar-title>
+                    <v-spacer/>
+                    <v-btn flat to="/preferences">Change your interests</v-btn>
+                  </v-toolbar>
                   <v-card-text>
                     <v-chip v-for="i in preferences.interests" :key="i">{{i}}</v-chip>
                   </v-card-text>
                 </div>
                 <div v-if="preferences.interests.length === 0">
-                  <v-divider></v-divider>
+                  <v-divider/>
                   <v-card-title primary-title>
                     Personalise your experience, add your interests
                   </v-card-title>
@@ -112,55 +110,45 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapGetters, mapState } from "vuex";
 
 export default {
-  name: 'user-profile',
-  data () {
-    return {
-    }
+  name: "user-profile",
+  data() {
+    return {};
   },
 
-  metaInfo () {
+  metaInfo() {
     return {
       title: `${this.name}'s Profile`
+    };
+  },
+
+  computed: {
+    ...mapGetters("authentication", ["isAuthenticated"]),
+
+    ...mapGetters("user", ["user", "name", "street"]),
+
+    ...mapState("user", ["preferences"]),
+
+    photo() {
+      // if (this.user) {
+      //   return this.user.PhotoUrl || 'https://source.unsplash.com/random/900x300'
+      // }
+      // return ''
+      return false;
     }
   },
 
   watch: {
     isAuthenticated: {
       immediate: true,
-      handler (v) {
-        if (!v) this.$router.push({ path: '/login' })
+      handler(v) {
+        if (!v) this.$router.push({ path: "/login" });
       }
     }
-  },
-
-  computed: {
-    ...mapGetters('authentication', [
-      'isAuthenticated'
-    ]),
-
-    ...mapGetters('user', [
-      'user',
-      'name',
-      'street'
-    ]),
-
-    ...mapState('user', [
-      'preferences'
-    ]),
-
-    photo () {
-      // if (this.user) {
-      //   return this.user.PhotoUrl || 'https://source.unsplash.com/random/900x300'
-      // }
-      // return ''
-      return false
-    }
   }
-
-}
+};
 </script>
 
 <style scoped>

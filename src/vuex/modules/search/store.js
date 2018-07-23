@@ -1,6 +1,6 @@
-import * as actions from './actions'
-import * as mutations from './mutations'
-import * as getters from './getters'
+import * as actions from "./actions";
+import * as mutations from "./mutations";
+import * as getters from "./getters";
 
 // create the Vuex instance by combining the state and mutations objects
 // then export the Vuex store for use by our components
@@ -23,14 +23,14 @@ export default {
       openres: 0,
       breathe: 0
     },
-    q: '',
-    i: ['all'],
+    q: "",
+    i: ["all"],
     filters: {
-      field: '',
+      field: "",
       filtering: false,
       congress: [],
-      journals: ['erj', 'err', 'breathe', 'openres']
+      journals: ["erj", "err", "breathe", "openres"]
     }
   },
   mutations: mutations.default
-}
+};

@@ -1,17 +1,17 @@
 <template>
   <v-container grid-list-md>
-        <v-layout row wrap>
-          <v-flex xs12
-            v-for="article in articles"
-            :key="article.slug">
+    <v-layout row wrap>
+      <v-flex 
+        v-for="article in articles"
+        :key="article.slug"
+        xs12>
         <v-card
           hover
         >
           <v-card-media
             v-if="article.image"
             :src="article.image"
-            height="200px">
-          </v-card-media>
+            height="200px"/>
           <v-card-title
             v-if="article.title"
             primary-title
@@ -22,11 +22,11 @@
               <!--<span><v-icon class="published">query_builder</v-icon>{{article.createdOn}}</span>-->
             </div>
           </v-card-title>
-          <v-card-text class="truncate"
+          <v-card-text 
             v-if="article.shortLead"
-            v-html="article.shortLead"
-            style="width:auto;">
-          </v-card-text>
+            class="truncate"
+            style="width:auto;"
+            v-html="article.shortLead"/>
           <v-card-actions>
             <v-btn
               :to="`${parent}/${article.slug}`"
@@ -42,25 +42,28 @@
 </template>
 
 <script>
-import * as _ from 'lodash/truncate'
+import * as _ from "lodash/truncate";
 export default {
-  name: 'cards',
-  props: ['parent', 'articles'],
+  name: "cards",
   filters: {
-    truncate: function (value) {
-      return _(value, {length: 120, separator: '...'})
+    truncate: function(value) {
+      return _(value, { length: 120, separator: "..." });
     },
 
-    caps: function (value) {
-      return value.toUpperCase()
+    caps: function(value) {
+      return value.toUpperCase();
     }
+  },
+  props: {
+    parent: { type: String, default: "" },
+    articles: { type: Array, default: () => [] }
   }
-}
+};
 </script>
 
 <style scoped>
-  .title {
-    min-height: 88px;
-    max-height: 88px;
-  }
+.title {
+  min-height: 88px;
+  max-height: 88px;
+}
 </style>

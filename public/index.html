@@ -1,48 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-K48Q3XR');</script>
-    <!-- End Google Tag Manager -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>European Respiratory Society</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= webpackConfig.output.publicPath %>img/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= webpackConfig.output.publicPath %>img/icons/favicon-16x16.png">
 
-    <!-- Add to home screen for Android and modern mobile browsers -->
-    <link rel="manifest" href="<%= webpackConfig.output.publicPath %>manifest.json">
-    <meta name="theme-color" content="#4DBA87">
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function (w, d, s, l, i) {
+      w[l] = w[l] || []; w[l].push({
+        'gtm.start':
+          new Date().getTime(), event: 'gtm.js'
+      }); var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+    })(window, document, 'script', 'dataLayer', 'GTM-K48Q3XR');</script>
+  <!-- End Google Tag Manager -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>European Respiratory Society</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="<%= BASE_URL %>img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="<%= BASE_URL %>img/icons/favicon-16x16.png">
 
-    <!-- Add to home screen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="european-respiratory-society">
-    <link rel="apple-touch-icon" href="<%= webpackConfig.output.publicPath %>img/icons/apple-touch-icon-152x152.png">
-    <!-- Add to home screen for Windows -->
-    <meta name="msapplication-TileImage" content="<%= webpackConfig.output.publicPath %>img/icons/msapplication-icon-144x144.png">
-    <meta name="msapplication-TileColor" content="#000000">
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet" type="text/css">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
-  </head>
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K48Q3XR"
-      height="0" width="0" style="display:none;visibility:hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    <noscript>
-      This website requires that Javascript is enabled to correctly function as well as a modern browser
-    </noscript>
-    <div id="app"></div>
-    <!-- Todo: only include in production -->
-    <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
+  <!-- Add to home screen for Android and modern mobile browsers -->
+  <link rel="manifest" href="<%= webpackConfig.output.publicPath %>manifest.json">
+  <meta name="theme-color" content="#4DBA87">
+
+  <!-- Add to home screen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="european-respiratory-society">
+  <link rel="apple-touch-icon" href="<%= BASE_URL %>img/icons/apple-touch-icon-152x152.png">
+  <!-- Add to home screen for Windows -->
+  <meta name="msapplication-TileImage" content="<%= BASE_URL %>img/icons/msapplication-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#000000">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100:300,400,500,700,900|Material+Icons" rel="stylesheet">
+  <link href="<%= BASE_URL %>fonts/icomoon/style.css" rel="stylesheet">
+  <link href="<%= BASE_URL %>fonts/stroke-7/style.css" rel="stylesheet">
+  <link href="<%= BASE_URL %>fonts/DINPro/style.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K48Q3XR" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+  </noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <noscript>
+    This website requires that Javascript is enabled to correctly function as well as a modern browser
+  </noscript>
+  <div id="app"></div>
+  <!-- Todo: only include in production -->
+  <%= htmlWebpackPlugin.options.serviceWorkerLoader %>
     <!-- built files will be auto injected -->
-  </body>
+</body>
+
 </html>

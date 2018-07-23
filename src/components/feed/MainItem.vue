@@ -5,10 +5,10 @@
         <v-card id="test">
           <v-toolbar card color="white" style="margin-top: -137px">
             <v-toolbar-title v-if="first.title" class="grey--text">{{first.title}}</v-toolbar-title>
-          <v-spacer></v-spacer>
+            <v-spacer/>
           </v-toolbar>
-          <v-divider></v-divider>
-          <v-card-text v-if="first" v-html="first.leadParagraph"></v-card-text>
+          <v-divider/>
+          <v-card-text v-if="first" v-html="first.leadParagraph"/>
           <v-card-actions>
             <v-btn :to="'/news/' + first.slug">More...</v-btn>
           </v-card-actions>
@@ -19,20 +19,17 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
-  name: 'main-item',
+  name: "main-item",
 
-  data () {
-    return {}
+  data() {
+    return {};
   },
 
   computed: {
-    ...mapState('feed', [
-      'first'
-    ])
+    ...mapState("feed", ["first"])
   }
-
-}
+};
 </script>

@@ -1,83 +1,76 @@
 <template>
-<transition mode="out-in">
-  <v-content>
-    <v-container fluid>
-      <v-layout row>
-        <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2 style="margin-top:-78px;">
-          <v-card v-if="item" class="card--flex-toolbar">
-            <v-toolbar card class="white">
-              <v-toolbar-title v-if="item" class="headline grey--text">{{item.title}}</v-toolbar-title>
-              <v-spacer></v-spacer>
-            </v-toolbar>
-            <v-divider></v-divider>
-            <v-card-text v-if="item.body" >
-              <span v-if="item.leadParagraph" v-html="item.leadParagraph"></span>
-              <span v-if="item.body" v-html="item.body"></span>
-            </v-card-text>
-          </v-card>
+  <transition mode="out-in">
+    <v-content>
+      <v-container fluid>
+        <v-layout row>
+          <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2 style="margin-top:-78px;">
+            <v-card v-if="item" class="card--flex-toolbar">
+              <v-toolbar card class="white">
+                <v-toolbar-title v-if="item" class="headline grey--text">{{item.title}}</v-toolbar-title>
+                <v-spacer/>
+              </v-toolbar>
+              <v-divider/>
+              <v-card-text v-if="item.body" >
+                <span v-if="item.leadParagraph" v-html="item.leadParagraph"/>
+                <span v-if="item.body" v-html="item.body"/>
+              </v-card-text>
+            </v-card>
 
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </v-content>
-</transition>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
+  </transition>
 </template>
 
 <script>
-import { mapActions, mapState } from 'vuex'
+import { mapActions, mapState } from "vuex";
 
 export default {
-  name: 'Article',
+  name: "Article",
 
-  data () {
+  data() {
     return {
-      previousPage: ''
-    }
+      previousPage: ""
+    };
   },
 
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     next(vm => {
-      vm.previousPage = from
-    })
-  },
-
-  created () {
-    this.fetchData()
+      vm.previousPage = from;
+    });
   },
 
   computed: {
-    ...mapState('article', [
-      'previous',
-      'item'
-    ])
+    ...mapState("article", ["previous", "item"])
+  },
+
+  created() {
+    this.fetchData();
   },
 
   methods: {
-    ...mapActions('article', [
-      'getArticle'
-    ]),
+    ...mapActions("article", ["getArticle"]),
 
-    fetchData () {
+    fetchData() {
       const payload = {
         slug: this.$route.params.slug,
-        endpoint: this.$route.path.split('/')[1],
+        endpoint: this.$route.path.split("/")[1],
         previous: this.previousPage.path
-      }
-      this.getArticle(payload)
+      };
+      this.getArticle(payload);
     }
   }
-
-}
+};
 </script>
 
 <style scoped>
-  .published {
-    font-size:18px!important;
-    padding-right:5px;
-  }
+.published {
+  font-size: 18px !important;
+  padding-right: 5px;
+}
 
-  ul {
-    padding: 0 25px;
-  }
-
+ul {
+  padding: 0 25px;
+}
 </style>

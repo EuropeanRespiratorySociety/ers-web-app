@@ -1,67 +1,60 @@
 <template>
   <v-app>
-    <site-navigation></site-navigation>
-    <router-view></router-view>
+    <site-navigation/>
+    <router-view/>
   </v-app>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 // import SiteFooter from '@/components/base/SiteFooter.vue'
-import SiteNavigation from '@/components/base/SiteNavigation.vue'
+import SiteNavigation from "@/components/base/SiteNavigation.vue";
 
 export default {
-  name: 'App',
-  data () {
+  name: "App",
+  components: { SiteNavigation },
+  data() {
     return {
       offsetTop: 0,
       height: 600,
       rightDrawer: false,
-      title: 'European Respiratory Society'
-    }
+      title: "European Respiratory Society"
+    };
   },
 
-  metaInfo () {
+  metaInfo() {
     return {
       title: this.title,
-      titleTemplate: (titleChunk) => {
+      titleTemplate: titleChunk => {
         // If undefined or blank then we don't need the hyphen
-        return titleChunk ? `${titleChunk} - ${this.title}` : this.title
+        return titleChunk ? `${titleChunk} - ${this.title}` : this.title;
       },
       htmlAttrs: {
         // lang: 'en',
         amp: undefined // "amp" has no value
       },
-      noscript: [
-        { innerHTML: 'To bad your browser is to old...' }
-      ]
-    }
+      noscript: [{ innerHTML: "To bad your browser is to old..." }]
+    };
   },
 
   computed: {
-    ...mapState('base', [
-      'drawer',
-      'offline',
-      'parallaxImg'
-    ])
-
+    ...mapState("base", ["drawer", "offline", "parallaxImg"])
   },
 
   methods: {
-    setClass () {
+    setClass() {
       if (this.offline) {
-        return 'error elevation-0'
+        return "error elevation-0";
       }
-      return 'primary elevation-0'
+      return "primary elevation-0";
     }
-  },
-  components: { SiteNavigation }
-}
+  }
+};
 </script>
 
 <style>
-  .application {
-      font-family: DinPro,Roboto,sans-serif;
-      line-height: 1.5;
-  }
+.application {
+  font-family: DinPro, Roboto, sans-serif!imporant;
+  line-height: 1.5;
+}
 </style>

@@ -1,7 +1,7 @@
-import Vue from 'vue'
-import Router from 'vue-router'
-import Meta from 'vue-meta'
-import store from '../vuex/store'
+import Vue from "vue";
+import Router from "vue-router";
+import Meta from "vue-meta";
+import store from "../vuex/store";
 
 /* eslint-disable */
 const SearchApp = () => import('@/components/search/SearchApp.vue') // eslint-disable-next-line
@@ -17,133 +17,133 @@ const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
 
 // import store from '../vuex/store'
 
-Vue.use(Router)
-Vue.use(Meta)
+Vue.use(Router);
+Vue.use(Meta);
 
 const router = new Router({
-  mode: 'history',
+  mode: "history",
   routes: [
     {
-      path: '/',
-      redirect: '/search'
+      path: "/",
+      redirect: "/search"
     },
     {
-      path: '/news',
-      name: 'News',
+      path: "/news",
+      name: "News",
       component: Feed,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*']
+        requiresRole: ["admin:*"]
       }
     },
     {
-      path: '/ai',
-      name: 'AI',
+      path: "/ai",
+      name: "AI",
       component: AIApp,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*', 'training:*']
+        requiresRole: ["admin:*", "training:*"]
       }
     },
     {
-      path: '/ai/training-tool',
-      name: 'Training Tool',
+      path: "/ai/training-tool",
+      name: "Training Tool",
       component: ClassifierTrainingApp,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*', 'training:*']
+        requiresRole: ["admin:*", "training:*"]
       }
     },
     {
-      path: '/search',
-      name: 'Search',
+      path: "/search",
+      name: "Search",
       component: SearchApp,
-      meta: { gtm: 'searchpage' }
+      meta: { gtm: "searchpage" }
     },
     {
-      path: '/news/:slug',
-      name: 'News Article',
+      path: "/news/:slug",
+      name: "News Article",
       component: Article,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*']
+        requiresRole: ["admin:*"]
       }
     },
     {
-      path: '/articles/:slug',
-      name: 'Articles',
+      path: "/articles/:slug",
+      name: "Articles",
       component: Article,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*']
+        requiresRole: ["admin:*"]
       }
     },
     {
-      path: '/login',
-      name: 'Login',
+      path: "/login",
+      name: "Login",
       component: ProfileApp
     },
     {
-      path: '/profile',
-      name: 'Profile',
+      path: "/profile",
+      name: "Profile",
       component: ProfileApp,
       meta: { requiresAuth: true }
     },
     {
-      path: '/preferences',
-      name: 'Preferences',
+      path: "/preferences",
+      name: "Preferences",
       component: PreferencesApp,
       meta: { requiresAuth: true }
     },
     {
-      path: '/nlp',
-      name: 'NLP',
+      path: "/nlp",
+      name: "NLP",
       component: Visualiser,
       meta: {
         requiresAuth: true,
-        requiresRole: ['admin:*']
+        requiresRole: ["admin:*"]
       }
     },
     {
-      path: '/not-authorized',
-      name: 'NotAuthorized',
+      path: "/not-authorized",
+      name: "NotAuthorized",
       component: ErrorApp
     }
   ]
-})
+});
 
 router.beforeEach((to, from, next) => {
   if (to.matched.some(record => record.meta.requiresAuth)) {
-    const authenticated = store.getters['authentication/isAuthenticated']
+    const authenticated = store.getters["authentication/isAuthenticated"];
     const hasPermission = to.meta.requiresRole
       ? to.meta.requiresRole.reduce((a, i) => {
-        if (store.state.user.permissions.includes(i)) a = true
-      }, false)
-      : false
+          if (store.state.user.permissions.includes(i)) a = true;
+        }, false)
+      : false;
 
     if (!authenticated) {
       next({
-        path: '/login',
+        path: "/login",
         query: { redirect: to.fullPath }
-      })
+      });
     }
 
-    if ((to.meta.requiresRole && hasPermission) && authenticated) {
+    if (to.meta.requiresRole && hasPermission && authenticated) {
       next({
-        path: '/not-authorized',
+        path: "/not-authorized",
         query: { redirect: to.fullPath }
-      })
+      });
     }
-    next()
+    next();
   } else {
-    next() // make sure to always call next()!
+    next(); // make sure to always call next()!
   }
-})
+});
 
-router.afterEach((to, from) => {
+router.afterEach(() => {
   if (store.state.base.isMobile === true) {
-    store.dispatch('base/setDrawer', false, { root: true })
+    store.dispatch("base/setDrawer", false, { root: true });
   }
-})
+});
 
-export default router
+export default router;

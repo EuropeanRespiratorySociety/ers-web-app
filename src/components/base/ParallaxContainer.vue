@@ -1,15 +1,12 @@
 <script>
-import ParallaxHeader from './ParallaxHeader.vue'
-import ParallaxImage from './ParallaxImage.vue'
+import ParallaxHeader from "./ParallaxHeader.vue";
+import ParallaxImage from "./ParallaxImage.vue";
 
 export default {
-  name: 'parallax-container',
+  name: "parallax-container",
   functional: true,
-  render (h, c) {
-    return [
-      h(ParallaxHeader),
-      h(ParallaxImage)
-    ]
+  render(h) {
+    return [h(ParallaxHeader), h(ParallaxImage)];
   }
-}
+};
 </script>

@@ -1,9 +1,9 @@
 <script>
-import SimpleHeader from '@/components/base/SimpleHeader'
-import AILandingPage from '@/components/classifier-training/AILandingPage'
+import SimpleHeader from "@/components/base/SimpleHeader";
+import AILandingPage from "@/components/classifier-training/AILandingPage";
 
 export default {
-  name: 'ai-landing-page',
+  name: "ai-landing-page",
   functional: true,
 
   components: {
@@ -11,12 +11,11 @@ export default {
     AILandingPage
   },
 
-  render (h, c) {
+  render(h) {
     return [
-      h(SimpleHeader, {props: {title: 'Artificial Intelligence'}}),
+      h(SimpleHeader, { props: { title: "Artificial Intelligence" } }),
       h(AILandingPage)
-    ]
+    ];
   }
-}
-
+};
 </script>

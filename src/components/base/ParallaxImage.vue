@@ -1,22 +1,19 @@
 <template>
-    <v-parallax :src="parallaxImg" height="300">
-    </v-parallax>
+  <v-parallax :src="parallaxImg" height="300"/>
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
-  name: 'parallax-image',
+  name: "parallax-image",
 
-  data () {
-    return {}
+  data() {
+    return {};
   },
 
   computed: {
-    ...mapState('base', [
-      'parallaxImg'
-    ])
+    ...mapState("base", ["parallaxImg"])
   }
-}
+};
 </script>
