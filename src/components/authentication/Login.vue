@@ -16,6 +16,7 @@
                 </v-alert>
                 <v-card color="grey lighten-4">
                   <v-card-text>
+                    <v-progress-linear v-if="loading" :indeterminate="loading"/>
                     <v-form v-model="valid">
                       <v-container fluid>
                         <v-layout row>
@@ -84,7 +85,7 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 import SiteFooter from "@/components/base/SiteFooter.vue";
 
 export default {
@@ -109,7 +110,8 @@ export default {
   },
 
   computed: {
-    ...mapGetters("authentication", ["isAuthenticated", "error"])
+    ...mapGetters("authentication", ["isAuthenticated", "error"]),
+    ...mapState("authentication", ["loading"])
   },
 
   watch: {

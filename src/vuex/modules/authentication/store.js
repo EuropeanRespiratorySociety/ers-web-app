@@ -11,7 +11,8 @@ export default {
   state: {
     error: null,
     token: null,
-    expiresOn: null
+    expiresOn: null,
+    loading: false
   },
   mutations: mutations.default
 };

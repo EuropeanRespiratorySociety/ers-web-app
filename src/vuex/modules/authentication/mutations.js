@@ -18,6 +18,10 @@ export default {
 
   [types.SET_ERROR](state, data) {
     state.error = data.message;
+  },
+
+  [types.LOADING](state) {
+    state.loading = !state.loading;
   }
 };
 

@@ -7,6 +7,7 @@ import * as types from "./mutation-types";
 
 // Login user with email / password
 export const login = async ({ commit }, payload) => {
+  commit(types.LOADING);
   const { ok, response, error } = await sureThing(
     HTTP.post("/ers/contacts/login", payload)
   );
@@ -17,6 +18,7 @@ export const login = async ({ commit }, payload) => {
       commit(types.SET_ERROR, { message: null }) // eslint-disable-line
     ) // eslint-disable-line
     : commit(types.SET_ERROR, error);
+  commit(types.LOADING);
 };
 
 // Logout user
