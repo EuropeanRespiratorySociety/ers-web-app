@@ -1,7 +1,7 @@
 {
     "env": {},
     "dependencies": {},
-    "componentsDefaultDirectory": "components/{namespace}/{name}",
+    "componentsDefaultDirectory": "src/components/{namespace}/{name}",
     "packageManager": "npm",
     "resolveModules": {
         "modulesDirectories": [

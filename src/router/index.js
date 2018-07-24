@@ -1,10 +1,11 @@
+// @ts-nocheck
 import Vue from "vue";
 import Router from "vue-router";
 import Meta from "vue-meta";
 import store from "../vuex/store";
 
 /* eslint-disable */
-const SearchApp = () => import('@/components/search/SearchApp.vue') // eslint-disable-next-line
+const SearchApp = () => import('@/components/search/SearchApp.vue')
 const ProfileApp = () => import('@/components/user/ProfileApp.vue')
 const Feed = () => import('@/components/feed/FeedApp.vue')
 const Article = () => import('@/components/article/ArticleApp.vue')

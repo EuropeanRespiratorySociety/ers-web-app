@@ -29,18 +29,6 @@ import { mapActions, mapState } from "vuex";
 export default {
   name: "Article",
 
-  data() {
-    return {
-      previousPage: ""
-    };
-  },
-
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.previousPage = from;
-    });
-  },
-
   computed: {
     ...mapState("article", ["previous", "item"])
   },

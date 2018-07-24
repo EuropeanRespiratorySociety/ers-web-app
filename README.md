@@ -7,6 +7,47 @@ it provides:
 * Interests
 * ...
 
+
+## Editor config
+In order to have the best experience while developping install:
+
+* ESLint
+* Vue2 Snippets
+* Vuetify-vscode
+
+Set also the following editor configuration:
+
+```
+    "[javascript]": {
+        "editor.tabSize": 2
+    },
+    "[vue]": {
+        "editor.tabSize": 2
+    },
+    "eslint.validate": [
+        "javascriptreact",
+        {
+            "language": "javascript",
+            "autoFix": true
+        },
+        {
+            "language": "vue",
+            "autoFix": true
+        },
+        {
+            "language": "vue-html",
+            "autoFix": true
+        }
+    ],
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true
+```
+
+This will ensure that there is no surprise with code linting
+
+If we decide to move to typescript, we will need the Vetur extension
+
+
 > A Vue.js project
 
 ## Build Setup
