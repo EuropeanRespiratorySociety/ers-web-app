@@ -21,7 +21,7 @@ export default [
       {
         title: "Training tool",
         icon: ["s7-shuffle icon"],
-        path: "/ai/training-tool",
+        path: "/training-tool",
         role: ["admin:*", "myERS:*"]
       },
       {

@@ -32,7 +32,7 @@
     }
     
     /* then for WOFF-capable browsers */
-    @font-face {
+    /* @font-face {
     font-family: 'DinPro';
     src: url("./DINWebPro.woff") format("woff");
     }
@@ -62,4 +62,4 @@
     src: url("./DINWebPro-BoldIta.woff") format("woff");
     font-weight: bold;
     font-style: italic;
-    }
+    } */

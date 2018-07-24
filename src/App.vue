@@ -54,7 +54,7 @@ export default {
 
 <style>
 .application {
-  font-family: DinPro, Roboto, sans-serif!imporant;
+  font-family: DinPro, Roboto, sans-serif !important;
   line-height: 1.5;
 }
 </style>

@@ -46,7 +46,7 @@
     <v-list dense class="pt-3">
       <span v-for="(item, key) in items" :key="`${key}-${item}`">
         <v-list-tile
-          v-if="displayItem(item)"
+          v-if="!item.group && displayItem(item)"
           :key="item.title"
           :to="!item.external ? item.path : null"
           :href="item.external ? item.path : null"
@@ -62,7 +62,7 @@
         </v-list-tile>
 
         <v-list-group
-          v-if="item.group"
+          v-if="item.group && displayItem(item)"
           v-model="item.active"
           :key="item.title"
           :prepend-icon="item.icon[0]"
@@ -142,9 +142,7 @@ export default {
 
     displayItem(item) {
       /* eslint-disable */
-      return item.group
-        ? false
-        : !item.group && !item.private && item.role === undefined
+      return !item.private && item.role === undefined
         ? true
         : item.private && this.isAuthenticated && item.role === undefined
         ? true
