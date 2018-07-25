@@ -15,8 +15,8 @@
                   {{error}}
                 </v-alert>
                 <v-card color="grey lighten-4">
+                  <v-progress-linear v-if="loading" :indeterminate="loading"/>
                   <v-card-text>
-                    <v-progress-linear v-if="loading" :indeterminate="loading"/>
                     <v-form v-model="valid">
                       <v-container fluid>
                         <v-layout row>
