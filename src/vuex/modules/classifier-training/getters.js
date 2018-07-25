@@ -1,2 +1,4 @@
 export const text = state =>
-  state.text.replace(/<h3>&nbsp; {.clearfix}<\/h3>/g, "");
+  state.type === "content"
+    ? state.text.replace(/<h3>&nbsp; {.clearfix}<\/h3>/g, "")
+    : state.title;

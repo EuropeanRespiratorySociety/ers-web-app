@@ -10,11 +10,13 @@ export default {
   getters,
   state: {
     text: "",
+    title: "",
     _id: "",
     diseases: "",
     methods: "",
     error: {},
-    status: ""
+    status: "",
+    type: "title"
   },
   mutations: mutations.default
 };

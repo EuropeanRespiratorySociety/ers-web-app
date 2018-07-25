@@ -10,7 +10,7 @@
                   <v-container>
                     <v-layout row wrap>
                       <v-flex xs12 sm12 md7>
-                        <div class="text" v-html="text" />
+                        <div :style="{fontSize: size + 'px'}" class="text" v-html="text"/>
                       </v-flex>
                       <v-flex xs12 sm12 md5>
                         <div>
@@ -96,7 +96,8 @@ export default {
       selectedDiseases: [],
       selectedMethods: [],
       notification: false,
-      timeout: 2000
+      timeout: 2000,
+      size: 16
     };
   },
 
@@ -106,6 +107,14 @@ export default {
     ...mapGetters("classifierTraining", ["text"]),
 
     ...mapGetters("user", ["interestsDiseases", "interestsMethods"]),
+
+    trainingText() {
+      return this.type === "title" ? this.title : this.text;
+    },
+
+    setSize() {
+      return this.text.length > 100 ? 16 : 24;
+    },
 
     userMethods: {
       get() {
@@ -128,7 +137,8 @@ export default {
 
   watch: {
     /**
-     * At first we will not give hints to our users
+     * At first we have decided that we
+     * will not give hints to our users
      */
     // diseases (value) {
     //   value.forEach(i => {
@@ -145,6 +155,10 @@ export default {
 
     status(value) {
       if (value.length > 0) this.notification = true;
+    },
+
+    text(value) {
+      this.size = value.length > 100 ? 16 : 24;
     }
   },
 
@@ -202,7 +216,7 @@ export default {
   }
 </style>
 
-<style>
+<style lang="css">
 div.text p img {
   display: none !important;
 }
