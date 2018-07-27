@@ -133,7 +133,7 @@ router.beforeEach((to, from, next) => {
       });
     }
 
-    if ((to.meta.requiresRole.length > 0 && !hasPermission) || !authenticated) {
+    if ((to.meta.requiresRole && !hasPermission) || !authenticated) {
       next({
         path: "/not-authorized",
         query: { redirect: to.fullPath }
