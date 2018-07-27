@@ -118,7 +118,6 @@ router.beforeEach((to, from, next) => {
     const authenticated = store.getters["authentication/isAuthenticated"];
     const hasPermission = to.meta.requiresRole
       ? to.meta.requiresRole.reduce((a, i) => {
-          console.log(i);
           if (store.state.user.permissions.includes(i)) {
             a = true;
             return a;
