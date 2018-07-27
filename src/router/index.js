@@ -43,7 +43,7 @@ const router = new Router({
       component: AIApp,
       meta: {
         requiresAuth: true,
-        requiresRole: ["admin:*", "training:*"]
+        requiresRole: ["admin:*"]
       }
     },
     {
@@ -52,7 +52,7 @@ const router = new Router({
       component: ClassifierTrainingApp,
       meta: {
         requiresAuth: true,
-        requiresRole: ["admin:*", "training:*"]
+        requiresRole: ["admin:*", "myERS:*"]
       }
     },
     {
@@ -118,7 +118,12 @@ router.beforeEach((to, from, next) => {
     const authenticated = store.getters["authentication/isAuthenticated"];
     const hasPermission = to.meta.requiresRole
       ? to.meta.requiresRole.reduce((a, i) => {
-          if (store.state.user.permissions.includes(i)) a = true;
+          console.log(i);
+          if (store.state.user.permissions.includes(i)) {
+            a = true;
+            return a;
+          }
+          return a;
         }, false)
       : false;
 
@@ -129,7 +134,7 @@ router.beforeEach((to, from, next) => {
       });
     }
 
-    if (to.meta.requiresRole && hasPermission && authenticated) {
+    if ((to.meta.requiresRole.length > 0 && !hasPermission) || !authenticated) {
       next({
         path: "/not-authorized",
         query: { redirect: to.fullPath }
