@@ -113,7 +113,7 @@ export default {
     },
 
     setSize() {
-      return this.text.length > 100 ? 16 : 24;
+      return this.text.length > 150 ? 16 : 24;
     },
 
     userMethods: {
