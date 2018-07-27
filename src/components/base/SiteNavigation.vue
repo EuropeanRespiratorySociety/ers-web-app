@@ -82,6 +82,7 @@
 
           <v-list-tile
             v-for="subItem in item.items"
+            v-if="item.group && displayItem(subItem)"
             :key="subItem.title"
             :to="!subItem.external ? `${item.path}${subItem.path}` : null"
             :href="subItem.external ? subItem.path : null"

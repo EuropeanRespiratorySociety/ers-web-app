@@ -6,33 +6,6 @@ export default [
     role: ["admin:*"]
   },
   {
-    title: "Vision",
-    icon: ["icon-vision icon"],
-    path: "/news",
-    role: ["admin:*"]
-  },
-  {
-    title: "AI",
-    icon: ["s7-light icon"],
-    group: true,
-    path: "/ai",
-    role: ["admin:*", "training:*", "myERS:*"],
-    items: [
-      {
-        title: "Training tool",
-        icon: ["s7-shuffle icon"],
-        path: "/training-tool",
-        role: ["admin:*", "myERS:*"]
-      },
-      {
-        title: "NLP",
-        icon: ["s7-shuffle icon"],
-        path: "/nlp",
-        role: ["admin:*"]
-      }
-    ]
-  },
-  {
     title: "Home",
     icon: ["s7-home icon"],
     path: "https://www.ersnet.org",
@@ -58,10 +31,37 @@ export default [
     private: true
   },
   {
+    title: "AI",
+    icon: ["s7-light icon"],
+    group: true,
+    path: "/ai",
+    role: ["admin:*", "training:*", "myERS:*"],
+    items: [
+      {
+        title: "Training tool",
+        icon: ["s7-shuffle icon"],
+        path: "/training-tool",
+        role: ["admin:*", "myERS:*"]
+      },
+      {
+        title: "NLP",
+        icon: ["s7-shuffle icon"],
+        path: "/nlp",
+        role: ["admin:*"]
+      }
+    ]
+  },
+  {
     title: "Publications",
     icon: ["icon-publications icon"],
     path: "https://www.ersnet.org/publications",
     external: true
+  },
+  {
+    title: "&beta; - ERS Vision",
+    icon: ["icon-vision icon"],
+    path: "/news",
+    role: ["admin:*"]
   },
   {
     title: "ERS Vision",

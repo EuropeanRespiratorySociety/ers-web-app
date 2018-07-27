@@ -14,6 +14,7 @@ export default {
     state.token = null;
     state.error = null;
     state.expiresOn = null;
+    state.loading = false;
   },
 
   [types.SET_ERROR](state, data) {

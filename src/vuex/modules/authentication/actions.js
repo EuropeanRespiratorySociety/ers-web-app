@@ -6,17 +6,17 @@ import * as types from "./mutation-types";
 // };
 
 // Login user with email / password
-export const login = async ({ commit }, payload) => {
+export const login = async ({ commit, dispatch }, payload) => {
   commit(types.LOADING);
   const { ok, response, error } = await sureThing(
     HTTP.post("/ers/contacts/login", payload)
   );
-  // eslint-disable-next-line
+
   ok
-    ? (commit(types.LOGIN, response.accessToken), // eslint-disable-line
-      commit('user/SET_USER', response, { root: true }),// eslint-disable-line
-      commit(types.SET_ERROR, { message: null }) // eslint-disable-line
-    ) // eslint-disable-line
+    ? (commit(types.LOGIN, response.accessToken),
+      commit("user/SET_USER", response, { root: true }),
+      commit(types.SET_ERROR, { message: null }),
+      dispatch("user/getInterestsList", {}, { root: true }))
     : commit(types.SET_ERROR, error);
   commit(types.LOADING);
 };
