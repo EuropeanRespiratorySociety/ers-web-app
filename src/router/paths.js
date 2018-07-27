@@ -35,7 +35,7 @@ export default [
     icon: ["s7-light icon"],
     group: true,
     path: "/ai",
-    role: ["admin:*", "training:*", "myERS:*"],
+    role: ["admin:*", "myERS:*"],
     items: [
       {
         title: "Training tool",
