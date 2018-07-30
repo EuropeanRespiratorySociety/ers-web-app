@@ -46,7 +46,7 @@ export default {
   props: {
     feed: { type: Array, default: () => [] },
     swiper: { type: Object, default: () => {} },
-    title: { type: String, default: "" },
+    title: { type: String | Boolean, default: false },
     side: { type: String | Boolean, default: false }
   },
 

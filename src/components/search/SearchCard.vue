@@ -185,15 +185,13 @@
 </template>
 
 <script>
-import * as _ from "lodash/truncate";
+import { truncate } from "../../filters";
 import moment from "moment";
 export default {
   name: "card",
 
   filters: {
-    truncate: function(value) {
-      return _(value, { length: 300, separator: "..." });
-    }
+    truncate: string => truncate(string, 300)
   },
   props: { post: { type: Object, default: () => {} } },
   computed: {

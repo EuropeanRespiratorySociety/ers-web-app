@@ -32,34 +32,25 @@
 </template>
 
 <script>
-import * as _ from "lodash/truncate";
-import slugify from "@sindresorhus/slugify";
+import { slugify, truncate, upperCase } from "../../filters";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 
 export default {
   name: "cards-swiper",
 
   filters: {
-    truncate: function(value) {
-      return _(value, { length: 90, separator: "..." });
-    },
-
-    caps: function(value) {
-      return value.toUpperCase();
-    },
-
-    slug: function(value) {
-      return slugify(value);
-    }
+    truncate: string => truncate(string, 90),
+    caps: string => upperCase(string),
+    slug: string => slugify(string)
   },
 
   components: { swiper, swiperSlide },
 
   props: {
     articles: { type: Array, default: () => [] },
-    title: { type: String, default: "" },
-    color: { type: String, default: "" },
-    parent: { type: String, default: "" }
+    title: { type: String | Boolean, default: false },
+    color: { type: String, default: "grey lighten-1" },
+    parent: { type: String, default: "news" }
   },
 
   data() {
@@ -95,7 +86,7 @@ export default {
     },
 
     bgColor() {
-      return this.color ? this.color : "grey lighten-1";
+      return this.color;
     },
 
     swiper() {

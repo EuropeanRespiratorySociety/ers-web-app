@@ -24,7 +24,6 @@
 </template>
 
 <script>
-import moment from "moment";
 import CongressTools from "./CongressTools.vue";
 import JournalTools from "./JournalTools.vue";
 import Card from "@/components/search/SearchCard.vue";
@@ -35,9 +34,6 @@ const { mapActions, mapState, mapGetters } = createNamespacedHelpers("search");
 export default {
   name: "search-toolbar",
   components: { Card, CongressTools, JournalTools },
-  filters: {
-    moment: date => moment(date).format("MMMM Do YYYY, h:mm:ss a")
-  },
   data() {
     return {
       fixed: false
@@ -45,7 +41,7 @@ export default {
   },
   metaInfo() {
     return {
-      title: "Search Engine"
+      title: "ERS Search Engine"
     };
   },
 

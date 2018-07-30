@@ -32,17 +32,11 @@
 </template>
 
 <script>
-import * as _ from "lodash/truncate";
+import { truncate } from "../../filters";
 export default {
   name: "card",
   filters: {
-    truncate: function(value, length = 100) {
-      return _(value, { length, separator: "..." });
-    },
-
-    caps: function(value) {
-      return value.toUpperCase();
-    }
+    truncate: string => truncate(string, 100)
   },
   props: {
     parent: { type: String, default: "" },
