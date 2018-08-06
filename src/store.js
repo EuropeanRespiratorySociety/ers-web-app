@@ -6,7 +6,7 @@ import article from "@/components/article/store";
 import authentication from "@/components/authentication/store";
 import base from "@/components/base/store";
 import category from "@/components/category/store";
-import classifierTraining from "@/components/classifier-training/store";
+import classifierTraining from "@/components/ai/store";
 import feed from "@/components/feed/store";
 import search from "@/components/search/store";
 import user from "@/components/user/store";

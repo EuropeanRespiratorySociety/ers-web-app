@@ -8,9 +8,10 @@
         <v-card
           hover
         >
-          <v-card-media
+          <v-img
             v-if="article.image"
             :src="article.image"
+            lazy-src="./icons/logo.png"
             height="200px"/>
           <v-card-title
             v-if="article.title"

@@ -1,6 +1,6 @@
 <template>
   <v-card>{{post | json }}
-    <v-card-media v-if="post.image" :src="post.image" height="250px"/>
+    <v-img v-if="post.image" :src="post.image" height="250px"/>
     <v-btn icon style="float:right" @click.native="show = !show">
       <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
     </v-btn>

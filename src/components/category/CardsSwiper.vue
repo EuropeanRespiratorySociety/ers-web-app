@@ -11,7 +11,7 @@
                 :to="parent ? `${parent}/${post.slug}` : null"
                 hover
               >
-                <v-card-media v-if="post.image" :src="post.image" height="200px"/>
+                <v-img v-if="post.image" :src="post.image" height="200px"/>
                 <v-card-title v-if="post.title" primary-title>
                   <div>
                     <h3 class="mb-0 truncate">{{post.title | truncate}}</h3>

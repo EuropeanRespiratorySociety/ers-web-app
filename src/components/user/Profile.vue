@@ -6,7 +6,7 @@
           <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-container>
               <v-card>
-                <v-card-media v-if="photo" :src="photo" height="300px"/>
+                <v-img v-if="photo" :src="photo" height="300px"/>
 
                 <v-toolbar prominent flat color="white" light>
                   <v-btn

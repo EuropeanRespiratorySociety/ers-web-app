@@ -5,7 +5,7 @@
         <v-layout row>
           <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-card class="card--flex-toolbar">
-              <v-card-media
+              <v-img
                 height="200px"
                 src="https://cdn.ersnet.org/preview/node/o:946048ac6aa505f8cc50?name=image6&size=600&v=56326:9222782a18"
               />

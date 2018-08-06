@@ -2,7 +2,7 @@
   <v-card
     hover
   >
-    <v-card-media
+    <v-img
       v-if="article.image"
       :src="article.image"
       height="200px"/>

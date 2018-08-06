@@ -32,7 +32,7 @@
             </v-card-text>
           </v-flex>
           <v-flex xs4>
-            <v-card-media
+            <v-img
               v-if="article.image"
               :src="article.image"
               contain
