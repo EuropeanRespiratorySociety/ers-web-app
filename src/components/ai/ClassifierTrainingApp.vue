@@ -1,6 +1,6 @@
 <script>
 import SimpleHeader from "@/components/base/SimpleHeader";
-import Article from "@/components/classifier-training/Article";
+import TrainingItem from "./TrainingItem";
 
 export default {
   name: "classifier-training-app",
@@ -8,14 +8,14 @@ export default {
 
   components: {
     SimpleHeader,
-    Article
+    TrainingItem
   },
 
   render(h) {
     return [
       // h(ParallaxContainer),
       h(SimpleHeader, { props: { title: "ERS Content Classifier" } }),
-      h(Article)
+      h(TrainingItem)
     ];
   }
 };

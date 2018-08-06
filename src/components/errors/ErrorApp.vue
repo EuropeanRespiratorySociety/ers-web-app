@@ -1,7 +1,7 @@
 <script>
 // import store from '@/vuex/store'
 import SimpleHeader from "@/components/base/SimpleHeader.vue";
-import NotAuthorized from "@/components/errors/NotAuthorized.vue";
+import NotAuthorized from "./NotAuthorized.vue";
 import SiteFooter from "@/components/base/SiteFooter.vue";
 
 export default {

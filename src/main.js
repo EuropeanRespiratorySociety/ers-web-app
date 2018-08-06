@@ -10,7 +10,7 @@ import { sync } from "vuex-router-sync";
 
 import App from "./App.vue";
 import router from "./router";
-import store from "./vuex/store";
+import store from "./store";
 import "./plugins/registerServiceWorker";
 import "./plugins/vuetify";
 

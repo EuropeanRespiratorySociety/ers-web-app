@@ -117,7 +117,7 @@ export default {
   watch: {
     isAuthenticated(v) {
       if (v) {
-        this.$router.push({ path: "/" });
+        this.$router.push({ name: "Profile" });
       }
     },
 
@@ -129,13 +129,17 @@ export default {
   methods: {
     ...mapActions("authentication", ["login"]),
 
-    submit() {
+    async submit() {
       // hint member@somewhere.com member
       const credentials = { username: this.username, password: this.password };
-      this.login(credentials);
+      await this.login(credentials);
       if ("redirect" in this.$router.history.current.query) {
         this.$router.push({
           path: this.$router.history.current.query.redirect
+        });
+      } else {
+        this.$router.push({
+          name: "Profile"
         });
       }
     }

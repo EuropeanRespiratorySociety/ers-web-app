@@ -1,6 +1,6 @@
 <script>
 import SimpleHeader from "@/components/base/SimpleHeader";
-import AILandingPage from "@/components/classifier-training/AILandingPage";
+import AILandingPage from "./AILandingPage";
 
 export default {
   name: "ai-landing-page",

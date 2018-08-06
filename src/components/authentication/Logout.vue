@@ -28,7 +28,7 @@ export default {
     },
 
     submit() {
-      this.isAuthenticated ? this.l() : this.$router.push({ path: "/login" });
+      this.isAuthenticated ? this.l() : this.$router.push({ name: "Login" });
     }
   }
 };

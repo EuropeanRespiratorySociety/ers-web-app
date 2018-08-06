@@ -2,17 +2,15 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Meta from "vue-meta";
-import store from "../vuex/store";
+import store from "../store";
+import classifierRouter from "@/components/ai/router";
+import feedRouter from "@/components/feed/router";
+import searchRouter from "@/components/search/router";
+import userRouter from "@/components/user/router";
+import errorsRouter from "@/components/errors/router";
 
 /* eslint-disable */
-const SearchApp = () => import('@/components/search/SearchApp.vue')
-const ProfileApp = () => import('@/components/user/ProfileApp.vue')
-const Feed = () => import('@/components/feed/FeedApp.vue')
-const Article = () => import('@/components/article/ArticleApp.vue')
-const PreferencesApp = () => import('@/components/user/PreferencesApp.vue')
-const AIApp = () => import('@/components/classifier-training/AIApp.vue')
-const ClassifierTrainingApp = () => import('@/components/classifier-training/ClassifierTrainingApp.vue')
-const Visualiser = () => import('@/components/nlp/VisualiserApp.vue')
+
 const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
 /* eslint-enable */
 
@@ -28,88 +26,11 @@ const router = new Router({
       path: "/",
       redirect: "/search"
     },
-    {
-      path: "/news",
-      name: "News",
-      component: Feed,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*"]
-      }
-    },
-    {
-      path: "/ai",
-      name: "AI",
-      component: AIApp,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*"]
-      }
-    },
-    {
-      path: "/ai/training-tool",
-      name: "Training Tool",
-      component: ClassifierTrainingApp,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*", "myERS:*"]
-      }
-    },
-    {
-      path: "/search",
-      name: "Search",
-      component: SearchApp,
-      meta: { gtm: "searchpage" }
-    },
-    {
-      path: "/news/:slug",
-      name: "News Article",
-      component: Article,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*"]
-      }
-    },
-    {
-      path: "/articles/:slug",
-      name: "Articles",
-      component: Article,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*"]
-      }
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: ProfileApp
-    },
-    {
-      path: "/profile",
-      name: "Profile",
-      component: ProfileApp,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: "/preferences",
-      name: "Preferences",
-      component: PreferencesApp,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: "/nlp",
-      name: "NLP",
-      component: Visualiser,
-      meta: {
-        requiresAuth: true,
-        requiresRole: ["admin:*"]
-      }
-    },
-    {
-      path: "/not-authorized",
-      name: "NotAuthorized",
-      component: ErrorApp
-    }
+    ...classifierRouter,
+    ...feedRouter,
+    ...searchRouter,
+    ...userRouter,
+    ...errorsRouter
   ]
 });
 
@@ -128,7 +49,7 @@ router.beforeEach((to, from, next) => {
 
     if (!authenticated) {
       next({
-        path: "/login",
+        path: "/user/login",
         query: { redirect: to.fullPath }
       });
     }

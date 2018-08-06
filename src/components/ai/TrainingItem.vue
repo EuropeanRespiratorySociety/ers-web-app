@@ -89,7 +89,7 @@
 import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
-  name: "Article",
+  name: "TrainingItem",
 
   data() {
     return {

@@ -44,9 +44,9 @@ export default [
         role: ["admin:*", "myERS:*"]
       },
       {
-        title: "NLP",
+        title: "Entity Extraction",
         icon: ["s7-shuffle icon"],
-        path: "/nlp",
+        path: "/entity-extraction",
         role: ["admin:*"]
       }
     ]
