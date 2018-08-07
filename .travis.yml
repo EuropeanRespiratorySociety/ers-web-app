@@ -15,11 +15,11 @@ before_install:
   - npm install -g codecov
 script:
   - npm run build
-  - travis_retry npm run coverage
+  - travis_retry npm run test:unit
 cache:
   directories:
     - "node_modules"
 after_success: 
-  - codecov
+  - npm run coverage
 notifications:
   email: false
