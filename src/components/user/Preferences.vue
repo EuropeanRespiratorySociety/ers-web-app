@@ -35,11 +35,11 @@
 
 <script>
 import { mapActions, mapState } from "vuex";
-import { uperCaseFirstLetter } from "../../filters";
+import { upperCaseFirstLetter } from "../../filters";
 
 export default {
   filters: {
-    upper: string => uperCaseFirstLetter(string)
+    upper: string => upperCaseFirstLetter(string)
   },
   data() {
     return {

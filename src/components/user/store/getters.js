@@ -18,19 +18,18 @@ export const street = state => {
 };
 
 export const interestsDiseases = state => {
-  return state.interests.reduce((a, c) => {
-    if (c.title === "diseases") {
-      a.push(c.values);
-    }
-    return a;
-  }, [])[0];
+  return _filterInterests(state, "diseases");
 };
 
 export const interestsMethods = state => {
+  return _filterInterests(state, "methods");
+};
+
+function _filterInterests(state, type) {
   return state.interests.reduce((a, c) => {
-    if (c.title === "methods") {
+    if (c.title === type) {
       a.push(c.values);
     }
     return a;
   }, [])[0];
-};
+}

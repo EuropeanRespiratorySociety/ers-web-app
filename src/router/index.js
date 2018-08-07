@@ -33,8 +33,10 @@ const router = new Router({
     ...errorsRouter
   ]
 });
+router.beforeEach((to, from, next) => beforeEach(to, from, next));
+router.afterEach(() => afterEach());
 
-router.beforeEach((to, from, next) => {
+export function beforeEach(to, from, next) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     const authenticated = store.getters["authentication/isAuthenticated"];
     const hasPermission = to.meta.requiresRole
@@ -64,12 +66,14 @@ router.beforeEach((to, from, next) => {
   } else {
     next(); // make sure to always call next()!
   }
-});
+}
 
-router.afterEach(() => {
+export function afterEach() {
+  // Auto close navigation drawer after
+  // navigation on mobile devices.
   if (store.state.base.isMobile === true) {
     store.dispatch("base/setDrawer", false, { root: true });
   }
-});
+}
 
 export default router;
