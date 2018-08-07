@@ -4,6 +4,7 @@ import {
   interestsDiseases,
   interestsMethods
 } from "../store/getters";
+import interests from "./interests.mock";
 
 describe("User - getters", () => {
   describe("name", () => {
@@ -95,47 +96,7 @@ describe("User - getters", () => {
   });
 
   describe("prepares interests", () => {
-    const state = {
-      interests: [
-        {
-          title: "diseases",
-          values: [
-            "Airway diseases",
-            "Interstitial lung diseases",
-            "Paediatric respiratory diseases",
-            "Pulmonary vascular diseases",
-            "Respiratory critical care",
-            "Respiratory infections",
-            "Sleep and breathing disorders",
-            "Thoracic oncology"
-          ],
-          limits: {
-            min: 1,
-            max: 0
-          }
-        },
-        {
-          title: "methods",
-          values: [
-            "Cell and molecular biology",
-            "Endoscopy and interventional pulmonology",
-            "Epidemiology",
-            "General respiratory patient care",
-            "Imaging",
-            "Physiology",
-            "Public health",
-            "Pulmonary function testing",
-            "Respiratory intensive care",
-            "Surgery",
-            "Transplantation"
-          ],
-          limits: {
-            min: 1,
-            max: 0
-          }
-        }
-      ]
-    };
+    const state = { interests };
     it("returns a diseases list", () => {
       const r = interestsDiseases(state);
       expect(Array.isArray(r)).toBe(true);

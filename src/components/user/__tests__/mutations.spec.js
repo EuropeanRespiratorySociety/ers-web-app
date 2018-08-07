@@ -1,5 +1,6 @@
 import mutations from "../store/mutations";
 import store from "../store";
+import interests from "./interests.mock";
 
 describe("User - Mutations", () => {
   it("sets user", () => {
@@ -29,5 +30,11 @@ describe("User - Mutations", () => {
     );
     expect(state.permissions).toEqual(expect.arrayContaining(data.permissions));
     expect(state.data.ContactId).toEqual(123456);
+  });
+
+  it("Sets interests", () => {
+    let state = { ...store.state };
+    mutations.SET_INTERESTS(state, interests);
+    console.log(state);
   });
 });

@@ -15,7 +15,7 @@ module.exports = {
   ],
   testURL: "http://localhost",
   coverageDirectory: "./coverage/",
-  collectCoverage: true,
+  // collectCoverage: true,
   collectCoverageFrom: [
     "**/*.{js,vue}",
     "!**/node_modules/**",
