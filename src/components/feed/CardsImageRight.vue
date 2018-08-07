@@ -35,6 +35,7 @@
             <v-img
               v-if="article.image"
               :src="article.image"
+              lazy-src="./icons/logo.png"
               contain
               height="100px"/>
           </v-flex>

@@ -1,5 +1,5 @@
-import * as _ from "lodash/truncate";
+import t from "lodash.truncate";
 
-export default function truncate(string, length, separator = "...") {
-  return _(string, { length, separator });
+export function truncate(string, length, omission = "...") {
+  return t(string, { length, omission });
 }

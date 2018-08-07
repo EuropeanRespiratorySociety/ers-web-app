@@ -1,5 +1,11 @@
 import { slugify } from "./slugify";
-import truncate from "./truncate";
-import { upperCase, uperCaseEachWords, uperCaseFirstLetter } from "./toUpper";
+import { truncate } from "./truncate";
+import { upperCase, upperCaseEachWords, upperCaseFirstLetter } from "./toUpper";
 
-export { slugify, truncate, upperCase, uperCaseEachWords, uperCaseFirstLetter };
+export {
+  slugify,
+  truncate,
+  upperCase,
+  upperCaseEachWords,
+  upperCaseFirstLetter
+};
