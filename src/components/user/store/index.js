@@ -18,7 +18,7 @@ export default {
       interests: []
     },
     interests: [],
-    errors: null
+    error: null
   },
   mutations: mutations.default
 };
