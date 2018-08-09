@@ -1,5 +1,5 @@
 import router from "../../router";
-import { afterEach, beforeEach } from "../../router";
+import { afterEach, beforeEach, checkPermission } from "../../router";
 import mockStore from "../../store";
 
 jest.mock("../../store", () => {
@@ -154,6 +154,32 @@ describe("Router - beforeEach guards", () => {
       path: "/user/login",
       query: { redirect: "/full/path" }
     });
+  });
+});
+
+describe("Router - helper function", () => {
+  it("does nothing if no auth required", () => {
+    const to = {
+      matched: []
+    };
+    const next = jest.fn();
+    beforeEach(to, undefined, next);
+    expect(next.mock.calls[0].length).toBe(0);
+  });
+
+  it("skips checking permissions when there is no role", () => {
+    const result = checkPermission(undefined, ["test"]);
+    expect(result).toBe(false);
+  });
+
+  it("matches a role with permission", () => {
+    const result = checkPermission(["test"], ["test", "nope"]);
+    expect(result).toBe(true);
+  });
+
+  it("fail the test when no role matches", () => {
+    const result = checkPermission(["test"], ["nope"]);
+    expect(result).toBe(false);
   });
 });
 

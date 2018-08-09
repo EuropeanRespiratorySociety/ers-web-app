@@ -39,22 +39,19 @@ router.afterEach(() => afterEach());
 export function beforeEach(to, from, next) {
   if (to.matched.some(record => record.meta.requiresAuth)) {
     const authenticated = store.getters["authentication/isAuthenticated"];
-    const hasPermission = to.meta.requiresRole
-      ? to.meta.requiresRole.reduce((a, i) => {
-          if (store.state.user.permissions.includes(i)) {
-            a = true;
-            return a;
-          }
-          return a;
-        }, false)
-      : false;
+    const hasPermission = checkPermission(
+      to.meta.requiresRole,
+      store.state.user.permissions
+    );
 
     if (!authenticated) {
       next({
         path: "/user/login",
         query: { redirect: to.fullPath }
       });
-    } else if (to.meta.requiresRole && !hasPermission) {
+    }
+
+    if (to.meta.requiresRole && !hasPermission) {
       next({
         path: "/not-authorized",
         query: { redirect: to.fullPath }
