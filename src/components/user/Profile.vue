@@ -144,7 +144,7 @@ export default {
     isAuthenticated: {
       immediate: true,
       handler(v) {
-        if (!v) this.$router.push({ path: "/login" });
+        if (!v) this.$router.push({ path: "/user/login" });
       }
     }
   }

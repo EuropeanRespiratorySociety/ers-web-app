@@ -38,6 +38,7 @@ import { mapActions, mapState } from "vuex";
 import { upperCaseFirstLetter } from "../../filters";
 
 export default {
+  name: "user-preferences",
   filters: {
     upper: string => upperCaseFirstLetter(string)
   },
