@@ -68,6 +68,18 @@ export function beforeEach(to, from, next) {
   }
 }
 
+export function checkPermission(role, permissions) {
+  return role
+    ? role.reduce((a, i) => {
+        if (permissions.includes(i)) {
+          a = true;
+          return a;
+        }
+        return a;
+      }, false)
+    : false;
+}
+
 export function afterEach() {
   // Auto close navigation drawer after
   // navigation on mobile devices.

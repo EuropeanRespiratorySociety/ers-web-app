@@ -1,4 +1,17 @@
 import router from "../../router";
+import { afterEach } from "../../router";
+import mockStore from "../../store";
+
+jest.mock("../../store", () => {
+  return {
+    state: {
+      base: {
+        isMobile: true
+      }
+    },
+    dispatch: jest.fn()
+  };
+});
 
 const { routes, mode } = router.options;
 describe("Router", () => {
@@ -40,6 +53,23 @@ describe("Router", () => {
 
   it("sets the '/not-authorized' route", () => {
     expect(filterByPath("/not-authorized").path).toBe("/not-authorized");
+  });
+});
+
+describe("Router - guards", () => {
+  it("automaticaly closes the menu after routing on mobile", async () => {
+    await afterEach();
+    expect(mockStore.dispatch).toHaveBeenCalledWith("base/setDrawer", false, {
+      root: true
+    });
+  });
+
+  it("does not close the menu after routing on desktop", async () => {
+    jest.requireMock("../../store").state.base.isMobile = false;
+    // reseting the mock function
+    jest.requireMock("../../store").dispatch = jest.fn();
+    await afterEach();
+    expect(mockStore.dispatch).not.toHaveBeenCalled();
   });
 });
 
