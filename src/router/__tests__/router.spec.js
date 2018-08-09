@@ -60,6 +60,13 @@ describe("Router", () => {
   it("sets the '/not-authorized' route", () => {
     expect(filterByPath("/not-authorized").path).toBe("/not-authorized");
   });
+
+  it("has a beforeEach guard", () => {
+    expect(typeof router.beforeEach).toBe("function");
+  });
+  it("has a afterEach guard", () => {
+    expect(typeof router.afterEach).toBe("function");
+  });
 });
 
 describe("Router - afterEach guards", () => {
