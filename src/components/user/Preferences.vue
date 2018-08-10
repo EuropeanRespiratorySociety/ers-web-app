@@ -22,7 +22,7 @@
                   {{saving}}
                 </v-card-text>
                 <v-card-actions>
-                  <v-btn to="/profile">Back</v-btn>
+                  <v-btn to="/user">Back</v-btn>
                 </v-card-actions>
               </v-card>
             </v-container>
@@ -60,7 +60,6 @@ export default {
       }
     }
   },
-
   watch: {
     status: function(v) {
       this.saving = "Saving...";

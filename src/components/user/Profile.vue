@@ -97,7 +97,7 @@
                     Personalise your experience, add your interests
                   </v-card-title>
                   <v-card-actions>
-                    <v-btn to="/preferences">Personalise</v-btn>
+                    <v-btn to="/user/preferences">Personalise</v-btn>
                   </v-card-actions>
                 </div>
               </v-card>
