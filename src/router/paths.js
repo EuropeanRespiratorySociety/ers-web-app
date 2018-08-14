@@ -27,7 +27,7 @@ export default [
   {
     title: "Profile",
     icon: ["icon-business-card icon"],
-    path: "/profile",
+    path: "/user",
     private: true
   },
   {

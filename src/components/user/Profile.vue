@@ -85,7 +85,7 @@
                   <v-toolbar prominent flat color="white" light>
                     <v-toolbar-title>Interests</v-toolbar-title>
                     <v-spacer/>
-                    <v-btn flat to="/preferences">Change your interests</v-btn>
+                    <v-btn flat to="/user/preferences">Change your interests</v-btn>
                   </v-toolbar>
                   <v-card-text>
                     <v-chip v-for="i in preferences.interests" :key="i">{{i}}</v-chip>
