@@ -4,52 +4,57 @@
       <v-container fluid>
         <v-layout row>
           <v-flex xs12 sm12 md10 lg8 offset-md1 offset-lg2>
-            <v-layout row>
-              <v-expansion-panel>
-                <v-expansion-panel-content class="grey lighten-3">
-                  <div slot="header" >Help</div>
-                  <v-card>
-                    <v-card-text>
-                      <v-list>
-                        <v-list-tile avatar>
-                          <v-list-tile-avatar>
-                            <v-icon>exit_to_app</v-icon>
-                          </v-list-tile-avatar>
-                          <v-list-tile-content>
-                            <v-list-tile-title>Exit the training tool, stay logged in</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile avatar>
-                          <v-list-tile-avatar>
-                            <v-icon>s7-angle-right</v-icon>
-                          </v-list-tile-avatar>
-                          <v-list-tile-content>
-                            <v-list-tile-title>Skip and get the next training text</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
-                        <v-list-tile avatar>
-                          <v-list-tile-avatar>
-                            <v-icon>s7-check</v-icon>
-                          </v-list-tile-avatar>
-                          <v-list-tile-content>
-                            <v-list-tile-title>Validate and save the selection</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
-                        <v-divider/>
-                        <v-list-tile >
-                          <v-list-tile-content>
-                            <v-list-tile-title>If unsure, it is best to skip the item</v-list-tile-title>
-                          </v-list-tile-content>
-                        </v-list-tile>
-                      </v-list>
-                    </v-card-text>
-                  </v-card>
-                </v-expansion-panel-content>
-              </v-expansion-panel>
-            </v-layout>
+            <v-layout row/>
             <v-layout row>
               <v-card>
                 <v-card-text>
+                  <v-expansion-panel flat class="elevation-0">
+                    <v-expansion-panel-content class="grey lighten-3 elevation-0">
+                      <div slot="header" >Help</div>
+                      <v-card class="grey lighten-4 elevation-0">
+                        <v-card-text>
+                          <v-list>
+                            <v-list-tile avatar>
+                              <v-list-tile-avatar>
+                                <v-icon>exit_to_app</v-icon>
+                              </v-list-tile-avatar>
+                              <v-list-tile-content>
+                                <v-list-tile-title>Exit the training tool, stay logged in</v-list-tile-title>
+                              </v-list-tile-content>
+                            </v-list-tile>
+                            <v-list-tile avatar>
+                              <v-list-tile-avatar>
+                                <v-icon>s7-angle-right</v-icon>
+                              </v-list-tile-avatar>
+                              <v-list-tile-content>
+                                <v-list-tile-title>Skip and get the next training text</v-list-tile-title>
+                              </v-list-tile-content>
+                            </v-list-tile>
+                            <v-list-tile avatar>
+                              <v-list-tile-avatar>
+                                <v-icon>s7-check</v-icon>
+                              </v-list-tile-avatar>
+                              <v-list-tile-content>
+                                <v-list-tile-title>Validate and save the selection</v-list-tile-title>
+                              </v-list-tile-content>
+                            </v-list-tile>
+                            <v-divider/>
+                            <v-list-tile >
+                              <v-list-tile-content>
+                                <v-list-tile-title>If unsure, it is best to skip the item</v-list-tile-title>
+                              </v-list-tile-content>
+                            </v-list-tile>
+                            <v-divider/>
+                            <v-list-tile >
+                              <v-list-tile-content>
+                                <v-list-tile-title>If you have any question please contact <a href="mail:samuel.pouyt@ersnet.org">Samuel Pouyt</a></v-list-tile-title>
+                              </v-list-tile-content>
+                            </v-list-tile>
+                          </v-list>
+                        </v-card-text>
+                      </v-card>
+                    </v-expansion-panel-content>
+                  </v-expansion-panel>
                   <v-container>
                     <v-layout row wrap>
                       <v-flex xs12 sm12 md7>
