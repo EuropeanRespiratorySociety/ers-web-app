@@ -4,6 +4,7 @@ import Router from "vue-router";
 import Meta from "vue-meta";
 import store from "../store";
 import classifierRouter from "@/components/ai/router";
+import cpdRouter from "@/components/cpd/router";
 import feedRouter from "@/components/feed/router";
 import searchRouter from "@/components/search/router";
 import userRouter from "@/components/user/router";
@@ -27,6 +28,7 @@ const router = new Router({
       redirect: "/search"
     },
     ...classifierRouter,
+    ...cpdRouter,
     ...feedRouter,
     ...searchRouter,
     ...userRouter,

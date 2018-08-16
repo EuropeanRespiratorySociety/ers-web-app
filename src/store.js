@@ -7,6 +7,7 @@ import authentication from "@/components/authentication/store";
 import base from "@/components/base/store";
 import category from "@/components/category/store";
 import classifierTraining from "@/components/ai/store";
+import cpd from "@/components/cpd/store";
 import feed from "@/components/feed/store";
 import search from "@/components/search/store";
 import user from "@/components/user/store";
@@ -26,6 +27,7 @@ export default new Vuex.Store({
     base,
     category,
     classifierTraining,
+    cpd,
     feed,
     search,
     user

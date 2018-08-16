@@ -64,6 +64,12 @@ export default [
     role: ["admin:*"]
   },
   {
+    title: "Continuing Professional Development",
+    icon: ["s7-study icon"],
+    path: "/cpd",
+    role: ["admin:*"]
+  },
+  {
     title: "ERS Vision",
     icon: ["icon-vision icon"],
     path: "https://www.ersvision.org",

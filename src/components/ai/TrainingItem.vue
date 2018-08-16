@@ -131,7 +131,11 @@
         {{status}}
       </v-snackbar>
     </v-content>
-    <v-bottom-nav :value="true" class="elevation-1" app>
+    <v-bottom-nav 
+      :value="true" 
+      class="elevation-2" 
+      app
+      color="white">
       <v-btn href="https://forms.ersnet.org/feedback" target="_blank" flat value="register">
         <span>Feedback</span>
         <v-icon>s7-chat</v-icon>

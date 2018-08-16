@@ -8,7 +8,6 @@
         <cards-image-right :articles="highlights" parent="news"/>
       </v-flex>
     </v-layout>
-    <v-divider/>
   </v-container>
 </template>
 
