@@ -5,7 +5,7 @@
         <v-layout row>
           <v-flex xs12 sm12 md10 lg8 offset-md1 offset-lg2>
             <v-layout row>
-              <v-card>
+              <v-card xs12>
                 <v-card-text>
                   <v-expansion-panel flat class="elevation-0">
                     <v-expansion-panel-content class="grey lighten-3 elevation-0">
