@@ -51,9 +51,7 @@ export function beforeEach(to, from, next) {
         path: "/user/login",
         query: { redirect: to.fullPath }
       });
-    }
-
-    if (to.meta.requiresRole && !hasPermission) {
+    } else if (to.meta.requiresRole && !hasPermission) {
       next({
         path: "/not-authorized",
         query: { redirect: to.fullPath }
