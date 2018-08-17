@@ -51,11 +51,15 @@ export function beforeEach(to, from, next) {
         path: "/user/login",
         query: { redirect: to.fullPath }
       });
-    } else if (to.meta.requiresRole && !hasPermission) {
+      return;
+    }
+
+    if (to.meta.requiresRole && !hasPermission) {
       next({
         path: "/not-authorized",
         query: { redirect: to.fullPath }
       });
+      return;
     }
     next();
   } else {
