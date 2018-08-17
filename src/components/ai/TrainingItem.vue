@@ -4,7 +4,6 @@
       <v-container fluid>
         <v-layout row>
           <v-flex xs12 sm12 md10 lg8 offset-md1 offset-lg2>
-            <v-layout row/>
             <v-layout row>
               <v-card>
                 <v-card-text>
