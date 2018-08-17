@@ -5,7 +5,8 @@
         <v-layout row>
           <v-flex xs12 sm12 md10 lg8 offset-md1 offset-lg2>
             <v-layout row>
-              <v-card xs12>
+              <!-- For some reasong the width is necessary for IE 11-->
+              <v-card style="width:100%">
                 <v-card-text>
                   <v-expansion-panel flat class="elevation-0">
                     <v-expansion-panel-content class="grey lighten-3 elevation-0">
