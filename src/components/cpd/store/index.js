@@ -10,7 +10,13 @@ export default {
   // getters,
   state: {
     category: {},
-    articles: []
+    articles: [],
+    feed: [],
+    pageNumber: 1,
+    skip: 0,
+    limit: 25,
+    total: 0,
+    contentType: "published"
   },
   mutations: mutations.default
 };
