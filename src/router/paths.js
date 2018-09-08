@@ -48,6 +48,12 @@ export default [
         icon: ["s7-shuffle icon"],
         path: "/entity-extraction",
         role: ["admin:*"]
+      },
+      {
+        title: "Recommender Demo",
+        icon: ["s7-shuffle icon"],
+        path: "/recommender",
+        role: ["myERS:*"]
       }
     ]
   },

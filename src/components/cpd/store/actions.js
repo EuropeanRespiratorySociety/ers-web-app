@@ -22,7 +22,7 @@ export const getCategory = async ({ commit, dispatch }) => {
 
 export const getFeed = async ({ commit, dispatch, state }, filter) => {
   let route = `feed?limit=${state.limit}&contentType=${state.contentType}`;
-  console.log(route);
+
   if (filter.length > 0) {
     route += `&filterBy=${filter.join(",")}`;
   }
@@ -32,7 +32,7 @@ export const getFeed = async ({ commit, dispatch, state }, filter) => {
   }
 
   const { ok, response, error } = await sureThing(HTTP.get(route));
-  console.log(response);
+
   ok
     ? (dispatch("base/setOnline", {}, { root: true }),
       commit(types.SET_FEED, response.data, err => {
@@ -56,6 +56,12 @@ export const setPageNumber = ({ commit }, payload) => {
 
 export const setContentType = ({ commit }, payload) => {
   commit(types.SET_CONTENT_TYPE, payload, err => {
+    console.log(err);
+  });
+};
+
+export const setRecommend = ({ commit }, payload) => {
+  commit(types.SET_RECOMMEND, payload, err => {
     console.log(err);
   });
 };

@@ -10,5 +10,5 @@ export function upperCaseEachWords(string) {
 }
 
 export function upperCase(string) {
-  return string.toUpperCase();
+  return typeof string === "string" ? string.toUpperCase() : string;
 }

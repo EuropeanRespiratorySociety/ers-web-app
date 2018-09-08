@@ -1,6 +1,7 @@
 const AIApp = () => import("./AIApp.vue");
 const ClassifierTrainingApp = () => import("./ClassifierTrainingApp.vue");
 const Visualiser = () => import("./VisualiserApp.vue");
+const Recommender = () => import("./RecommenderApp.vue");
 
 export default [
   {
@@ -28,6 +29,15 @@ export default [
     meta: {
       requiresAuth: true,
       requiresRole: ["admin:*"]
+    }
+  },
+  {
+    path: "/ai/recommender",
+    name: "Recommender Demo",
+    component: Recommender,
+    meta: {
+      requiresAuth: true,
+      requiresRole: ["myERS:*"]
     }
   }
 ];

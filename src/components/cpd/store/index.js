@@ -16,6 +16,7 @@ export default {
     skip: 0,
     limit: 25,
     total: 0,
+    recommend: true,
     contentType: "published"
   },
   mutations: mutations.default

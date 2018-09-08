@@ -3,12 +3,24 @@
     <v-content>
       <v-container fluid>
         <v-layout row>
-          <v-flex xs12 sm12 md8 lg8>  
+          <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>  
             <v-card>
               <v-card-text v-html="category.body"/>
             </v-card>
           </v-flex>
-          <v-flex xs12 sm12 md4 lg4>  
+        </v-layout>
+        <v-layout row wrap>
+          <v-flex xs12 sm12 md8 offset-md2 offset-lg2>
+            <cards-swiper
+              v-if="articles.length > 0"
+              :articles="articles"
+              :parent="'cpd'"/>
+          </v-flex> 
+        </v-layout>
+      </v-container>
+      <v-container fluid>
+        <v-layout row wrap>
+          <v-flex xs12 sm6 md4 offset-md2>
             <v-list v-for="(i, k) in interests" :key="k" subheader dense>
               <div v-if="i.title === 'diseases'">
                 <v-subheader>{{"Filters" | upper}}</v-subheader>
@@ -21,35 +33,34 @@
                   </v-list-tile-content>
                 </v-list-tile>
               </div>
-            </v-list>
+            </v-list> 
+          </v-flex>
+          <v-flex xs12 sm3 md2>
+            <v-radio-group v-model="type">
+              <v-radio
+                :key="'all'"
+                :label="`All`"
+                value="published"
+              />
+              <v-radio
+                :key="'news'"
+                :label="`News`"
+                value="news"
+              />
+              <v-radio
+                :key="'education'"
+                :label="`Education`"
+                value="education"
+              />
+            </v-radio-group>
+          </v-flex>
+          <v-flex xs12 sm3 md2>
+            <v-switch :label="`Use my interests to recommend content`" v-model="myPrefs" value/>
+            <v-btn :to="{'name': 'Preferences'}" small>Edit preferences</v-btn>
           </v-flex>
         </v-layout>
-        <v-radio-group v-model="type" row>
-          <v-radio
-            :key="'all'"
-            :label="`All`"
-            value="published"
-          />
-          <v-radio
-            :key="'news'"
-            :label="`News`"
-            value="news"
-          />
-          <v-radio
-            :key="'education'"
-            :label="`Education`"
-            value="education"
-          />
-        </v-radio-group>
-        <v-layout row>
-          <v-flex xs12>
-            <cards-swiper
-              v-if="articles.length > 0"
-              :articles="articles"
-              :parent="cpd"/>
-          </v-flex>
-        </v-layout>
-
+      </v-container>
+      <v-container fluid>
         <cards :parent="'feed'" :articles="feed"/>
         <v-layout v-if="showPagination" justify-center>
           <v-pagination :length="pages" v-model="page" :total-visible="8"/>
@@ -88,11 +99,12 @@ export default {
       "feed",
       "pageNumber",
       "contentType",
+      "recommend",
       "skip",
       "limit",
       "total"
     ]),
-    ...mapState("user", ["interests"]),
+    ...mapState("user", ["interests", "preferences"]),
 
     pages: function() {
       return Math.ceil(this.total / this.limit);
@@ -100,7 +112,6 @@ export default {
 
     page: {
       get() {
-        console.log("pageNumber", this.pageNumber);
         return this.pageNumber;
       },
 
@@ -115,8 +126,19 @@ export default {
         return this.contentType;
       },
       set(value) {
-        console.log("type value:", value);
         this.setContentType(value);
+        this.getFeed(this.prefs);
+      }
+    },
+
+    myPrefs: {
+      get() {
+        return this.recommend;
+      },
+
+      set(v) {
+        this.prefs = v ? this.preferences.interests : [];
+        this.setRecommend(v);
         this.getFeed(this.prefs);
       }
     },
@@ -134,6 +156,7 @@ export default {
   },
 
   created() {
+    this.prefs = this.myPrefs ? this.preferences.interests : this.prefs;
     this.fetchData();
   },
 
@@ -148,7 +171,8 @@ export default {
       "getCategory",
       "getFeed",
       "setPageNumber",
-      "setContentType"
+      "setContentType",
+      "setRecommend"
     ]),
 
     fetchData() {

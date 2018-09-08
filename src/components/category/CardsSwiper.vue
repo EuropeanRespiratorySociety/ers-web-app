@@ -1,26 +1,70 @@
 <template>
   <v-container>
     <v-layout row wrap class="wide">
-      <h3 class="section-header">{{title|caps}}</h3>
+      <h3 v-if="title" class="section-header">{{title|caps}}</h3>
       <v-container :class="[bgColor]" :style="[titleStyle, otherPaddings, {transition: '0.5s padding ease-out'}]" grid-list-md>
         <div v-if="articles">
           <swiper :options="swiperOption" :ref="title|slug" @reachEnd="end" @reachBeginning="start">
-            <swiper-slide v-for="post of articles" :key="post.slug">
+            <swiper-slide v-for="(post, mainKey) in articles" :key="post.slug">
               <v-card
                 :href="!parent ? post.page_url : null"
                 :to="parent ? `${parent}/${post.slug}` : null"
                 hover
               >
                 <v-img v-if="post.image" :src="post.image" height="200px"/>
-                <v-card-title v-if="post.title" primary-title>
+                <v-card-title v-if="post.title || post.abstractTitle" primary-title>
                   <div>
-                    <h3 class="mb-0 truncate">{{post.title | truncate}}</h3>
+                    <h3 v-if="post.title" class="mb-0 truncate">{{post.title | truncate}}</h3>
+                    <h3 v-if="post.abstractTitle" class="mb-0 truncate">{{post.abstractTitle | truncate}}</h3>
                   <!--<span><v-icon class="published">query_builder</v-icon>{{post.createdOn}}</span>-->
                   </div>
                 </v-card-title>
+
+                <v-list>
+                  <v-list-tile v-if="post.diseases">
+                    <v-list-tile-action>
+                      <v-tooltip bottom>
+                        <v-icon slot="activator" color="indigo">s7-ticket</v-icon>
+                        <span>Diseases</span>
+                      </v-tooltip>
+                    </v-list-tile-action>
+                    <v-list-tile-content style="height:max-content">
+                      <v-list-tile-title style="overflow: auto; height: max-content;">
+                        <v-chip 
+                          v-for="(disease, key) in post.diseases" 
+                          v-if="disease !== 'No relevant'" 
+                          :key="`${key}-${mainKey}-d`"
+                        >
+                          {{disease}}
+                        </v-chip>
+                      </v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                  <v-list-tile v-if="post.methods">
+                    <v-list-tile-action>
+                      <v-tooltip bottom>
+                        <v-icon slot="activator" color="indigo">s7-ticket</v-icon>
+                        <span>Methods</span>
+                      </v-tooltip>
+                    </v-list-tile-action>
+                    <v-list-tile-content style="height:max-content">
+                      <v-list-tile-title style="overflow: auto; height: max-content;">
+                        <v-chip
+                          v-for="(method, key) in post.methods" 
+                          v-if="method !== 'No relevant'" 
+                          :key="`${key}-${mainKey}-m`"
+                        >
+                          {{method}}
+                        </v-chip>
+                      </v-list-tile-title>
+                    </v-list-tile-content>
+                  </v-list-tile>
+                </v-list>
+                
                 <v-card-text class="truncate" style="width:auto;">
                   <span v-if="post.shortLead" v-html="post.shortLead"/>
-                  <span v-if="post.authors"> {{post.authors.join(', ')}}</span>
+                  <span v-if="post.abstractText" v-html="post.abstractText"/>
+                  <span v-if="post.authors && !post.abstractText"> {{post.authors.join(', ')}}</span>
                 </v-card-text>
               </v-card>
             </swiper-slide>

@@ -23,5 +23,9 @@ export default {
 
   [types.SET_CONTENT_TYPE](state, data) {
     state.contentType = data;
+  },
+
+  [types.SET_RECOMMEND](state, data) {
+    state.recommend = data;
   }
 };
