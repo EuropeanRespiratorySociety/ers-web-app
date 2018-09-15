@@ -5,7 +5,7 @@
         <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
           <v-card>
             <v-card-text>
-              <v-text-field
+              <v-textarea
                 v-model="text"
                 name="input-7-1"
                 label="Text to analyse"

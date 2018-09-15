@@ -54,6 +54,12 @@ export default [
         icon: ["s7-shuffle icon"],
         path: "/recommender",
         role: ["myERS:*"]
+      },
+      {
+        title: "Classifier Demo",
+        icon: ["s7-shuffle icon"],
+        path: "/classifier",
+        role: ["myERS:*"]
       }
     ]
   },

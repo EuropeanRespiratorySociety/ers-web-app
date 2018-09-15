@@ -2,6 +2,7 @@ const AIApp = () => import("./AIApp.vue");
 const ClassifierTrainingApp = () => import("./ClassifierTrainingApp.vue");
 const Visualiser = () => import("./VisualiserApp.vue");
 const Recommender = () => import("./RecommenderApp.vue");
+const Classifier = () => import("./ClassifierApp.vue");
 
 export default [
   {
@@ -35,6 +36,15 @@ export default [
     path: "/ai/recommender",
     name: "Recommender Demo",
     component: Recommender,
+    meta: {
+      requiresAuth: true,
+      requiresRole: ["myERS:*"]
+    }
+  },
+  {
+    path: "/ai/classifier",
+    name: "Classifier Demo",
+    component: Classifier,
     meta: {
       requiresAuth: true,
       requiresRole: ["myERS:*"]

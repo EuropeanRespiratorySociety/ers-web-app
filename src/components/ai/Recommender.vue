@@ -48,10 +48,28 @@
 
     <v-layout row>
       <v-flex xs12>
-        <cards-swiper
-          v-if="recommended && recommended.length > 0"
-          :articles="recommended"
+        <cards-swiper-tmp
+          v-if="rAbstracts && rAbstracts.length > 0"
+          :articles="rAbstracts"
           title="Recommended abstracts"/>
+      </v-flex>
+    </v-layout>
+
+    <v-layout row>
+      <v-flex xs12>
+        <cards-swiper
+          v-if="rCourses && rCourses.length > 0"
+          :articles="rCourses"
+          title="Recommended courses"/>
+      </v-flex>
+    </v-layout>
+
+    <v-layout row>
+      <v-flex xs12>
+        <cards-swiper
+          v-if="rNews && rNews.length > 0"
+          :articles="rNews"
+          title="Recommended news"/>
       </v-flex>
     </v-layout>
   </v-content>
@@ -59,6 +77,7 @@
 
 <script>
 import { mapState } from "vuex";
+import CardsSwiperTmp from "./CardsSwiperTmp.vue";
 import CardsSwiper from "@/components/category/CardsSwiper.vue";
 import axios from "axios";
 
@@ -71,17 +90,20 @@ const HTTP = axios.create({
 
 export default {
   name: "visualiser",
-  components: { CardsSwiper },
+  components: { CardsSwiper, CardsSwiperTmp },
   data() {
     return {
       abstract: "",
-      recommended: [],
+      rAbstracts: [],
+      rCourses: [],
+      rNews: [],
       similarityOnly: true
     };
   },
 
   computed: {
-    ...mapState("authentication", ["token"])
+    ...mapState("authentication", ["token"]),
+    ...mapState("user", ["preferences"])
   },
 
   created() {
@@ -108,6 +130,7 @@ export default {
       const r = await HTTP.post(
         "/recommend",
         {
+          interests: this.preferences.interests,
           abstract: this.abstract._id,
           similarityOnly: this.similarityOnly
         },
@@ -117,15 +140,36 @@ export default {
           }
         }
       );
-      this.recommended = r.data;
-      console.log(r.data);
+
+      this.rAbstracts = await Promise.all(
+        r.data.papers.map(async i => {
+          const t = await HTTP.get(`/congress/abstracts/${i}`);
+          return t.data;
+        })
+      );
+
+      this.rCourses = await Promise.all(
+        r.data.courses.map(async i => {
+          const t = await HTTP.get(`/courses/${i}`);
+          return t.data.data;
+        })
+      );
+
+      this.rNews = await Promise.all(
+        r.data.news.map(async i => {
+          const t = await HTTP.get(`/news/${i}`);
+          return t.data.data;
+        })
+      );
 
       // console.log(d.render(r.data.text, r.data.ents, ['person', 'org', 'date']))
     },
 
     togglePersonalize() {
       this.similarityOnly = !this.similarityOnly;
-      this.recommended = [];
+      this.rAbstracts = [];
+      this.rCourses = [];
+      this.rNews = [];
       this.getAbstract();
     }
   }
