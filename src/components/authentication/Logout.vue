@@ -22,13 +22,10 @@ export default {
   methods: {
     ...mapActions("authentication", ["logout"]),
 
-    l() {
-      this.logout();
-      this.$router.push({ path: "/" });
-    },
-
     submit() {
-      this.isAuthenticated ? this.l() : this.$router.push({ name: "Login" });
+      this.isAuthenticated
+        ? (this.logout(), this.$router.push({ path: "/" }))
+        : this.$router.push({ name: "Login" });
     }
   }
 };

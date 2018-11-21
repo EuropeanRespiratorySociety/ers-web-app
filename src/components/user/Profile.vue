@@ -6,7 +6,7 @@
           <v-flex xs12 sm12 md8 lg8 offset-md2 offset-lg2>
             <v-container>
               <v-card>
-                <v-img v-if="photo" :src="photo" height="300px"/>
+                <v-img v-if="photo" :src="photo"  height="300px"/>
 
                 <v-toolbar prominent flat color="white" light>
                   <v-btn
@@ -114,14 +114,15 @@ import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "user-profile",
-  data() {
-    return {};
-  },
 
   metaInfo() {
     return {
       title: `${this.name}'s Profile`
     };
+  },
+
+  data() {
+    return {};
   },
 
   computed: {

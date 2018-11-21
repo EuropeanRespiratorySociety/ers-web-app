@@ -8,6 +8,7 @@ import * as types from "./mutation-types";
 // Login user with email / password
 export const login = async ({ commit, dispatch }, payload) => {
   commit(types.LOADING);
+
   const { ok, response, error } = await sureThing(
     HTTP.post("/ers/contacts/login", payload)
   );
