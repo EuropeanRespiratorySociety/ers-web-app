@@ -82,9 +82,9 @@ export default {
     }
   },
 
-  // created() {
-  //   this.surveyMonkey();
-  // },
+  created() {
+    this.surveyMonkey();
+  },
 
   methods: {
     ...mapActions(["setPageNumber", "searchAll"]),

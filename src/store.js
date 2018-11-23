@@ -32,5 +32,13 @@ export default new Vuex.Store({
     search,
     user
   },
+  state: {
+    route: {
+      path: "/",
+      query: {
+        q: null
+      }
+    }
+  },
   plugins: [vuexLocal.plugin]
 });
