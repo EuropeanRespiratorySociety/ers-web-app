@@ -4,11 +4,12 @@ import Router from "vue-router";
 import Meta from "vue-meta";
 import store from "../store";
 import classifierRouter from "@/components/ai/router";
+import cmeOnlineRouter from "@/components/cme-online/router";
 import cpdRouter from "@/components/cpd/router";
+import errorsRouter from "@/components/errors/router";
 import feedRouter from "@/components/feed/router";
 import searchRouter from "@/components/search/router";
 import userRouter from "@/components/user/router";
-import errorsRouter from "@/components/errors/router";
 
 /* eslint-disable */
 
@@ -28,6 +29,7 @@ const router = new Router({
       redirect: "/search"
     },
     ...classifierRouter,
+    ...cmeOnlineRouter,
     ...cpdRouter,
     ...feedRouter,
     ...searchRouter,
