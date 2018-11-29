@@ -1,7 +1,7 @@
 import axios from "axios";
-
+console.log(process.env.VUE_APP_ERS_API);
 export const HTTP = axios.create({
-  baseURL: process.env.API,
+  baseURL: process.env.VUE_APP_ERS_API,
   // process.env.NODE_ENV === "production"
   //   ? "https://api.ersnet.org"
   //   : "http://localhost:3030",

@@ -7,6 +7,8 @@ it provides:
 * Interests
 * ...
 
+### ERS API
+to change the api source add a `.vue.local` to overwrite the `APP_VUE_ERS_API` value
 
 ## Editor config
 In order to have the best experience while developping install:
