@@ -1,5 +1,7 @@
 <template>
-  <div style="margin-top: 200px;"><p>hello Lausane</p></div>
+  <v-content>
+    <div><p>hello Lausane</p></div>
+  </v-content>
 </template>
 
 <script>
