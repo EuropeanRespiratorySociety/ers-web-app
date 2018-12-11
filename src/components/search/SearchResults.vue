@@ -3,7 +3,7 @@
     <v-content>
       <v-container fluid>
         <v-layout row>
-          <v-flex xs12 sm12 md6 lg6 offset-md3 offset-lg3>
+          <v-flex xs12 sm12 md9 lg9 offset-md3 offset-lg3>
             <congress-tools v-if="index.includes('congress')"/>
             <journal-tools v-if="index.includes('journal')"/>
             <v-container grid-list-md>

@@ -395,7 +395,7 @@
 
 <script>
 export default {
-  name: "cme-modules",
+  name: "cme-course",
   data() {
     return {
       active: null,
