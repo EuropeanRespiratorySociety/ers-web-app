@@ -1,6 +1,6 @@
 const CmeOnline = () => import("./CmeOnlineApp.vue");
-const CmeModule = () => import("./CmeOnlineModuleApp.vue");
-const CmeCourse = () => import("./components/pages/CmeCourse.vue");
+const CmeModules = () => import("./CmeModulesApp.vue");
+const CmeModuleDetail = () => import("./CmeModuleDetailApp.vue");
 
 export default [
   {
@@ -13,18 +13,18 @@ export default [
     }
   },
   {
-    path: "/cme-online/course",
-    name: "CmeCourse",
-    component: CmeCourse,
+    path: "/cme-online/modules",
+    name: "CmeModules",
+    component: CmeModules,
     meta: {
       requiresAuth: true,
       requiresRole: ["admin:*"]
     }
   },
   {
-    path: "/cme-online/:slug",
-    name: "CmeModule",
-    component: CmeModule,
+    path: "/cme-online/modules/:slug",
+    name: "CmeModuleDetail",
+    component: CmeModuleDetail,
     meta: {
       requiresAuth: true,
       requiresRole: ["admin:*"]
