@@ -1,10 +1,6 @@
 import axios from "axios";
-
 export const HTTP = axios.create({
-  baseURL: process.env.API,
-  // process.env.NODE_ENV === "production"
-  //   ? "https://api.ersnet.org"
-  //   : "http://localhost:3030",
+  baseURL: process.env.VUE_APP_ERS_API,
   headers: { "Content-Type": "application/json" }
 });
 
