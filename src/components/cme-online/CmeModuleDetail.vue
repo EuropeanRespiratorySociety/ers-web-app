@@ -15,10 +15,34 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
+              <v-title>
+                <h5 class="headline primary--text mb-3">{{ contentTitle }}</h5>
+              </v-title>
+
               <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
                   <v-layout row wrap>
+                    <!-- timeline -->
+                    <v-flex d-flex>
+                      <v-card>
+                        <v-card-text>
+                          <v-timeline dense clipped>
+                            <v-timeline-item
+                              v-for="contentTitle in contentTitles"
+                              :key="contentTitle"
+                              :class="{ active: isActive }"
+                              class="mb-3"
+                              color="grey"
+                              icon-color="grey lighten-2"
+                              small
+                            >
+                              <v-layout justify-space-between>{{contentTitle.title}}</v-layout>
+                            </v-timeline-item>
+                          </v-timeline>
+                        </v-card-text>
+                      </v-card>
+                    </v-flex>
                     <!-- Director's info -->
                     <v-flex>
                       <v-card>
@@ -32,56 +56,34 @@
                             <v-flex xs12>
                               <p class="subheading font-weight-bold text-xs-center">G. Rohde, MD
                                 <br>
-                                <span class="grey--text font-weight-regular">Module Director</span>
+                                <span class="grey--text font-weight-regular">Main Organiser</span>
                               </p>
+
+                              <v-list two-line>
+                                <v-list-tile avatar>
+                                  <v-list-tile-content>
+                                    <v-list-tile-title>C. Gregoretti</v-list-tile-title>
+                                    <v-list-tile-sub-title>Organiser</v-list-tile-sub-title>
+                                  </v-list-tile-content>
+                                </v-list-tile>
+                                <v-divider/>
+                              </v-list>
+                              <v-list two-line>
+                                <v-list-tile avatar>
+                                  <v-list-tile-content>
+                                    <v-list-tile-title>C. Gregoretti</v-list-tile-title>
+                                    <v-list-tile-sub-title>Organiser</v-list-tile-sub-title>
+                                  </v-list-tile-content>
+                                </v-list-tile>
+                              </v-list>
                             </v-flex>
                           </v-layout>
                         </v-card-title>
                       </v-card>
                     </v-flex>
-                    <!-- timeline -->
-                    <v-flex d-flex>
-                      <v-card>
-                        <v-card-text>
-                          <v-timeline dense clipped>
-                            <v-timeline-item
-                              class="mb-3"
-                              color="grey"
-                              icon-color="grey lighten-2"
-                              small
-                            >
-                              <v-layout justify-space-between>Introduction</v-layout>
-                            </v-timeline-item>
-
-                            <v-timeline-item
-                              class="mb-3"
-                              color="grey"
-                              icon-color="grey lighten-2"
-                              small
-                            >
-                              <v-layout justify-space-between>
-                                <strong>Interactive case - Simulation</strong>
-                              </v-layout>
-                            </v-timeline-item>
-
-                            <v-timeline-item class="mb-3" small>
-                              <v-layout justify-space-between>Panel discussion video</v-layout>
-                            </v-timeline-item>
-
-                            <v-timeline-item class="mb-3" color="grey" small>
-                              <v-layout justify-space-between>Readings</v-layout>
-                            </v-timeline-item>
-
-                            <v-timeline-item fill-dot class="mb-1" color="orange" large>
-                              <span slot="icon" class="white--text">JL</span>
-                              <v-btn class="mx-0" color="white">Take the CME test</v-btn>
-                            </v-timeline-item>
-                          </v-timeline>
-                        </v-card-text>
-                      </v-card>
-                    </v-flex>
                   </v-layout>
                 </v-flex>
+                <!-- Tabs -->
                 <v-flex xs12 sm9>
                   <div>
                     <v-tabs fixed-tabs class="elevation-1">
@@ -108,6 +110,14 @@ export default {
   name: "cme-module-detail",
   data() {
     return {
+      isActive: true,
+      contentTitles: [
+        { title: "Introduction" },
+        { title: "Interactive case - Simulation" },
+        { title: "Panel discussion video" },
+        { title: "Readings" },
+        { title: "TAKE THE CME TEST" }
+      ],
       active: null,
       items: ["Introduction", "Educational objectives", "Target audience"],
       texts: [
