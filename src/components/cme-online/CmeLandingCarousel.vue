@@ -1,5 +1,5 @@
 <template>
-  <v-carousel height="400">
+  <v-carousel height="450">
     <v-carousel-item v-for="(image,i) in images" :key="i" :src="image.src" />
   </v-carousel>
 </template>

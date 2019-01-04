@@ -15,10 +15,9 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <v-title>
-                <h5 class="headline primary--text mb-3">{{ contentTitle }}</h5>
-              </v-title>
-
+              <h5 class="headline primary--text mb-3"/>
+              
+  
               <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
@@ -28,16 +27,8 @@
                       <v-card>
                         <v-card-text>
                           <v-timeline dense clipped>
-                            <v-timeline-item
-                              v-for="contentTitle in contentTitles"
-                              :key="contentTitle"
-                              :class="{ active: isActive }"
-                              class="mb-3"
-                              color="grey"
-                              icon-color="grey lighten-2"
-                              small
-                            >
-                              <v-layout justify-space-between>{{contentTitle.title}}</v-layout>
+                            <v-timeline-item v-for="contentTitle in contentTitles" :key="contentTitle.id" class="mb-3" small v-on:click="currentCard = card">
+                              <v-layout justify-space-between ><button @click="switchComponent(contentTitle.component)">{{contentTitle.title}}</button></v-layout>
                             </v-timeline-item>
                           </v-timeline>
                         </v-card-text>
@@ -58,7 +49,7 @@
                                 <br>
                                 <span class="grey--text font-weight-regular">Main Organiser</span>
                               </p>
-
+  
                               <v-list two-line>
                                 <v-list-tile avatar>
                                   <v-list-tile-content>
@@ -84,18 +75,7 @@
                   </v-layout>
                 </v-flex>
                 <!-- Tabs -->
-                <v-flex xs12 sm9>
-                  <div>
-                    <v-tabs fixed-tabs class="elevation-1">
-                      <v-tab v-for="item in items" :key="item">{{ item }}</v-tab>
-                      <v-tab-item v-for="text in texts" :key="text">
-                        <v-card flat>
-                          <v-card-text>{{ text }}</v-card-text>
-                        </v-card>
-                      </v-tab-item>
-                    </v-tabs>
-                  </div>
-                </v-flex>
+                <component :is="currentComp" />
               </v-layout>
             </v-container>
           </v-flex>
@@ -106,26 +86,46 @@
 </template>
 
 <script>
+import CmeIntroduction from "./components/module/CmeIntroduction";
+import CmeSimulation from "./components/module/CmeSimulation";
+
 export default {
   name: "cme-module-detail",
+  components: {
+    CmeIntroduction,
+    CmeSimulation
+  },
   data() {
     return {
+      currentComp: "cme-introduction",
       isActive: true,
       contentTitles: [
-        { title: "Introduction" },
-        { title: "Interactive case - Simulation" },
-        { title: "Panel discussion video" },
-        { title: "Readings" },
-        { title: "TAKE THE CME TEST" }
+        {
+          title: "Introduction",
+          component: "cme-introduction"
+        },
+        {
+          title: "Interactive case - Simulation",
+          component: "cme-simulation"
+        },
+        {
+          title: "Panel discussion video"
+        },
+        {
+          title: "Readings"
+        },
+        {
+          title: "TAKE THE CME TEST"
+        }
       ],
-      active: null,
-      items: ["Introduction", "Educational objectives", "Target audience"],
-      texts: [
-        "Vaccination is amongst the most cost-effective measures available to us to improve health. The most notable example is the prevention of influenza by annual vaccination, but vaccination against pneumococcal pneumonia is also highly effective in selected populations.",
-        "After the completion of this module, you will be able to",
-        "Physicians caring for patients with lung infections"
-      ]
+      active: null
     };
+  },
+
+  methods: {
+    switchComponent: function(comp) {
+      this.currentComp = comp;
+    }
   }
 };
 </script>
@@ -136,7 +136,7 @@ export default {
   height: 73px;
   align-items: flex-start;
 }
-,
+
 .display-flex {
   display: flex;
 }

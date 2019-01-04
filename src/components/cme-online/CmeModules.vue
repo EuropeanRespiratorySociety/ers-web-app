@@ -1,6 +1,7 @@
 <template>
   <transition mode="out-in">
     <v-content>
+      <cme-module-filter />
       <v-container align-center fluid grid-list-lg>
         <!-- container for wrap starts-->
         <!-- 1st row-->
@@ -197,8 +198,11 @@
 </template>
 
 <script>
+import CmeModuleFilter from "./components/CmeModuleFilter";
+
 export default {
   name: "cme-modules",
+  components: { CmeModuleFilter },
   data() {
     return {
       active: null,
