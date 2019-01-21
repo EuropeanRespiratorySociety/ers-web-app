@@ -1,33 +1,27 @@
 <template>
-  <v-flex xs12 sm9>
-    <div>
-      <v-card>
-        <div>
-          <v-card-title primary-title>
-            <h3 class="title mb-0">Here is your case:</h3>
-          </v-card-title>
-          <ul class="mx-3 mb-4">
-            <li>34 year old asthmatic woman</li>
-            <li>Middle of flu season</li>
-            <li>Patient have been in hospital prior to the event</li>
-          </ul>
-        </div>
-        <v-tabs fixed-tabs>
-          <v-tab v-for="item in items" :key="item">{{ item }}</v-tab>
-          <v-tab-item v-for="text in texts" :key="text">
-            <v-card flat>
-              <v-card-text>{{ text }}</v-card-text>
-            </v-card>
-          </v-tab-item>
-        </v-tabs>
-        <v-divider />
-        <v-card-actions class="px-3 py-3">
-          <v-spacer />
-          <v-btn color="info">NEXT</v-btn>
-        </v-card-actions>
-      </v-card>
-    </div>
-  </v-flex>
+  <div>
+    <v-card>
+      <div>
+        <v-card-title primary-title>
+          <h3 class="title mb-0">Here is your case:</h3>
+        </v-card-title>
+        <ul class="mx-3 mb-4">
+          <li>34 year old asthmatic woman</li>
+          <li>Middle of flu season</li>
+          <li>Patient have been in hospital prior to the event</li>
+        </ul>
+      </div>
+      <v-tabs fixed-tabs>
+        <v-tab v-for="item in items" :key="item">{{ item }}</v-tab>
+        <v-tab-item v-for="text in texts" :key="text">
+          <v-card flat>
+            <v-card-text>{{ text }}</v-card-text>
+          </v-card>
+        </v-tab-item>
+      </v-tabs>
+      <v-divider />
+    </v-card>
+  </div>
 </template>
 
 <script>

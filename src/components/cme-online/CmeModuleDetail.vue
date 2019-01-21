@@ -15,7 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <h5 class="headline primary--text mb-3"/>
+              <!-- <h5 class="headline primary--text mb-3"></h5> -->
               
   
               <!--timeline and Director's info -->
