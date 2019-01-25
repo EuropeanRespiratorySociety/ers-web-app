@@ -15,7 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <!-- <h5 class="headline primary--text mb-3"></h5> -->
+              <h5 class="headline primary--text mb-3">{{currentTitle}}</h5>
               
   
               <!--timeline and Director's info -->
@@ -28,7 +28,7 @@
                         <v-card-text>
                           <v-timeline dense clipped>
                             <v-timeline-item v-for="contentTitle in contentTitles" :key="contentTitle.id" class="mb-3" small v-on:click="currentCard = card">
-                              <v-layout justify-space-between ><button @click="switchComponent(contentTitle.component)">{{contentTitle.title}}</button></v-layout>
+                              <v-layout justify-space-between ><button class="text-xs-left" @click="switchComponent(contentTitle.component); switchTitle(contentTitle.title)" >{{contentTitle.title}}</button></v-layout>
                             </v-timeline-item>
                           </v-timeline>
                         </v-card-text>
@@ -41,7 +41,7 @@
                           <v-layout row wrap>
                             <v-flex xs12 style="padding-left: 33%;">
                               <v-avatar size="84" class="object-center">
-                                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="avatar">
+                                <img :src="avatarModuleDirector">
                               </v-avatar>
                             </v-flex>
                             <v-flex xs12>
@@ -88,17 +88,24 @@
 <script>
 import CmeIntroduction from "./components/module/CmeIntroduction";
 import CmeSimulation from "./components/module/CmeSimulation";
+import CmePanelDiscussionVideo from "./components/module/CmePanelDiscussionVideo";
+import CmeReadings from "./components/module/CmeReadings";
 
 export default {
   name: "cme-module-detail",
   components: {
     CmeIntroduction,
-    CmeSimulation
+    CmeSimulation,
+    CmePanelDiscussionVideo,
+    CmeReadings
   },
   data() {
     return {
       currentComp: "cme-introduction",
+      currentTitle: "Introduction",
       isActive: true,
+      avatarModuleDirector:
+        "https://www.ers-education.org/media/CmeAdmin/12_authorPicture.png",
       contentTitles: [
         {
           title: "Introduction",
@@ -109,10 +116,12 @@ export default {
           component: "cme-simulation"
         },
         {
-          title: "Panel discussion video"
+          title: "Panel discussion video",
+          component: "cme-panel-discussion-video"
         },
         {
-          title: "Readings"
+          title: "Readings",
+          component: "cme-readings"
         },
         {
           title: "TAKE THE CME TEST"
@@ -125,6 +134,9 @@ export default {
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;
+    },
+    switchTitle: function(title) {
+      this.currentTitle = title;
     }
   }
 };
