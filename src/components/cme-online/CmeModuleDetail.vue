@@ -27,8 +27,8 @@
                       <v-card>
                         <v-card-text>
                           <v-timeline dense clipped>
-                            <v-timeline-item v-for="contentTitle in contentTitles" :key="contentTitle.id" class="mb-3" small v-on:click="currentCard = card">
-                              <v-layout justify-space-between ><button class="text-xs-left" @click="switchComponent(contentTitle.component); switchTitle(contentTitle.title)" >{{contentTitle.title}}</button></v-layout>
+                            <v-timeline-item v-for="contentTitle in contentTitles" :key="contentTitle.id" class="mb-3"  small >
+                              <v-layout justify-space-between ><button class="text-xs-left" @click="switchComponent(contentTitle.component); switchTitle(contentTitle.title); switchColor()" >{{contentTitle.title}}</button></v-layout>
                             </v-timeline-item>
                           </v-timeline>
                         </v-card-text>
@@ -103,6 +103,8 @@ export default {
     return {
       currentComp: "cme-introduction",
       currentTitle: "Introduction",
+      stepDefaultColor: "grey",
+      stepActiveColor: "blue lighten-3",
       isActive: true,
       avatarModuleDirector:
         "https://www.ers-education.org/media/CmeAdmin/12_authorPicture.png",
@@ -137,6 +139,9 @@ export default {
     },
     switchTitle: function(title) {
       this.currentTitle = title;
+    },
+    switchColor: function() {
+      this.stepDefaultColor = this.stepActiveColor;
     }
   }
 };
