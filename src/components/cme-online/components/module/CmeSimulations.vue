@@ -15,7 +15,16 @@
                 <h3 class="title mb-0">{{panel.title}}</h3>
                 <p>{{ panel.description }}</p>
                 <p class="subheading">{{ panel.questionPanel.question }}</p>
-
+                <div
+                  v-for="(answerText, index) in popQuestionPanel[index].questionPanel.answers"
+                  :key="index"
+                >
+                  <v-checkbox
+                    :label="`${answerText.text}`"
+                    :key="answerText.key"
+                    v-model="checkboxes"
+                  />
+                </div>
                 <v-radio-group
                   v-model="radioGroup"
                   :mandatory="false"
@@ -625,7 +634,8 @@ export default {
       key: 0,
       showAnswer: false,
       disabled: true,
-      radioGroup: null
+      radioGroup: null,
+      checkboxes: null
     };
   },
   computed: {
