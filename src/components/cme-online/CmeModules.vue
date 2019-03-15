@@ -1,7 +1,7 @@
 <template>
   <transition mode="out-in">
     <v-content>
-      <cme-module-filter />
+      <cme-module-filter/>
       <v-container align-center fluid grid-list-lg>
         <!-- container for wrap starts-->
         <!-- 1st row-->
@@ -10,10 +10,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -25,12 +26,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -40,10 +36,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -55,12 +52,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -70,10 +62,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -85,12 +78,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -103,10 +91,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -118,12 +107,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -133,10 +117,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -148,12 +133,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -163,10 +143,11 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6
-                    class="subheading"
-                    style="line-height:1.2em;"
-                  ><a href="/cme-online/modules/module-detail">How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a></h6>
+                  <h6 class="subheading" style="line-height:1.2em;">
+                    <a
+                      href="/cme-online/modules/module-detail"
+                    >How to diagnose primary ciliary dyskinesia according to ERS 2017 guidelines</a>
+                  </h6>
                 </div>
               </v-card-title>
               <v-card-text>
@@ -178,27 +159,20 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="img" 
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="img" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
-
-
       </v-container>
     </v-content>
   </transition>
 </template>
 
 <script>
-import CmeModuleFilter from "./components/CmeModuleFilter";
+import CmeModuleFilter from "./CmeModuleFilter";
 
 export default {
   name: "cme-modules",
@@ -225,7 +199,7 @@ export default {
   height: 73px;
   align-items: flex-start;
 }
-,
+
 .display-flex {
   display: flex;
 }

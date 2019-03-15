@@ -6,7 +6,9 @@
           <v-layout column wrap class="mb-5">
             <v-flex flex xs12>
               <h4 class="my-4 display-1">Welcome</h4>
-              <p subheading >ERS CME Online modules provide free, open-access interactive cases, webcasts and video presentations led by experts on a range of topics in the respiratory field.
+              <p
+                subheading
+              >ERS CME Online modules provide free, open-access interactive cases, webcasts and video presentations led by experts on a range of topics in the respiratory field.
                 <br>Each module is accredited with one CME credit. A CME certificate will only be awarded upon successful completion of the CME test at the end of each module.
               </p>
             </v-flex>
@@ -26,7 +28,7 @@
         <!-- container for the sponsor's logo-->
         <v-container id="sponsor" fluid grid-list-lg class="mb-4">
           <v-layout row wrap>
-            <v-flex v-for="(sponsor,i) in sponsors" :key="i" xs12 sm3>
+            <v-flex v-for="(sponsor,key) in sponsors" :key="key" xs12 sm3>
               <v-card>
                 <v-card-title>
                   <v-img :src="sponsor.src" width="150px" contain/>
@@ -51,10 +53,7 @@
                 feugiat augue. Nulla facilisi.
               </p>
               <div>
-                <a
-                  style="text-decoration: none;"
-                  href="cme-online/modules"
-                >
+                <a style="text-decoration: none;" href="cme-online/modules">
                   <v-btn flat color="primary">Visit the module list</v-btn>
                 </a>
               </div>
