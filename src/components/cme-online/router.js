@@ -6,28 +6,28 @@ export default [
   {
     path: "/cme-online",
     name: "CmeOnline",
-    component: CmeOnline,
-    meta: {
-      requiresAuth: true,
-      requiresRole: ["admin:*"]
-    }
+    component: CmeOnline
+    // meta: {
+    //   requiresAuth: true,
+    //   requiresRole: ["admin:*"]
+    // }
   },
   {
     path: "/cme-online/modules",
     name: "CmeModules",
-    component: CmeModules,
-    meta: {
-      requiresAuth: true,
-      requiresRole: ["admin:*"]
-    }
+    component: CmeModules
+    // meta: {
+    //   requiresAuth: true,
+    //   requiresRole: ["admin:*"]
+    // }
   },
   {
     path: "/cme-online/modules/:slug",
     name: "CmeModuleDetail",
-    component: CmeModuleDetail,
-    meta: {
-      requiresAuth: true,
-      requiresRole: ["admin:*"]
-    }
+    component: CmeModuleDetail
+    // meta: {
+    //   requiresAuth: true,
+    //   requiresRole: ["admin:*"]
+    // }
   }
 ];
