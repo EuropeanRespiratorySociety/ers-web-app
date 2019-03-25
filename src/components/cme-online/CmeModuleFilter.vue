@@ -4,8 +4,8 @@
       <v-container grid-list-md fluid>
         <v-card>
           <v-card-actions>
-            <p class="subheading ml-2 font-weight-bold" >Filters</p>
-            <v-spacer />
+            <p class="subheading ml-2 font-weight-bold">Filters</p>
+            <v-spacer/>
             <v-btn icon @click="show = !show">
               <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
             </v-btn>
@@ -13,16 +13,44 @@
           <v-container v-show="show" fluid grid-list-xl>
             <v-layout align-center wrap>
               <v-flex xs12 sm6>
-                <v-select :items="diseases" chips label="Diseases" multiple />
+                <v-select
+                  :items="diseases"
+                  v-model="filters.diseases"
+                  chips
+                  label="Diseases"
+                  multiple
+                  v-on:change="selectionChanged"
+                />
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select :items="methods" chips label="Methods" multiple />
+                <v-select
+                  :items="methods"
+                  v-model="filters.methods"
+                  chips
+                  label="Methods"
+                  multiple
+                  v-on:change="selectionChanged"
+                />
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select :items="types" chips label="Types" multiple />
+                <v-select
+                  :items="types"
+                  v-model="filters.types"
+                  chips
+                  label="Types"
+                  multiple
+                  v-on:change="selectionChanged"
+                />
               </v-flex>
               <v-flex xs12 sm6>
-                <v-select :items="categories" chips label="Categories" multiple />
+                <v-select
+                  :items="categories"
+                  v-model="filters.categories"
+                  chips
+                  label="Categories"
+                  multiple
+                  v-on:change="selectionChanged"
+                />
               </v-flex>
             </v-layout>
           </v-container>
@@ -33,11 +61,12 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+/* eslint-disable */
 export default {
   name: "cme-module-filter",
   data() {
     return {
-      active: null,
       diseases: [
         "Airway diseases",
         "Interstitial lung diseases",
@@ -61,7 +90,7 @@ export default {
         "Surgery",
         "Transplantation"
       ],
-      types: ["Case based", "Topic based"],
+      types: ["Case Based", "Topic Based"],
       categories: [
         "COPD",
         "Asthma",
@@ -77,6 +106,15 @@ export default {
       ],
       show: false
     };
+  },
+  computed: {
+    ...mapGetters("cmeOnline", ["filters"])
+  },
+  methods: {
+    ...mapActions("cmeOnline", ["fetchCmeModules"]),
+    selectionChanged() {
+      this.fetchCmeModules({ filters: this.filters });
+    }
   }
 };
 </script>

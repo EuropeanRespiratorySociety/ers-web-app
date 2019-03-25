@@ -1,5 +1,11 @@
 export default {
   cmeModulesTotal: 0,
   cmeModules: [],
-  cmeModule: {}
+  cmeModule: {},
+  filters: {
+    diseases: [],
+    methods: [],
+    types: [],
+    categories: []
+  }
 };
