@@ -59,10 +59,12 @@ export default {
   name: "cme-modules",
   components: { CmeModuleFilter },
   computed: {
-    ...mapState("cmeOnline", ["cmeModules"])
+    ...mapState("cmeOnline", ["cmeModules", "filters"])
   },
   created() {
-    this.$store.dispatch("cmeOnline/fetchCmeModules");
+    this.$store.dispatch("cmeOnline/fetchCmeModules", {
+      filters: this.filters
+    });
   },
   methods: {
     mainOrganiserImage(organisers) {

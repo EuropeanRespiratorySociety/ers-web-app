@@ -1,9 +1,17 @@
 import * as mutationTypes from "./mutation-types";
 import { HTTP, sureThing } from "@/helpers/http";
 
-export const fetchCmeModules = async ({ commit }) => {
-  const { ok, response, error } = await sureThing(
-    HTTP.get(`/cme-online?full=true`)
+/* eslint-disable */
+export const fetchCmeModules = async ({
+  commit
+}, payload) => {
+
+  const {
+    ok,
+    response,
+    error
+  } = await sureThing(
+    HTTP.get('/cme-online?' + setRoute(payload.filters))
   );
 
   if (ok) {
@@ -18,14 +26,21 @@ export const fetchCmeModules = async ({ commit }) => {
   }
 };
 
-export const fetchCmeModule = async ({ commit, getters }, slug) => {
+export const fetchCmeModule = async ({
+  commit,
+  getters
+}, slug) => {
   let cmeModule = getters.getCmeModuleBySlug(slug);
 
   if (cmeModule) {
     commit(mutationTypes.SET_CME_MODULE, cmeModule);
     return cmeModule;
   } else {
-    const { ok, response, error } = await sureThing(
+    const {
+      ok,
+      response,
+      error
+    } = await sureThing(
       HTTP.get("/cme-online/" + slug)
     );
 
@@ -39,3 +54,21 @@ export const fetchCmeModule = async ({ commit, getters }, slug) => {
     }
   }
 };
+
+function setRoute(
+  filters = null
+) {
+  let params = [];
+  params.push("full=true");
+  if (filters && filters.diseases && filters.methods && (filters.diseases.length > 0 || filters.methods.length > 0)) {
+    params.push("filterBy=" + filters.diseases.concat(filters.methods).join(","));
+  }
+  if (filters && filters.types && filters.types.length > 0) {
+    params.push("types=" + filters.types.join(","));
+  }
+  if (filters && filters.categories && filters.categories.length > 0) {
+    params.push("categories=" + filters.categories.join(","));
+  }
+  let result = params.join("&");
+  return result;
+}

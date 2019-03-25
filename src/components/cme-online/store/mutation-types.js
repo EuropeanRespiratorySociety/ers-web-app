@@ -1,3 +1,4 @@
 export const SET_CME_MODULES_TOTAL = "SET_CME_MODULES_TOTAL";
 export const SET_CME_MODULES = "SET_CME_MODULES";
 export const SET_CME_MODULE = "SET_CME_MODULE";
+export const SET_FILTERS = "SET_FILTERS";
