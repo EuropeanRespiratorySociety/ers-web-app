@@ -64,7 +64,7 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapActions } from "vuex";
 /* eslint-disable */
 export default {
   name: "cme-module-filter",
@@ -111,12 +111,12 @@ export default {
     };
   },
   computed: {
-    ...mapGetters("cmeOnline", ["filters"])
+    ...mapState("cmeOnline", ["filters"])
   },
   methods: {
     ...mapActions("cmeOnline", ["fetchCmeModules", "resetCmeModules"]),
     selectionChanged() {
-      this.fetchCmeModules({ filters: this.filters });
+      this.fetchCmeModules();
     },
     resetFilters() {
       this.resetCmeModules();
