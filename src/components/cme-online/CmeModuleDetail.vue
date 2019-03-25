@@ -22,7 +22,8 @@
                 <v-flex d-flex xs12 sm3>
                   <v-layout row wrap>
                     <!-- timeline -->
-                    <v-flex d-flex>
+                    <cme-timeline/>
+                    <!-- <v-flex d-flex>
                       <v-card>
                         <v-card-text>
                           <v-timeline dense clipped>
@@ -42,7 +43,7 @@
                           </v-timeline>
                         </v-card-text>
                       </v-card>
-                    </v-flex>
+                    </v-flex>-->
                     <!-- Director's info -->
                     <v-flex>
                       <v-card>
@@ -95,6 +96,7 @@
 </template>
 
 <script>
+import CmeTimeline from "./CmeTimeline";
 import CmeIntroduction from "./CmeIntroduction";
 import CmeSimulation from "./CmeSimulation";
 import CmePanelDiscussionVideo from "./CmePanelDiscussionVideo";
@@ -103,6 +105,7 @@ import CmeReadings from "./CmeReadings";
 export default {
   name: "cme-module-detail",
   components: {
+    CmeTimeline,
     CmeIntroduction,
     CmeSimulation,
     CmePanelDiscussionVideo,
