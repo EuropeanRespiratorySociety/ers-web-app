@@ -1,5 +1,5 @@
 <script>
-// import store from '@/vuex/store'
+//import store from "@/vuex/store";
 const Header = () => import("@/components/base/SimpleHeader.vue");
 const CmeModules = () => import("./CmeModules.vue");
 const SiteFooter = () => import("@/components/base/SiteFooter.vue");
