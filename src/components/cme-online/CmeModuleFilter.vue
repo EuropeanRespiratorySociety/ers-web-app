@@ -4,7 +4,10 @@
       <v-container grid-list-md fluid>
         <v-card>
           <v-card-actions>
-            <p class="subheading ml-2 font-weight-bold">Filters</p>
+            <p class="subheading ml-2 font-weight-bold">
+              Filters
+              <v-btn color="info" v-on:click="resetFilters">Clear</v-btn>
+            </p>
             <v-spacer/>
             <v-btn icon @click="show = !show">
               <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
@@ -111,9 +114,12 @@ export default {
     ...mapGetters("cmeOnline", ["filters"])
   },
   methods: {
-    ...mapActions("cmeOnline", ["fetchCmeModules"]),
+    ...mapActions("cmeOnline", ["fetchCmeModules", "resetCmeModules"]),
     selectionChanged() {
       this.fetchCmeModules({ filters: this.filters });
+    },
+    resetFilters() {
+      this.resetCmeModules();
     }
   }
 };

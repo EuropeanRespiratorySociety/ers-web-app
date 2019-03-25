@@ -55,6 +55,17 @@ export const fetchCmeModule = async ({
   }
 };
 
+export const resetCmeModules = async ({
+  commit,
+  dispatch,
+  state
+}) => {
+  commit(mutationTypes.RESET_FILTERS);
+  dispatch("fetchCmeModules", {
+    filters: state.filters
+  });
+};
+
 function setRoute(
   filters = null
 ) {

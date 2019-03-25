@@ -10,9 +10,10 @@ export default {
   [mutationTypes.SET_CME_MODULE](state, cmeModule) {
     state.cmeModule = cmeModule;
   },
-  [mutationTypes.SET_FILTERS](state, filters) {
-    state.filters.interests = filters.interests || [];
-    state.filters.types = filters.types || [];
-    state.filters.methods = filters.methods || [];
+  [mutationTypes.RESET_FILTERS](state) {
+    state.filters.diseases = [];
+    state.filters.methods = [];
+    state.filters.types = [];
+    state.filters.categories = [];
   }
 };
