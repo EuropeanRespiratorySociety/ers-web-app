@@ -6,9 +6,8 @@
           <v-layout column wrap class="mb-5">
             <v-flex flex xs12>
               <h4 class="my-4 display-1">Welcome</h4>
-              <p
-                subheading
-              >ERS CME Online modules provide free, open-access interactive cases, webcasts and video presentations led by experts on a range of topics in the respiratory field.
+              <p subheading>
+                ERS CME Online modules provide free, open-access interactive cases, webcasts and video presentations led by experts on a range of topics in the respiratory field.
                 <br>Each module is accredited with one CME credit. A CME certificate will only be awarded upon successful completion of the CME test at the end of each module.
               </p>
             </v-flex>
@@ -53,9 +52,9 @@
                 feugiat augue. Nulla facilisi.
               </p>
               <div>
-                <a style="text-decoration: none;" href="cme-online/modules">
+                <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
                   <v-btn flat color="primary">Visit the module list</v-btn>
-                </a>
+                </router-link>
               </div>
             </v-flex>
             <v-flex xs12 lg4 class="pl-3">

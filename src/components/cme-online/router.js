@@ -1,6 +1,7 @@
 const CmeOnline = () => import("./CmeOnlineApp.vue");
 const CmeModules = () => import("./CmeModulesApp.vue");
-const CmeModuleDetail = () => import("./CmeModuleDetailApp.vue");
+const CmeModule = () => import("./CmeModuleApp.vue");
+//import store from "@/store";
 
 export default [
   {
@@ -23,11 +24,20 @@ export default [
   },
   {
     path: "/cme-online/modules/:slug",
-    name: "CmeModuleDetail",
-    component: CmeModuleDetail
-    // meta: {
-    //   requiresAuth: true,
-    //   requiresRole: ["admin:*"]
-    // }
+    name: "CmeModule",
+    component: CmeModule,
+    props: true
+    // beforeEnter(routeTo, routeFrom, next) {
+    //   store
+    //     .dispatch("cmeOnline/fetchCmeModule", routeTo.params.slug)
+    //     .then(module => {
+    //       routeTo.params.module = module;
+    //       next();
+    //     })
+    //     .catch();
   }
+  // meta: {
+  //   requiresAuth: true,
+  //   requiresRole: ["admin:*"]
+  // }
 ];

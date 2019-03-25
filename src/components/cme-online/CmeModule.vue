@@ -55,7 +55,8 @@
                               </v-avatar>
                             </v-flex>
                             <v-flex xs12>
-                              <p class="subheading font-weight-bold text-xs-center">G. Rohde, MD
+                              <p class="subheading font-weight-bold text-xs-center">
+                                G. Rohde, MD
                                 <br>
                                 <span class="grey--text font-weight-regular">Main Organiser</span>
                               </p>
@@ -144,7 +145,9 @@ export default {
       active: null
     };
   },
-
+  created() {
+    this.$store.dispatch("cmeOnline/fetchCmeModule", this.$route.params.slug);
+  },
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;
