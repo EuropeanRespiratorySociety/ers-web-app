@@ -2,10 +2,10 @@
   <v-flex xs12 sm9>
     <component :is="currentComp"/>
     <v-card>
-      <v-card-actions v-if="currentComp === 'cme-simulation-intro'" class="px-3 py-3">
+      <v-card-actions v-if="currentComp === 'cme-simulation-intro-mock'" class="px-3 py-3">
         <v-spacer/>
         <v-btn
-          v-if="currentComp === 'cme-simulation-intro'"
+          v-if="currentComp === 'cme-simulation-intro-mock'"
           color="info"
           @click="nextComponent(1)"
         >START SIMULATION</v-btn>
@@ -16,20 +16,20 @@
 
 
 <script>
-import CmeSimulationIntro from "@/components/cme-online/Mock/CmeSimulationIntroMock";
-import CmeSimulations from "@/components/cme-online/Mock/CmeSimulationsMock";
+import CmeSimulationIntroMock from "@/components/cme-online/Mock/CmeSimulationIntroMock";
+import CmeSimulationsMock from "@/components/cme-online/Mock/CmeSimulationsMock";
 
 export default {
-  name: "cme-simuration",
+  name: "cme-simuration-mock",
   components: {
-    CmeSimulationIntro,
-    CmeSimulations
+    CmeSimulationIntroMock,
+    CmeSimulationsMock
   },
   data() {
     return {
       active: null,
-      currentComp: "cme-simulation-intro",
-      comp: ["cme-simulation-intro", "cme-simulations"]
+      currentComp: "cme-simulation-intro-mock",
+      comp: ["cme-simulation-intro-mock", "cme-simulations-mock"]
     };
   },
   methods: {

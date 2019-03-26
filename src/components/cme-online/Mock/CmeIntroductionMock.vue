@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "cme-introduction",
+  name: "cme-introduction-mock",
   data() {
     return {
       active: null,

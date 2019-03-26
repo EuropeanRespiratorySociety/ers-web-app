@@ -19,14 +19,14 @@
           </v-card>
         </v-tab-item>
       </v-tabs>
-      <v-divider />
+      <v-divider/>
     </v-card>
   </div>
 </template>
 
 <script>
 export default {
-  name: "cme-simuration-intro",
+  name: "cme-simuration-intro-mock",
   data() {
     return {
       active: null,

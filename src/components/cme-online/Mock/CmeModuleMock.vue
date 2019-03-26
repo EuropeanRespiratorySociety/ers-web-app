@@ -5,7 +5,7 @@
         <v-flex>
           <v-card>
             <v-card-title>
-              <h4 class="headline py-4 pl-2">Title of Module Mock</h4>
+              <h4 class="headline py-4 pl-2">Pneumococcal and influenza vaccination</h4>
             </v-card-title>
           </v-card>
         </v-flex>
@@ -15,7 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <h5 class="headline primary--text mb-3">Introduction</h5>
+              <h5 class="headline primary--text mb-3">{{currentTitle}}</h5>
 
               <!--timeline and Director's info -->
               <v-layout wrap row>
@@ -96,33 +96,53 @@
 </template>
 
 <script>
-import CmeTimeline from "@/components/cme-online/CmeTimeline";
-import CmeIntroduction from "@/components/cme-online/Mock/CmeIntroductionMock";
-import CmeSimulation from "@/components/cme-online/Mock/CmeSimulationMock";
-import CmePanelDiscussionVideo from "@/components/cme-online/Mock/CmePanelDiscussionVideoMock";
-import CmeReadings from "@/components/cme-online/Mock/CmeReadingsMock";
+import CmeIntroductionMock from "@/components/cme-online/Mock/CmeIntroductionMock";
+import CmeSimulationMock from "@/components/cme-online/Mock/CmeSimulationMock";
+import CmePanelDiscussionVideoMock from "@/components/cme-online/Mock/CmePanelDiscussionVideoMock";
+import CmeReadingsMock from "@/components/cme-online/Mock/CmeReadingsMock";
 
 export default {
-  name: "cme-module-detail",
+  name: "cme-module-mock",
   components: {
-    CmeTimeline,
-    CmeIntroduction,
-    CmeSimulation,
-    CmePanelDiscussionVideo,
-    CmeReadings
+    CmeIntroductionMock,
+    CmeSimulationMock,
+    CmePanelDiscussionVideoMock,
+    CmeReadingsMock
   },
   data() {
     return {
-      currentComp: "cme-introduction",
+      currentComp: "cme-introduction-mock",
       currentTitle: "Introduction",
       stepDefaultColor: "grey",
       stepActiveColor: "blue lighten-3",
       isActive: true,
       avatarModuleDirector:
         "https://www.ers-education.org/media/CmeAdmin/12_authorPicture.png",
+      contentTitles: [
+        {
+          title: "Introduction",
+          component: "cme-introduction-mock"
+        },
+        {
+          title: "Interactive case - Simulation",
+          component: "cme-simulation-mock"
+        },
+        {
+          title: "Panel discussion video",
+          component: "cme-panel-discussion-video-mock"
+        },
+        {
+          title: "Readings",
+          component: "cme-readings-mock"
+        },
+        {
+          title: "TAKE THE CME TEST"
+        }
+      ],
       active: null
     };
   },
+
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;

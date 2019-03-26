@@ -2,7 +2,7 @@
   <v-flex xs12 sm9>
     <v-card>
       <v-card-text>
-        <span v-html="cmeReadingsText" />
+        <span v-html="cmeReadingsText"/>
       </v-card-text>
     </v-card>
   </v-flex>
@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "cme-readings",
+  name: "cme-readings-mock",
   data() {
     return {
       active: null,

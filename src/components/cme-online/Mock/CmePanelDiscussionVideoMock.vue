@@ -3,7 +3,14 @@
     <v-flex xs12>
       <div>
         <v-card>
-          <video v-video="playVideo" v-bind:src="cmeVideopath" class="video-responsive" controls autoplay muted />
+          <video
+            v-video="playVideo"
+            v-bind:src="cmeVideopath"
+            class="video-responsive"
+            controls
+            autoplay
+            muted
+          />
           <!-- <div><button @click="playVideo=!playVideo">{{btnstate}}</button></div> -->
           <v-card-title>
             <p>Panel discussion video: {{ panelDiscussionAttendance }}}</p>
@@ -18,7 +25,11 @@
             <v-expansion-panel-content>
               <div slot="header" class="subheading font-weight-bold">{{ cmeVideoObjectiveTitle }}</div>
               <v-card>
-                <v-card-text class="grey lighten-4"><p><span v-html="cmeVideoObjectiveText" /></p></v-card-text>
+                <v-card-text class="grey lighten-4">
+                  <p>
+                    <span v-html="cmeVideoObjectiveText"/>
+                  </p>
+                </v-card-text>
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
@@ -26,19 +37,23 @@
             <v-expansion-panel-content>
               <div slot="header" class="subheading font-weight-bold">{{ cmeVideoAudienceTitile }}</div>
               <v-card>
-                <v-card-text class="grey lighten-4"><p><span v-html="cmeVideoAudienceText" /></p></v-card-text>
+                <v-card-text class="grey lighten-4">
+                  <p>
+                    <span v-html="cmeVideoAudienceText"/>
+                  </p>
+                </v-card-text>
               </v-card>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-card>
       </div>
-    </v-flex >
+    </v-flex>
   </v-flex>
 </template>
 
 <script>
 export default {
-  name: "cme-panel-discussion-video",
+  name: "cme-panel-discussion-video-mock",
   data() {
     return {
       active: null,
