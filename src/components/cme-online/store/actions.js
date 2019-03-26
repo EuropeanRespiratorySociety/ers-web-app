@@ -3,24 +3,24 @@ import { HTTP, sureThing } from "@/helpers/http";
 
 /* eslint-disable */
 export const fetchCmeModules = async ({
-  commit
-}, payload) => {
-
+  commit,
+  state
+}) => {
+  const page = state.pageNumber;
+  const perPage = state.perPage;
+  const filters = state.filters;
+  const queryString = setRoute(filters, page, perPage)
   const {
     ok,
     response,
     error
   } = await sureThing(
-    HTTP.get('/cme-online?' + setRoute(payload.filters))
+    HTTP.get('/cme-online?' + queryString)
   );
 
   if (ok) {
-    commit(mutationTypes.SET_CME_MODULES, response.data, err => {
-      console.log(err);
-    });
-    commit(mutationTypes.SET_CME_MODULES_TOTAL, response._sys.total, err => {
-      console.log(err);
-    });
+    commit(mutationTypes.SET_CME_MODULES, response.data);
+    commit(mutationTypes.SET_CME_MODULES_TOTAL, response._sys.total);
   } else {
     console.log(error);
   }
@@ -45,9 +45,7 @@ export const fetchCmeModule = async ({
     );
 
     if (ok) {
-      commit(mutationTypes.SET_CME_MODULE, response.data, err => {
-        console.log(err);
-      });
+      commit(mutationTypes.SET_CME_MODULE, response.data);
       return cmeModule;
     } else {
       console.log(error);
@@ -55,8 +53,26 @@ export const fetchCmeModule = async ({
   }
 };
 
+export const resetCmeModules = async ({
+  commit,
+  dispatch
+}) => {
+  commit(mutationTypes.RESET_RESULTS);
+  dispatch("fetchCmeModules");
+};
+
+export const fetchCmeModulesForOnePage = ({
+  commit,
+  dispatch
+}, pageNumber) => {
+  commit(mutationTypes.SET_PAGE_NUMBER, pageNumber);
+  dispatch("fetchCmeModules");
+};
+
 function setRoute(
-  filters = null
+  filters = null,
+  page = 1,
+  limit = 10
 ) {
   let params = [];
   params.push("full=true");
@@ -69,6 +85,8 @@ function setRoute(
   if (filters && filters.categories && filters.categories.length > 0) {
     params.push("categories=" + filters.categories.join(","));
   }
+  params.push("limit=" + limit);
+  params.push("skip=" + ((page - 1) * limit));
   let result = params.join("&");
   return result;
 }

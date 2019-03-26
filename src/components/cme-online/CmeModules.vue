@@ -47,6 +47,9 @@
             </v-card>
           </v-flex>
         </v-layout>
+        <v-layout v-if="hasPagination" justify-center>
+          <v-pagination :length="pagesTotal" v-model="page" :total-visible="8"/>
+        </v-layout>
       </v-container>
     </v-content>
   </transition>
@@ -54,19 +57,36 @@
 
 <script>
 import CmeModuleFilter from "./CmeModuleFilter";
-import { mapState } from "vuex";
+import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "cme-modules",
   components: { CmeModuleFilter },
   computed: {
-    ...mapState("cmeOnline", ["cmeModules", "filters"])
+    ...mapState("cmeOnline", [
+      "cmeModules",
+      "filters",
+      "pageNumber",
+      "cmeModulesTotal",
+      "perPage"
+    ]),
+    ...mapGetters("cmeOnline", ["pagesTotal"]),
+    page: {
+      get() {
+        return this.pageNumber;
+      },
+      set(value) {
+        this.fetchCmeModulesForOnePage(value);
+      }
+    },
+    hasPagination() {
+      return this.cmeModulesTotal > this.perPage;
+    }
   },
   created() {
-    this.$store.dispatch("cmeOnline/fetchCmeModules", {
-      filters: this.filters
-    });
+    this.$store.dispatch("cmeOnline/fetchCmeModules");
   },
   methods: {
+    ...mapActions("cmeOnline", ["fetchCmeModulesForOnePage"]),
     mainOrganiserImage(organisers) {
       let mainOrganiser = organisers.find(organiser => organiser.isMain);
       return mainOrganiser ? mainOrganiser.image : "";

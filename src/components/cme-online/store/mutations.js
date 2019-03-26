@@ -10,9 +10,16 @@ export default {
   [mutationTypes.SET_CME_MODULE](state, cmeModule) {
     state.cmeModule = cmeModule;
   },
-  [mutationTypes.SET_FILTERS](state, filters) {
-    state.filters.interests = filters.interests || [];
-    state.filters.types = filters.types || [];
-    state.filters.methods = filters.methods || [];
+  [mutationTypes.SET_PAGE_NUMBER](state, pageNumber) {
+    state.pageNumber = pageNumber;
+  },
+  [mutationTypes.RESET_RESULTS](state) {
+    state.filters.diseases = [];
+    state.filters.methods = [];
+    state.filters.types = [];
+    state.filters.categories = [];
+    state.cmeModulesTotal = 0;
+    state.cmeModules = [];
+    state.pageNumber = 1;
   }
 };
