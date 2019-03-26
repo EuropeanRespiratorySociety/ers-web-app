@@ -1,19 +1,22 @@
-import * as mutationTypes from "./mutation-types";
+// import * as mutationTypes from "./mutation-types";
 
 export default {
-  [mutationTypes.SET_CME_MODULES_TOTAL](state, cmeModulesTotal) {
+  SET_CME_MODULES_TOTAL(state, cmeModulesTotal) {
     state.cmeModulesTotal = cmeModulesTotal;
   },
-  [mutationTypes.SET_CME_MODULES](state, cmeModules) {
+  SET_CME_MODULES(state, cmeModules) {
     state.cmeModules = cmeModules;
   },
-  [mutationTypes.SET_CME_MODULE](state, cmeModule) {
+  SET_CME_MODULE(state, cmeModule) {
     state.cmeModule = cmeModule;
   },
-  [mutationTypes.SET_PAGE_NUMBER](state, pageNumber) {
+  SET_PAGE_NUMBER(state, pageNumber) {
     state.pageNumber = pageNumber;
   },
-  [mutationTypes.RESET_RESULTS](state) {
+  SET_CURRENT_STEP(state, step) {
+    state.currentStep = step.component;
+  },
+  RESET_RESULTS(state) {
     state.filters.diseases = [];
     state.filters.methods = [];
     state.filters.types = [];

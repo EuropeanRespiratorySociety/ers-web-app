@@ -5,13 +5,14 @@
         <v-card-text>
           <v-timeline dense clipped>
             <v-timeline-item
-              v-for="(cmeModule) in cmeModule.cmeOnlineModule"
-              :key="cmeModule.title"
+              v-for="(step, index) in timeline"
+              :key="index"
               class="mb-3"
               small
+              color="step.color"
             >
               <v-layout justify-space-between>
-                <button class="text-xs-left">{{cmeModule.title}}</button>
+                <button class="text-xs-left" @click="loadComponent(step)">{{step.title}}</button>
               </v-layout>
             </v-timeline-item>
           </v-timeline>
@@ -22,32 +23,17 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 export default {
   name: "cme-timeline",
-  data() {
-    return {
-      currentComp: "cme-introduction",
-      stepDefaultColor: "grey",
-      stepActiveColor: "blue lighten-3",
-      isActive: true,
-      avatarModuleDirector:
-        "https://www.ers-education.org/media/CmeAdmin/12_authorPicture.png",
-      active: null
-    };
-  },
   computed: {
-    ...mapState("cmeOnline", ["cmeModule"])
+    ...mapState("cmeOnline", ["cmeModule"]),
+    ...mapGetters("cmeOnline", ["timeline"])
   },
   methods: {
-    switchComponent: function(comp) {
-      this.currentComp = comp;
-    },
-    switchTitle: function(title) {
-      this.currentTitle = title;
-    },
-    switchColor: function() {
-      this.stepDefaultColor = this.stepActiveColor;
+    ...mapMutations("cmeOnline", ["SET_CURRENT_STEP"]),
+    loadComponent(step) {
+      this.SET_CURRENT_STEP(step);
     }
   }
 };

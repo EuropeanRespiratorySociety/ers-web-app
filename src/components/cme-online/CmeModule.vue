@@ -29,7 +29,7 @@
                           <v-layout row wrap>
                             <v-flex xs12 style="padding-left: 33%;">
                               <v-avatar size="84" class="object-center">
-                                <img :src="avatarModuleDirector">
+                                <!-- <img :src="avatarModuleDirector"> -->
                               </v-avatar>
                             </v-flex>
                             <v-flex xs12>
@@ -63,8 +63,7 @@
                     </v-flex>
                   </v-layout>
                 </v-flex>
-                <!-- Tabs -->
-                <!-- <component :is="currentComp"/> -->
+                <component :is="currentStep"/>
               </v-layout>
             </v-container>
           </v-flex>
@@ -76,15 +75,23 @@
 
 <script>
 import CmeTimeline from "@/components/cme-online/CmeTimeline";
+import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
+import CmeVideoPanel from "@/components/cme-online/CmeVideoPanel";
+import CmeReferencesPanel from "@/components/cme-online/CmeReferencesPanel";
+import CmeSimulationPanel from "@/components/cme-online/CmeSimulationPanel";
 import { mapState } from "vuex";
 
 export default {
   name: "cme-module-detail",
   components: {
-    CmeTimeline
+    CmeTimeline,
+    CmeTabsPanel,
+    CmeVideoPanel,
+    CmeReferencesPanel,
+    CmeSimulationPanel
   },
   computed: {
-    ...mapState("cmeOnline", ["cmeModule"])
+    ...mapState("cmeOnline", ["cmeModule", "currentStep"])
   },
   created() {
     this.$store.dispatch("cmeOnline/fetchCmeModule", this.$route.params.slug);

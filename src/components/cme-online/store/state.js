@@ -11,6 +11,7 @@ export default {
     categories: []
   },
   showFilters: false,
+  currentStep: "",
   filtersValues: {
     diseases: [
       "Airway diseases",

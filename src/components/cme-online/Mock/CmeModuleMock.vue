@@ -5,7 +5,7 @@
         <v-flex>
           <v-card>
             <v-card-title>
-              <h4 class="headline py-4 pl-2">{{cmeModule.title}}</h4>
+              <h4 class="headline py-4 pl-2">Title of Module Mock</h4>
             </v-card-title>
           </v-card>
         </v-flex>
@@ -15,15 +15,14 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <h5 class="headline primary--text mb-3">{{cmeModule.cmeOnlineModule[0].title}}</h5>
+              <h5 class="headline primary--text mb-3">Introduction</h5>
 
               <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
                   <v-layout row wrap>
                     <!-- timeline -->
-                    <cme-timeline/>
-                    <!-- <v-flex d-flex>
+                    <v-flex d-flex>
                       <v-card>
                         <v-card-text>
                           <v-timeline dense clipped>
@@ -43,7 +42,7 @@
                           </v-timeline>
                         </v-card-text>
                       </v-card>
-                    </v-flex>-->
+                    </v-flex>
                     <!-- Director's info -->
                     <v-flex>
                       <v-card>
@@ -102,7 +101,6 @@ import CmeIntroduction from "@/components/cme-online/Mock/CmeIntroductionMock";
 import CmeSimulation from "@/components/cme-online/Mock/CmeSimulationMock";
 import CmePanelDiscussionVideo from "@/components/cme-online/Mock/CmePanelDiscussionVideoMock";
 import CmeReadings from "@/components/cme-online/Mock/CmeReadingsMock";
-import { mapState } from "vuex";
 
 export default {
   name: "cme-module-detail",
@@ -125,13 +123,6 @@ export default {
       active: null
     };
   },
-  computed: {
-    ...mapState("cmeOnline", ["cmeModule"])
-  },
-  created() {
-    this.$store.dispatch("cmeOnline/fetchCmeModule", this.$route.params.slug);
-  },
-
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;

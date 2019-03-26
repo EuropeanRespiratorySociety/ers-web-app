@@ -1,21 +1,13 @@
 import * as mutationTypes from "./mutation-types";
 import { HTTP, sureThing } from "@/helpers/http";
 
-/* eslint-disable */
-export const fetchCmeModules = async ({
-  commit,
-  state
-}) => {
+export const fetchCmeModules = async ({ commit, state }) => {
   const page = state.pageNumber;
   const perPage = state.perPage;
   const filters = state.filters;
-  const queryString = setRoute(filters, page, perPage)
-  const {
-    ok,
-    response,
-    error
-  } = await sureThing(
-    HTTP.get('/cme-online?' + queryString)
+  const queryString = setRoute(filters, page, perPage);
+  const { ok, response, error } = await sureThing(
+    HTTP.get("/cme-online?" + queryString)
   );
 
   if (ok) {
@@ -26,21 +18,14 @@ export const fetchCmeModules = async ({
   }
 };
 
-export const fetchCmeModule = async ({
-  commit,
-  getters
-}, slug) => {
+export const fetchCmeModule = async ({ commit, getters }, slug) => {
   let cmeModule = getters.getCmeModuleBySlug(slug);
 
   if (cmeModule) {
     commit(mutationTypes.SET_CME_MODULE, cmeModule);
     return cmeModule;
   } else {
-    const {
-      ok,
-      response,
-      error
-    } = await sureThing(
+    const { ok, response, error } = await sureThing(
       HTTP.get("/cme-online/" + slug)
     );
 
@@ -53,31 +38,31 @@ export const fetchCmeModule = async ({
   }
 };
 
-export const resetCmeModules = async ({
-  commit,
-  dispatch
-}) => {
-  commit(mutationTypes.RESET_RESULTS);
-  dispatch("fetchCmeModules");
-};
-
-export const fetchCmeModulesForOnePage = ({
-  commit,
-  dispatch
-}, pageNumber) => {
+export const fetchCmeModulesForOnePageNumber = (
+  { commit, dispatch },
+  pageNumber
+) => {
   commit(mutationTypes.SET_PAGE_NUMBER, pageNumber);
   dispatch("fetchCmeModules");
 };
 
-function setRoute(
-  filters = null,
-  page = 1,
-  limit = 10
-) {
+export const resetCmeModules = async ({ commit, dispatch }) => {
+  commit(mutationTypes.RESET_RESULTS);
+  dispatch("fetchCmeModules");
+};
+
+function setRoute(filters = null, page = 1, limit = 10) {
   let params = [];
   params.push("full=true");
-  if (filters && filters.diseases && filters.methods && (filters.diseases.length > 0 || filters.methods.length > 0)) {
-    params.push("filterBy=" + filters.diseases.concat(filters.methods).join(","));
+  if (
+    filters &&
+    filters.diseases &&
+    filters.methods &&
+    (filters.diseases.length > 0 || filters.methods.length > 0)
+  ) {
+    params.push(
+      "filterBy=" + filters.diseases.concat(filters.methods).join(",")
+    );
   }
   if (filters && filters.types && filters.types.length > 0) {
     params.push("types=" + filters.types.join(","));
@@ -86,7 +71,7 @@ function setRoute(
     params.push("categories=" + filters.categories.join(","));
   }
   params.push("limit=" + limit);
-  params.push("skip=" + ((page - 1) * limit));
+  params.push("skip=" + (page - 1) * limit);
   let result = params.join("&");
   return result;
 }

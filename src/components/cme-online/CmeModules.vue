@@ -82,7 +82,7 @@ export default {
         return this.pageNumber;
       },
       set(value) {
-        this.fetchCmeModulesForOnePage(value);
+        this.fetchCmeModulesForOnePageNumber(value);
       }
     },
     hasPagination() {
@@ -93,7 +93,7 @@ export default {
     this.$store.dispatch("cmeOnline/fetchCmeModules");
   },
   methods: {
-    ...mapActions("cmeOnline", ["fetchCmeModulesForOnePage"]),
+    ...mapActions("cmeOnline", ["fetchCmeModulesForOnePageNumber"]),
     mainOrganiserImage(organisers) {
       let mainOrganiser = organisers.find(organiser => organiser.isMain);
       return mainOrganiser ? mainOrganiser.image : "";
