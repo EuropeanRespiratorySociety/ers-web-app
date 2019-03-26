@@ -6,53 +6,53 @@
           <v-card-actions>
             <p class="subheading ml-2 font-weight-bold">
               Filters
-              <v-btn color="info" v-on:click="resetFilters">Clear</v-btn>
+              <v-btn color="info" @click="resetFilters">Clear</v-btn>
             </p>
             <v-spacer/>
-            <v-btn icon @click="show = !show">
-              <v-icon>{{ show ? 'keyboard_arrow_down' : 'keyboard_arrow_up' }}</v-icon>
+            <v-btn icon @click="reverseShowFilters">
+              <v-icon>{{ icon }}</v-icon>
             </v-btn>
           </v-card-actions>
-          <v-container v-show="show" fluid grid-list-xl>
+          <v-container v-show="showFilters" fluid grid-list-xl>
             <v-layout align-center wrap>
               <v-flex xs12 sm6>
                 <v-select
-                  :items="diseases"
+                  :items="filtersValues.diseases"
                   v-model="filters.diseases"
                   chips
                   label="Diseases"
                   multiple
-                  v-on:change="selectionChanged"
+                  @change="selectionChanged"
                 />
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
-                  :items="methods"
+                  :items="filtersValues.methods"
                   v-model="filters.methods"
                   chips
                   label="Methods"
                   multiple
-                  v-on:change="selectionChanged"
+                  @change="selectionChanged"
                 />
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
-                  :items="types"
+                  :items="filtersValues.types"
                   v-model="filters.types"
                   chips
                   label="Types"
                   multiple
-                  v-on:change="selectionChanged"
+                  @change="selectionChanged"
                 />
               </v-flex>
               <v-flex xs12 sm6>
                 <v-select
-                  :items="categories"
+                  :items="filtersValues.categories"
                   v-model="filters.categories"
                   chips
                   label="Categories"
                   multiple
-                  v-on:change="selectionChanged"
+                  @change="selectionChanged"
                 />
               </v-flex>
             </v-layout>
@@ -70,48 +70,12 @@ export default {
   name: "cme-module-filter",
   data() {
     return {
-      diseases: [
-        "Airway diseases",
-        "Interstitial lung diseases",
-        "Paediatric respiratory diseases",
-        "Pulmonary vascular diseases",
-        "Respiratory critical care",
-        "Respiratory infections",
-        "Sleep and breathing disorders",
-        "Thoracic oncology"
-      ],
-      methods: [
-        "Cell and molecular biology",
-        "Endoscopy and interventional pulmonology",
-        "Epidemiology",
-        "General respiratory patient care",
-        "Imaging",
-        "Physiology",
-        "Public health",
-        "Pulmonary function testing",
-        "Respiratory intensive care",
-        "Surgery",
-        "Transplantation"
-      ],
-      types: ["Case Based", "Topic Based"],
-      categories: [
-        "COPD",
-        "Asthma",
-        "Infectious Diseases",
-        "Rare/Orphan Disease",
-        "Pulmonary Fibrosis",
-        "Pleural diseases",
-        "Respiratory critical care",
-        "PAH",
-        "Lung Cancer",
-        "Sleep/NIV",
-        "Cystic Fibrosis"
-      ],
-      show: false
+      showFilters: false,
+      icon: "keyboard_arrow_up"
     };
   },
   computed: {
-    ...mapState("cmeOnline", ["filters"])
+    ...mapState("cmeOnline", ["filters", "filtersValues"])
   },
   methods: {
     ...mapActions("cmeOnline", ["fetchCmeModules", "resetCmeModules"]),
@@ -120,6 +84,12 @@ export default {
     },
     resetFilters() {
       this.resetCmeModules();
+    },
+    reverseShowFilters() {
+      this.showFilters = !this.showFilters;
+      this.icon = this.showFilters
+        ? "keyboard_arrow_down"
+        : "keyboard_arrow_up";
     }
   }
 };
