@@ -55,7 +55,8 @@
                               </v-avatar>
                             </v-flex>
                             <v-flex xs12>
-                              <p class="subheading font-weight-bold text-xs-center">G. Rohde, MD
+                              <p class="subheading font-weight-bold text-xs-center">
+                                G. Rohde, MD
                                 <br>
                                 <span class="grey--text font-weight-regular">Main Organiser</span>
                               </p>
@@ -96,11 +97,11 @@
 </template>
 
 <script>
-import CmeTimeline from "./CmeTimeline";
-import CmeIntroduction from "./CmeIntroduction";
-import CmeSimulation from "./CmeSimulation";
-import CmePanelDiscussionVideo from "./CmePanelDiscussionVideo";
-import CmeReadings from "./CmeReadings";
+import CmeTimeline from "@/components/cme-online/CmeTimeline";
+import CmeIntroduction from "@/components/cme-online/Mock/CmeIntroductionMock";
+import CmeSimulation from "@/components/cme-online/Mock/CmeSimulationMock";
+import CmePanelDiscussionVideo from "@/components/cme-online/Mock/CmePanelDiscussionVideoMock";
+import CmeReadings from "@/components/cme-online/Mock/CmeReadingsMock";
 import { mapState } from "vuex";
 
 export default {

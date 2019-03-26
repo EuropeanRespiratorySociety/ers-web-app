@@ -18,7 +18,7 @@
                 <div>
                   <h6 class="subheading" style="line-height:1.2em;">
                     <router-link
-                      :to="{ name: 'CmeModule', params: { slug: cmeModule.slug } }"
+                      :to="{ name: 'CmeModuleMock', params: { slug: cmeModule.slug } }"
                     >{{cmeModule.title}}</router-link>
                   </h6>
                 </div>
