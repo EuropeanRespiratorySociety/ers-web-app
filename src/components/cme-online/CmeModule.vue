@@ -5,7 +5,7 @@
         <v-flex>
           <v-card>
             <v-card-title>
-              <h4 class="headline py-4 pl-2">Pneumococcal and influenza vaccination</h4>
+              <h4 class="headline py-4 pl-2">{{cmeModule.title}}</h4>
             </v-card-title>
           </v-card>
         </v-flex>
@@ -15,7 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <h5 class="headline primary--text mb-3">{{currentTitle}}</h5>
+              <h5 class="headline primary--text mb-3">{{cmeModule.cmeOnlineModule[0].title}}</h5>
 
               <!--timeline and Director's info -->
               <v-layout wrap row>
@@ -55,8 +55,7 @@
                               </v-avatar>
                             </v-flex>
                             <v-flex xs12>
-                              <p class="subheading font-weight-bold text-xs-center">
-                                G. Rohde, MD
+                              <p class="subheading font-weight-bold text-xs-center">G. Rohde, MD
                                 <br>
                                 <span class="grey--text font-weight-regular">Main Organiser</span>
                               </p>
@@ -102,6 +101,7 @@ import CmeIntroduction from "./CmeIntroduction";
 import CmeSimulation from "./CmeSimulation";
 import CmePanelDiscussionVideo from "./CmePanelDiscussionVideo";
 import CmeReadings from "./CmeReadings";
+import { mapState } from "vuex";
 
 export default {
   name: "cme-module-detail",
@@ -121,33 +121,16 @@ export default {
       isActive: true,
       avatarModuleDirector:
         "https://www.ers-education.org/media/CmeAdmin/12_authorPicture.png",
-      contentTitles: [
-        {
-          title: "Introduction",
-          component: "cme-introduction"
-        },
-        {
-          title: "Interactive case - Simulation",
-          component: "cme-simulation"
-        },
-        {
-          title: "Panel discussion video",
-          component: "cme-panel-discussion-video"
-        },
-        {
-          title: "Readings",
-          component: "cme-readings"
-        },
-        {
-          title: "TAKE THE CME TEST"
-        }
-      ],
       active: null
     };
+  },
+  computed: {
+    ...mapState("cmeOnline", ["cmeModule"])
   },
   created() {
     this.$store.dispatch("cmeOnline/fetchCmeModule", this.$route.params.slug);
   },
+
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;

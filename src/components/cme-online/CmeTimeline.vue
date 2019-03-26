@@ -5,16 +5,13 @@
         <v-card-text>
           <v-timeline dense clipped>
             <v-timeline-item
-              v-for="contentTitle in contentTitles"
-              :key="contentTitle.id"
+              v-for="(cmeModule) in cmeModule.cmeOnlineModule"
+              :key="cmeModule.title"
               class="mb-3"
               small
             >
               <v-layout justify-space-between>
-                <button
-                  class="text-xs-left"
-                  @click="switchComponent(contentTitle.component); switchTitle(contentTitle.title); switchColor()"
-                >{{contentTitle.title}}</button>
+                <button class="text-xs-left">{{cmeModule.title}}</button>
               </v-layout>
             </v-timeline-item>
           </v-timeline>
@@ -25,6 +22,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "cme-timeline",
   data() {
@@ -38,7 +36,9 @@ export default {
       active: null
     };
   },
-
+  computed: {
+    ...mapState("cmeOnline", ["cmeModule"])
+  },
   methods: {
     switchComponent: function(comp) {
       this.currentComp = comp;
