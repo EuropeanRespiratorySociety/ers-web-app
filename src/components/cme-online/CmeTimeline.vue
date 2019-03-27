@@ -7,12 +7,12 @@
             <v-timeline-item
               v-for="(step, index) in timeline"
               :key="index"
-              class="mb-3"
+              :color="step.color"
               small
-              color="step.color"
+              class="mb-3"
             >
               <v-layout justify-space-between>
-                <button class="text-xs-left" @click="loadComponent(step)">{{step.title}}</button>
+                <button class="text-xs-left" @click="fetchTimeline(index)">{{step.title}}</button>
               </v-layout>
             </v-timeline-item>
           </v-timeline>
@@ -23,18 +23,17 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "cme-timeline",
   computed: {
-    ...mapState("cmeOnline", ["cmeModule"]),
-    ...mapGetters("cmeOnline", ["timeline"])
+    ...mapState("cmeOnline", ["cmeModule", "timeline"])
+  },
+  created() {
+    this.$store.dispatch("cmeOnline/fetchTimeline", 0);
   },
   methods: {
-    ...mapMutations("cmeOnline", ["SET_CURRENT_STEP"]),
-    loadComponent(step) {
-      this.SET_CURRENT_STEP(step);
-    }
+    ...mapActions("cmeOnline", ["fetchTimeline"])
   }
 };
 </script>

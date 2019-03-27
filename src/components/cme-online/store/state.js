@@ -11,6 +11,7 @@ export default {
     categories: []
   },
   showFilters: false,
+  timeline: {},
   currentStep: "",
   filtersValues: {
     diseases: [

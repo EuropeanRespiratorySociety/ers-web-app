@@ -15,7 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <h5 class="headline primary--text mb-3">{{cmeModule.cmeOnlineModule[0].title}}</h5>
+              <h5 class="headline primary--text mb-3">{{currentStep.title}}</h5>
               <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
@@ -63,7 +63,7 @@
                     </v-flex>
                   </v-layout>
                 </v-flex>
-                <component :is="currentStep"/>
+                <component :is="currentStep.component"/>
               </v-layout>
             </v-container>
           </v-flex>

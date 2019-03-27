@@ -1,4 +1,3 @@
-import * as mutationTypes from "./mutation-types";
 import { HTTP, sureThing } from "@/helpers/http";
 
 export const fetchCmeModules = async ({ commit, state }) => {
@@ -11,8 +10,8 @@ export const fetchCmeModules = async ({ commit, state }) => {
   );
 
   if (ok) {
-    commit(mutationTypes.SET_CME_MODULES, response.data);
-    commit(mutationTypes.SET_CME_MODULES_TOTAL, response._sys.total);
+    commit("SET_CME_MODULES", response.data);
+    commit("SET_CME_MODULES_TOTAL", response._sys.total);
   } else {
     console.log(error);
   }
@@ -22,7 +21,7 @@ export const fetchCmeModule = async ({ commit, getters }, slug) => {
   let cmeModule = getters.getCmeModuleBySlug(slug);
 
   if (cmeModule) {
-    commit(mutationTypes.SET_CME_MODULE, cmeModule);
+    commit("SET_CME_MODULE", cmeModule);
     return cmeModule;
   } else {
     const { ok, response, error } = await sureThing(
@@ -30,7 +29,7 @@ export const fetchCmeModule = async ({ commit, getters }, slug) => {
     );
 
     if (ok) {
-      commit(mutationTypes.SET_CME_MODULE, response.data);
+      commit("SET_CME_MODULE", response.data);
       return cmeModule;
     } else {
       console.log(error);
@@ -42,12 +41,28 @@ export const fetchCmeModulesForOnePageNumber = (
   { commit, dispatch },
   pageNumber
 ) => {
-  commit(mutationTypes.SET_PAGE_NUMBER, pageNumber);
+  commit("SET_PAGE_NUMBER", pageNumber);
   dispatch("fetchCmeModules");
 };
 
+export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
+  let timeline = state.cmeModule.cmeOnlineModule.map(step => {
+    return {
+      title: step.title,
+      color: "grey"
+    };
+  });
+  timeline.push({
+    title: "Take a CME TEST",
+    color: "grey"
+  });
+  timeline[selectedStepIndex].color = "primary";
+  commit("SET_TIMELINE", timeline);
+  commit("SET_CURRENT_STEP", selectedStepIndex);
+};
+
 export const resetCmeModules = async ({ commit, dispatch }) => {
-  commit(mutationTypes.RESET_RESULTS);
+  commit("RESET_RESULTS");
   dispatch("fetchCmeModules");
 };
 

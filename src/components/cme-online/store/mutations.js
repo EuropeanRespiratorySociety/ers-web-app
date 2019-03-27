@@ -13,8 +13,21 @@ export default {
   SET_PAGE_NUMBER(state, pageNumber) {
     state.pageNumber = pageNumber;
   },
-  SET_CURRENT_STEP(state, step) {
-    state.currentStep = step.component;
+  SET_CURRENT_STEP(state, selectedStepIndex) {
+    let currentStep = state.cmeModule.cmeOnlineModule[selectedStepIndex];
+    if (currentStep) {
+      currentStep.component = currentStep.isSimulation
+        ? "cme-simulation-panel"
+        : "cme-" + currentStep.panels[0].panelType + "-panel";
+    } else {
+      currentStep = {
+        title: "Take a CME TEST"
+      };
+    }
+    state.currentStep = currentStep;
+  },
+  SET_TIMELINE(state, timeline) {
+    state.timeline = timeline;
   },
   RESET_RESULTS(state) {
     state.filters.diseases = [];
