@@ -67,7 +67,7 @@
                   </v-layout>
                 </v-flex>
                 <v-flex xs12 sm9>
-                  <component :is="currentStep.component"/>
+                  <component :is="buildCmeOnlineComponentName(currentStep.component)"/>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -79,6 +79,7 @@
 </template>
 
 <script>
+import { formMixin } from "@/mixins/formMixin";
 import CmeTimeline from "@/components/cme-online/CmeTimeline";
 import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
 import CmeVideoPanel from "@/components/cme-online/CmeVideoPanel";
@@ -95,6 +96,7 @@ export default {
     CmeReferencesPanel,
     CmeSimulationPanel
   },
+  mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["cmeModule", "currentStep"])
   }

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <component :is="componentName"/>
+    <component :is="buildCmeOnlineComponentName(currentPanel.panelType)"/>
     <v-card>
       <v-card-actions v-if="currentPanel.startSimulation" class="px-3 py-3">
         <v-spacer/>
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { formMixin } from "@/mixins/formMixin";
 import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
 import CmeQuestionPanel from "@/components/cme-online/CmeQuestionPanel";
 import { mapState } from "vuex";
@@ -21,11 +22,9 @@ export default {
     CmeTabsPanel,
     CmeQuestionPanel
   },
+  mixins: [formMixin],
   computed: {
-    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"]),
-    componentName() {
-      return "cme-" + this.currentPanel.panelType + "-panel";
-    }
+    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"])
   }
 };
 </script>

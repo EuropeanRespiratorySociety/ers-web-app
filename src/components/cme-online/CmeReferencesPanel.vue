@@ -7,11 +7,11 @@
 </template>
 
 <script>
-import { formFieldMixin } from "@/mixins/formFieldMixin";
+import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
 export default {
   name: "cme-tabs-references",
-  mixins: [formFieldMixin],
+  mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["currentPanel"])
   }

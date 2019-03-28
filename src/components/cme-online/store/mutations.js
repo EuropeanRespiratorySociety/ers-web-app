@@ -32,8 +32,8 @@ export default {
     let currentStep = state.cmeModule.cmeOnlineModule[selectedStepIndex];
     if (currentStep) {
       currentStep.component = currentStep.isSimulation
-        ? "cme-simulation-panel"
-        : "cme-" + currentStep.panels[0].panelType + "-panel";
+        ? "simulation"
+        : currentStep.panels[0].panelType;
     } else {
       currentStep = {
         title: "Take a CME TEST"
