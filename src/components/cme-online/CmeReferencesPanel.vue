@@ -1,21 +1,19 @@
 <template>
-  <v-flex xs12 sm9>
-    <v-card>
-      <v-card-text>
-        <span v-html="currentPanel.references"/>
-      </v-card-text>
-    </v-card>
-  </v-flex>
+  <v-card>
+    <v-card-text>
+      <span v-html="currentPanel.references"/>
+    </v-card-text>
+  </v-card>
 </template>
 
 <script>
 import { formFieldMixin } from "@/mixins/formFieldMixin";
-import { mapGetters } from "vuex";
+import { mapState } from "vuex";
 export default {
-  name: "cme-references-panel",
+  name: "cme-tabs-references",
   mixins: [formFieldMixin],
   computed: {
-    ...mapGetters("cmeOnline", ["currentPanel"])
+    ...mapState("cmeOnline", ["currentPanel"])
   }
 };
 </script>

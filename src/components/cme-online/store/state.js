@@ -12,7 +12,8 @@ export default {
   },
   showFilters: false,
   timeline: {},
-  currentStep: "",
+  currentStep: {},
+  currentPanel: {},
   filtersValues: {
     diseases: [
       "Airway diseases",

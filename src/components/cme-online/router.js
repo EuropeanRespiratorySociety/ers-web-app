@@ -2,7 +2,7 @@ const CmeOnline = () => import("./CmeOnlineApp.vue");
 const CmeModules = () => import("./CmeModulesApp.vue");
 const CmeModule = () => import("./CmeModuleApp.vue");
 const CmeModuleMock = () => import("./Mock/CmeModuleMockApp.vue");
-//import store from "@/store";
+import store from "@/store";
 
 export default [
   {
@@ -19,18 +19,15 @@ export default [
     path: "/cme-online/modules/:slug",
     name: "CmeModule",
     component: CmeModule,
-    props: true
+    beforeEnter(routeTo, routeFrom, next) {
+      store
+        .dispatch("cmeOnline/fetchCmeModule", routeTo.params.slug)
+        .then(next());
+    }
   },
   {
     path: "/cme-online/modulesMock/:slug",
     name: "CmeModuleMock",
-    component: CmeModuleMock,
-    props: true
+    component: CmeModuleMock
   }
-  // {
-  //   path: "/cme-online/modules/:slug",
-  //   name: "CmeModule",
-  //   component: CmeModule,
-  //   props: true
-  // }
 ];

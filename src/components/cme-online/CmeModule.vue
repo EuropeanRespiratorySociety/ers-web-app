@@ -63,7 +63,9 @@
                     </v-flex>
                   </v-layout>
                 </v-flex>
-                <component :is="currentStep.component"/>
+                <v-flex xs12 sm9>
+                  <component :is="currentStep.component"/>
+                </v-flex>
               </v-layout>
             </v-container>
           </v-flex>
@@ -92,9 +94,6 @@ export default {
   },
   computed: {
     ...mapState("cmeOnline", ["cmeModule", "currentStep"])
-  },
-  created() {
-    this.$store.dispatch("cmeOnline/fetchCmeModule", this.$route.params.slug);
   }
 };
 </script>

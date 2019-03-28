@@ -30,7 +30,7 @@ export const fetchCmeModule = async ({ commit, getters }, slug) => {
 
     if (ok) {
       commit("SET_CME_MODULE", response.data);
-      return cmeModule;
+      return response.data;
     } else {
       console.log(error);
     }
@@ -59,6 +59,10 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   timeline[selectedStepIndex].color = "primary";
   commit("SET_TIMELINE", timeline);
   commit("SET_CURRENT_STEP", selectedStepIndex);
+  commit("SET_CURRENT_PANEL", {
+    selectedPanelIndex: 0,
+    startSimulation: state.currentStep.isSimulation
+  });
 };
 
 export const resetCmeModules = async ({ commit, dispatch }) => {
