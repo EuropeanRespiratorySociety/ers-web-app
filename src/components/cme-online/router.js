@@ -13,7 +13,10 @@ export default [
   {
     path: "/cme-online/modules",
     name: "CmeModules",
-    component: CmeModules
+    component: CmeModules,
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("cmeOnline/prepareStates").then(next());
+    }
   },
   {
     path: "/cme-online/modules/:slug",

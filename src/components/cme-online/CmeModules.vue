@@ -89,9 +89,6 @@ export default {
       return this.cmeModulesTotal > this.perPage;
     }
   },
-  created() {
-    this.$store.dispatch("cmeOnline/fetchCmeModules");
-  },
   methods: {
     ...mapActions("cmeOnline", ["fetchCmeModulesForOnePageNumber"]),
     mainOrganiserImage(organisers) {

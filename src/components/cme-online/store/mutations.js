@@ -1,6 +1,21 @@
 // import * as mutationTypes from "./mutation-types";
 
 export default {
+  RESET_CME_MODULE_STATES(state) {
+    state.cmeModule = {};
+    state.timeline = {};
+    state.currentStep = {};
+    state.currentPanel = {};
+  },
+  RESET_RESULTS(state) {
+    state.filters.diseases = [];
+    state.filters.methods = [];
+    state.filters.types = [];
+    state.filters.categories = [];
+    state.cmeModulesTotal = 0;
+    state.cmeModules = [];
+    state.pageNumber = 1;
+  },
   SET_CME_MODULES_TOTAL(state, cmeModulesTotal) {
     state.cmeModulesTotal = cmeModulesTotal;
   },
@@ -33,14 +48,5 @@ export default {
   },
   SET_TIMELINE(state, timeline) {
     state.timeline = timeline;
-  },
-  RESET_RESULTS(state) {
-    state.filters.diseases = [];
-    state.filters.methods = [];
-    state.filters.types = [];
-    state.filters.categories = [];
-    state.cmeModulesTotal = 0;
-    state.cmeModules = [];
-    state.pageNumber = 1;
   }
 };

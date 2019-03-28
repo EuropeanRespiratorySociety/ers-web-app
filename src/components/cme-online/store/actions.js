@@ -70,6 +70,11 @@ export const resetCmeModules = async ({ commit, dispatch }) => {
   dispatch("fetchCmeModules");
 };
 
+export const prepareStates = async ({ commit, dispatch }) => {
+  commit("RESET_CME_MODULE_STATES");
+  dispatch("fetchCmeModules");
+};
+
 function setRoute(filters = null, page = 1, limit = 10) {
   let params = [];
   params.push("full=true");

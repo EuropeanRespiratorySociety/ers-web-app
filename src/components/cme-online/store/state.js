@@ -3,7 +3,6 @@ export default {
   pageNumber: 1,
   perPage: 4,
   cmeModules: [],
-  cmeModule: {},
   filters: {
     diseases: [],
     methods: [],
@@ -11,6 +10,7 @@ export default {
     categories: []
   },
   showFilters: false,
+  cmeModule: {},
   timeline: {},
   currentStep: {},
   currentPanel: {},

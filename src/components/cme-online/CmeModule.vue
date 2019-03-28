@@ -15,6 +15,9 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
+              <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
+                <v-btn flat color="primary">Cme Online List</v-btn>
+              </router-link>
               <h5 class="headline primary--text mb-3">{{currentStep.title}}</h5>
               <!--timeline and Director's info -->
               <v-layout wrap row>
