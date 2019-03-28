@@ -65,13 +65,20 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   });
 };
 
-export const resetCmeModules = async ({ commit, dispatch }) => {
-  commit("RESET_RESULTS");
+export const nextPanel = ({ commit }, panelNumber) => {
+  commit("SET_CURRENT_PANEL", {
+    selectedPanelIndex: panelNumber,
+    startSimulation: false
+  });
+};
+
+export const prepareStates = ({ commit, dispatch }) => {
+  commit("RESET_CME_MODULE_STATES");
   dispatch("fetchCmeModules");
 };
 
-export const prepareStates = async ({ commit, dispatch }) => {
-  commit("RESET_CME_MODULE_STATES");
+export const resetCmeModules = ({ commit, dispatch }) => {
+  commit("RESET_RESULTS");
   dispatch("fetchCmeModules");
 };
 

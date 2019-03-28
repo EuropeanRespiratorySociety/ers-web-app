@@ -42,8 +42,11 @@ export default {
     state.currentStep = currentStep;
   },
   SET_CURRENT_PANEL(state, data) {
-    let currentPanel = state.currentStep.panels[data.selectedPanelIndex];
-    currentPanel.startSimulation = data.startSimulation;
+    let currentPanel = {};
+    if (state.currentStep.panels) {
+      currentPanel = state.currentStep.panels[data.selectedPanelIndex];
+      currentPanel.startSimulation = data.startSimulation;
+    }
     state.currentPanel = currentPanel;
   },
   SET_TIMELINE(state, timeline) {

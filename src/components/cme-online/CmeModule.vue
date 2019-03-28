@@ -66,7 +66,7 @@
                     </v-flex>
                   </v-layout>
                 </v-flex>
-                <v-flex xs12 sm9>
+                <v-flex v-if="hasValue(currentStep.component)" xs12 sm9>
                   <component :is="buildCmeOnlineComponentName(currentStep.component)"/>
                 </v-flex>
               </v-layout>
