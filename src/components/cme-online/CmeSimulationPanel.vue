@@ -4,7 +4,7 @@
     <v-card>
       <v-card-actions v-if="currentPanel.startSimulation" class="px-3 py-3">
         <v-spacer/>
-        <v-btn color="info">START SIMULATION</v-btn>
+        <v-btn color="info" v-on:click="nextPanel(1)">START SIMULATION</v-btn>
       </v-card-actions>
     </v-card>
   </div>
@@ -14,7 +14,7 @@
 import { formMixin } from "@/mixins/formMixin";
 import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
 import CmeQuestionPanel from "@/components/cme-online/CmeQuestionPanel";
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "cme-simulation-panel",
@@ -25,6 +25,9 @@ export default {
   mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"])
+  },
+  methods: {
+    ...mapActions("cmeOnline", ["nextPanel"])
   }
 };
 </script>

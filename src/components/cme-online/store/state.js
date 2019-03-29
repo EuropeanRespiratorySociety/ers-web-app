@@ -9,7 +9,6 @@ export default {
     types: [],
     categories: []
   },
-  showFilters: false,
   cmeModule: {},
   timeline: {},
   currentStep: {},
