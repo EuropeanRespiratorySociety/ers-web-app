@@ -5,3 +5,7 @@ export const getCmeModuleBySlug = state => slug => {
 export const pagesTotal = state => {
   return Math.ceil(state.cmeModulesTotal / state.perPage);
 };
+
+export const simulationStepCount = state => {
+  return state.currentStep.panels.length - 1;
+};

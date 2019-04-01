@@ -37,7 +37,7 @@ export const fetchCmeModule = async ({ commit, getters }, slug) => {
   }
 };
 
-export const fetchCmeModulesForOnePageNumber = (
+export const fetchCmeModulesPerPageNumber = (
   { commit, dispatch },
   pageNumber
 ) => {
@@ -65,10 +65,19 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   });
 };
 
-export const nextPanel = ({ commit }, panelNumber) => {
+export const nextPanel = ({ commit, state }) => {
   commit("SET_CURRENT_PANEL", {
-    selectedPanelIndex: panelNumber,
+    selectedPanelIndex: state.simulationPanelIndex + 1,
     startSimulation: false
+  });
+};
+
+export const previousPanel = ({ commit, state }) => {
+  let previousPanelIndex = state.simulationPanelIndex - 1;
+  commit("SET_CURRENT_PANEL", {
+    selectedPanelIndex: previousPanelIndex,
+    startSimulation:
+      previousPanelIndex === 0 ? state.currentStep.isSimulation : false
   });
 };
 

@@ -6,6 +6,7 @@ export default {
     state.timeline = {};
     state.currentStep = {};
     state.currentPanel = {};
+    state.simulationPanelIndex = 0;
   },
   RESET_RESULTS(state) {
     state.filters.diseases = [];
@@ -48,6 +49,7 @@ export default {
       currentPanel.startSimulation = data.startSimulation;
     }
     state.currentPanel = currentPanel;
+    state.simulationPanelIndex = data.selectedPanelIndex;
   },
   SET_TIMELINE(state, timeline) {
     state.timeline = timeline;
