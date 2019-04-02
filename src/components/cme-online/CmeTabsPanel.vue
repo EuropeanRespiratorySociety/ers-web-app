@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card>
+    <v-card flat class="mb-5">
       <div>
         <v-card-title v-if="hasValue(currentPanel.title)" primary-title>
           <h3 class="title mb-0">{{currentPanel.title}}</h3>
@@ -19,7 +19,6 @@
           </v-card>
         </v-tab-item>
       </v-tabs>
-      <v-divider/>
     </v-card>
   </div>
 </template>
