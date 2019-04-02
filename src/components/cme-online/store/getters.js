@@ -9,3 +9,7 @@ export const pagesTotal = state => {
 export const simulationStepCount = state => {
   return state.currentStep.panels.length - 1;
 };
+
+export const stepCount = state => {
+  return state.cmeModule.cmeOnlineModule.length;
+};

@@ -13,7 +13,6 @@ export default {
   timeline: {},
   currentStep: {},
   currentPanel: {},
-  simulationPanelIndex: 0,
   filtersValues: {
     diseases: [
       "Airway diseases",

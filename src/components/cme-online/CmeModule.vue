@@ -18,7 +18,6 @@
               <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
                 <v-btn flat color="primary">Cme Online List</v-btn>
               </router-link>
-              <h5 class="headline primary--text mb-3">{{currentStep.title}}</h5>
               <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
@@ -66,8 +65,30 @@
                     </v-flex>
                   </v-layout>
                 </v-flex>
-                <v-flex v-if="hasValue(currentStep.component)" xs12 sm9>
-                  <component :is="buildCmeOnlineComponentName(currentStep.component)"/>
+                <v-flex v-if="hasValue(currentPanel.panelType)" xs12 sm9>
+                  <v-card>
+                    <div v-if="currentStep.isSimulation && !currentPanel.startSimulation">
+                      <v-stepper :value="currentPanel.selectedIndex">
+                        <v-stepper-header>
+                          <v-stepper-step
+                            v-for="(panel, index) in currentStep.panels"
+                            v-if="!panel.startSimulation"
+                            :key="index"
+                            :step="index"
+                          />
+                        </v-stepper-header>
+                      </v-stepper>
+                    </div>
+                    <div v-else>
+                      <v-card-text>
+                        <h2>{{currentStep.title}}</h2>
+                      </v-card-text>
+                    </div>
+                    <v-divider/>
+                    <component :is="buildCmeOnlineComponentName(currentPanel.panelType)"/>
+                    <v-divider/>
+                    <cmeNavigation/>
+                  </v-card>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -80,12 +101,13 @@
 
 <script>
 import { formMixin } from "@/mixins/formMixin";
+import { mapState } from "vuex";
 import CmeTimeline from "@/components/cme-online/CmeTimeline";
 import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
+import CmeQuestionPanel from "@/components/cme-online/CmeQuestionPanel";
 import CmeVideoPanel from "@/components/cme-online/CmeVideoPanel";
 import CmeReferencesPanel from "@/components/cme-online/CmeReferencesPanel";
-import CmeSimulationPanel from "@/components/cme-online/CmeSimulationPanel";
-import { mapState } from "vuex";
+import CmeNavigation from "@/components/cme-online/CmeNavigation";
 
 export default {
   name: "cme-module-detail",
@@ -94,11 +116,12 @@ export default {
     CmeTabsPanel,
     CmeVideoPanel,
     CmeReferencesPanel,
-    CmeSimulationPanel
+    CmeQuestionPanel,
+    CmeNavigation
   },
   mixins: [formMixin],
   computed: {
-    ...mapState("cmeOnline", ["cmeModule", "currentStep"])
+    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"])
   }
 };
 </script>

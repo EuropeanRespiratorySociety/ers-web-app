@@ -65,19 +65,17 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   });
 };
 
-export const nextPanel = ({ commit, state }) => {
-  commit("SET_CURRENT_PANEL", {
-    selectedPanelIndex: state.simulationPanelIndex + 1,
-    startSimulation: false
-  });
+export const navigateOnStep = ({ dispatch, state }, direction) => {
+  let selectedStepIndex = state.currentStep.selectedIndex + direction;
+  dispatch("fetchTimeline", selectedStepIndex);
 };
 
-export const previousPanel = ({ commit, state }) => {
-  let previousPanelIndex = state.simulationPanelIndex - 1;
+export const navigateOnSimulation = ({ commit, state }, direction) => {
+  let selectedPanelIndex = state.currentPanel.selectedIndex + direction;
   commit("SET_CURRENT_PANEL", {
-    selectedPanelIndex: previousPanelIndex,
+    selectedPanelIndex: selectedPanelIndex,
     startSimulation:
-      previousPanelIndex === 0 ? state.currentStep.isSimulation : false
+      selectedPanelIndex === 0 ? state.currentStep.isSimulation : false
   });
 };
 

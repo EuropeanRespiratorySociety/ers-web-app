@@ -6,7 +6,6 @@ export default {
     state.timeline = {};
     state.currentStep = {};
     state.currentPanel = {};
-    state.simulationPanelIndex = 0;
   },
   RESET_RESULTS(state) {
     state.filters.diseases = [];
@@ -31,15 +30,12 @@ export default {
   },
   SET_CURRENT_STEP(state, selectedStepIndex) {
     let currentStep = state.cmeModule.cmeOnlineModule[selectedStepIndex];
-    if (currentStep) {
-      currentStep.component = currentStep.isSimulation
-        ? "simulation"
-        : currentStep.panels[0].panelType;
-    } else {
+    if (!currentStep) {
       currentStep = {
         title: "Take a CME TEST"
       };
     }
+    currentStep.selectedIndex = selectedStepIndex;
     state.currentStep = currentStep;
   },
   SET_CURRENT_PANEL(state, data) {
@@ -47,9 +43,9 @@ export default {
     if (state.currentStep.panels) {
       currentPanel = state.currentStep.panels[data.selectedPanelIndex];
       currentPanel.startSimulation = data.startSimulation;
+      currentPanel.selectedIndex = data.selectedPanelIndex;
     }
     state.currentPanel = currentPanel;
-    state.simulationPanelIndex = data.selectedPanelIndex;
   },
   SET_TIMELINE(state, timeline) {
     state.timeline = timeline;

@@ -8,7 +8,10 @@ export default [
   {
     path: "/cme-online",
     name: "CmeOnline",
-    component: CmeOnline
+    component: CmeOnline,
+    meta: {
+      breadcrumb: "Home Page"
+    }
   },
   {
     path: "/cme-online/modules",
@@ -16,6 +19,9 @@ export default [
     component: CmeModules,
     beforeEnter(routeTo, routeFrom, next) {
       store.dispatch("cmeOnline/prepareStates").then(next());
+    },
+    meta: {
+      breadcrumb: "Modules"
     }
   },
   {
@@ -26,6 +32,9 @@ export default [
       store
         .dispatch("cmeOnline/fetchCmeModule", routeTo.params.slug)
         .then(next());
+    },
+    meta: {
+      breadcrumb: "Module"
     }
   },
   {
