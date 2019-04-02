@@ -4,11 +4,15 @@
       <v-container grid-list-md fluid>
         <v-card>
           <v-card-actions>
-            <p class="subheading ml-2 font-weight-bold">
-              Filters
-              <v-btn color="info" @click="resetFilters">Clear</v-btn>
-            </p>
+            <p class="subheading ml-2 mr-2 font-weight-bold">Filters</p>
+            <div v-if="!showFilters" class="text-xs-left">
+              <v-chip v-for="disease in filters.diseases" :key="disease" small>{{disease}}</v-chip>
+              <v-chip v-for="method in filters.methods" :key="method" small>{{method}}</v-chip>
+              <v-chip v-for="type in filters.types" :key="type" small>{{type}}</v-chip>
+              <v-chip v-for="categorie in filters.categories" :key="categorie" small>{{categorie}}</v-chip>
+            </div>
             <v-spacer/>
+            <v-btn color="info" flat @click="resetFilters">Reset</v-btn>
             <v-btn icon @click="reverseShowFilters">
               <v-icon>{{ icon }}</v-icon>
             </v-btn>
@@ -94,3 +98,7 @@ export default {
   }
 };
 </script>
+
+
+<style scope>
+</style>
