@@ -34,13 +34,19 @@
           <v-icon>keyboard_arrow_left</v-icon>
         </v-btn>
         <v-btn
-          :disabled="currentStep.selectedIndex === stepCount"
+          v-if="currentStep.selectedIndex !== stepCount"
           icon
           style="float:right"
           v-on:click="navigateOnStep(1)"
         >
           <v-icon>keyboard_arrow_right</v-icon>
         </v-btn>
+        <v-btn
+          v-if="currentStep.selectedIndex === stepCount"
+          outline
+          color="indigo"
+          v-on:click="takeCmeTest"
+        >Go to CME Test</v-btn>
       </div>
     </v-card-actions>
   </div>
@@ -51,11 +57,17 @@ import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "cme-navigation",
   computed: {
-    ...mapState("cmeOnline", ["currentStep", "currentPanel"]),
+    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"]),
     ...mapGetters("cmeOnline", ["simulationStepCount", "stepCount"])
   },
   methods: {
-    ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"])
+    ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"]),
+    takeCmeTest() {
+      window.open(
+        "https://education.ersnet.org/course/view.php?id=" +
+          this.cmeModule.moodleCmeId
+      );
+    }
   }
 };
 </script>

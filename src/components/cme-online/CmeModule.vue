@@ -68,6 +68,7 @@ import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
 import CmeQuestionPanel from "@/components/cme-online/CmeQuestionPanel";
 import CmeVideoPanel from "@/components/cme-online/CmeVideoPanel";
 import CmeReferencesPanel from "@/components/cme-online/CmeReferencesPanel";
+import CmeTestPanel from "@/components/cme-online/CmeTestPanel";
 import CmeNavigation from "@/components/cme-online/CmeNavigation";
 
 export default {
@@ -79,6 +80,7 @@ export default {
     CmeVideoPanel,
     CmeReferencesPanel,
     CmeQuestionPanel,
+    CmeTestPanel,
     CmeNavigation
   },
   mixins: [formMixin],
