@@ -8,11 +8,11 @@
             <div v-if="!showFilters" class="text-xs-left">
               <v-chip v-for="disease in filters.diseases" :key="disease" small>{{disease}}</v-chip>
               <v-chip v-for="method in filters.methods" :key="method" small>{{method}}</v-chip>
-              <v-chip v-for="type in filters.types" :key="type" small>{{type}}</v-chip>
+              <v-chip v-for="cmetype in filters.types" :key="cmetype" small>{{cmetype}}</v-chip>
               <v-chip v-for="categorie in filters.categories" :key="categorie" small>{{categorie}}</v-chip>
             </div>
             <v-spacer/>
-            <v-btn color="info" flat @click="resetFilters">Reset</v-btn>
+            <v-btn color="info" flat @click="resetCmeModules">Reset</v-btn>
             <v-btn icon @click="reverseShowFilters">
               <v-icon>{{ icon }}</v-icon>
             </v-btn>
@@ -26,7 +26,7 @@
                   chips
                   label="Diseases"
                   multiple
-                  @change="selectionChanged"
+                  @change="fetchCmeModulesPerFilters"
                 />
               </v-flex>
               <v-flex xs12 sm6>
@@ -36,7 +36,7 @@
                   chips
                   label="Methods"
                   multiple
-                  @change="selectionChanged"
+                  @change="fetchCmeModulesPerFilters"
                 />
               </v-flex>
               <v-flex xs12 sm6>
@@ -46,7 +46,7 @@
                   chips
                   label="Types"
                   multiple
-                  @change="selectionChanged"
+                  @change="fetchCmeModulesPerFilters"
                 />
               </v-flex>
               <v-flex xs12 sm6>
@@ -56,7 +56,7 @@
                   chips
                   label="Categories"
                   multiple
-                  @change="selectionChanged"
+                  @change="fetchCmeModulesPerFilters"
                 />
               </v-flex>
             </v-layout>
@@ -69,7 +69,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-/* eslint-disable */
+
 export default {
   name: "cme-module-filter",
   data() {
@@ -82,13 +82,10 @@ export default {
     ...mapState("cmeOnline", ["filters", "filtersValues"])
   },
   methods: {
-    ...mapActions("cmeOnline", ["fetchCmeModules", "resetCmeModules"]),
-    selectionChanged() {
-      this.fetchCmeModules();
-    },
-    resetFilters() {
-      this.resetCmeModules();
-    },
+    ...mapActions("cmeOnline", [
+      "fetchCmeModulesPerFilters",
+      "resetCmeModules"
+    ]),
     reverseShowFilters() {
       this.showFilters = !this.showFilters;
       this.icon = this.showFilters
