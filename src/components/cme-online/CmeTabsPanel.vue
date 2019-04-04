@@ -11,10 +11,19 @@
       </div>
       <v-tabs v-if="hasValue(currentPanel.tabs)" fixed-tabs>
         <v-tab v-for="(tabs, index) in currentPanel.tabs" :key="index">{{ tabs.title }}</v-tab>
-        <v-tab-item v-for="(tabs, index) in currentPanel.tabs" :key="index">
+        <v-tab-item v-for="(tab, index) in currentPanel.tabs" :key="index">
           <v-card flat>
             <v-card-text>
-              <span v-html="tabs.description"/>
+              <v-container>
+                <v-layout>
+                  <v-flex :sm12="!hasValue(tab.media)" :sm7="hasValue(tab.media)" xs12>
+                    <span v-html="tab.description"/>
+                  </v-flex>
+                  <v-flex v-viewer v-if="hasValue(tab.media)" xs12 sm5>
+                    <img :src="tab.imageBig" width="100%">
+                  </v-flex>
+                </v-layout>
+              </v-container>
             </v-card-text>
           </v-card>
         </v-tab-item>
@@ -26,12 +35,18 @@
 <script>
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
+import "viewerjs/dist/viewer.css";
+import Viewer from "v-viewer";
+import Vue from "vue";
+Vue.use(Viewer);
+
 export default {
   name: "cme-tabs-panel",
   mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["currentPanel"])
-  }
+  },
+  methods: {}
 };
 </script>
 
