@@ -10,7 +10,7 @@
         </div>
       </div>
       <v-tabs v-if="hasValue(currentPanel.tabs)" fixed-tabs>
-        <v-tab v-for="(tabs, index) in currentPanel.tabs" :key="index">{{ tabs.title }}</v-tab>
+        <v-tab v-for="(tab, index) in currentPanel.tabs" :key="index">{{ tab.title }}</v-tab>
         <v-tab-item v-for="(tab, index) in currentPanel.tabs" :key="index">
           <v-card flat>
             <v-card-text>
@@ -19,8 +19,10 @@
                   <v-flex :sm12="!hasValue(tab.media)" :sm7="hasValue(tab.media)" xs12>
                     <span v-html="tab.description"/>
                   </v-flex>
-                  <v-flex v-viewer v-if="hasValue(tab.media)" xs12 sm5>
-                    <img :src="tab.imageBig" width="100%">
+                  <v-flex v-if="hasValue(tab.media)" xs12 sm5>
+                    <viewer ref="viewer" class="viewer" @inited="inited">
+                      <img :src="tab.imageBig" width="100%">
+                    </viewer>
                   </v-flex>
                 </v-layout>
               </v-container>
@@ -35,19 +37,25 @@
 <script>
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
-import "viewerjs/dist/viewer.css";
-import Viewer from "v-viewer";
-import Vue from "vue";
-
-Vue.use(Viewer);
+import Viewer from "v-viewer/src/component.vue";
 
 export default {
   name: "cme-tabs-panel",
+  components: {
+    Viewer
+  },
   mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["currentPanel"])
   },
-  methods: {}
+  methods: {
+    inited(viewer) {
+      this.$viewer = viewer;
+    },
+    show() {
+      this.$viewer.show();
+    }
+  }
 };
 </script>
 
