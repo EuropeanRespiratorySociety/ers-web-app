@@ -7,6 +7,7 @@ import Vue from "vue";
 import { sync } from "vuex-router-sync";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
+import "viewerjs/dist/viewer.css";
 
 import App from "./App.vue";
 import router from "./router";
