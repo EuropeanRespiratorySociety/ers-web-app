@@ -15,7 +15,7 @@
           <v-card flat>
             <v-card-text>
               <v-container>
-                <v-layout>
+                <v-layout row wrap>
                   <v-flex :sm12="!hasValue(tab.media)" :sm7="hasValue(tab.media)" xs12>
                     <span v-html="tab.description"/>
                   </v-flex>
