@@ -2,8 +2,8 @@
   <v-flex>
     <v-card>
       <v-card-title>
-        <v-layout row wrap>
-          <v-flex xs12 style="padding-left: 33%;">
+        <v-layout justify-center row wrap>
+          <v-flex xs12 class="text-xs-center">
             <v-avatar v-if="hasValue(mainOrganiser.image)" size="84" class="object-center">
               <img :src="mainOrganiser.image">
             </v-avatar>
