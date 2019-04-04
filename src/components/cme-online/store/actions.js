@@ -45,6 +45,11 @@ export const fetchCmeModulesPerPageNumber = (
   dispatch("fetchCmeModules");
 };
 
+export const fetchCmeModulesPerFilters = ({ commit, dispatch }) => {
+  commit("SET_PAGE_NUMBER", 1);
+  dispatch("fetchCmeModules");
+};
+
 export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   let timeline = state.cmeModule.cmeOnlineModule.map(step => {
     return {

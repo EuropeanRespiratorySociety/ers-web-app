@@ -18,51 +18,11 @@
               <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
                 <v-btn flat color="primary">Cme Online List</v-btn>
               </router-link>
-              <!--timeline and Director's info -->
               <v-layout wrap row>
                 <v-flex d-flex xs12 sm3>
                   <v-layout row wrap>
-                    <!-- timeline -->
                     <cme-timeline/>
-                    <!-- Director's info -->
-                    <v-flex>
-                      <v-card>
-                        <v-card-title>
-                          <v-layout row wrap>
-                            <v-flex xs12 style="padding-left: 33%;">
-                              <v-avatar size="84" class="object-center">
-                                <!-- <img :src="avatarModuleDirector"> -->
-                              </v-avatar>
-                            </v-flex>
-                            <v-flex xs12>
-                              <p class="subheading font-weight-bold text-xs-center">
-                                G. Rohde, MD
-                                <br>
-                                <span class="grey--text font-weight-regular">Main Organiser</span>
-                              </p>
-
-                              <v-list two-line>
-                                <v-list-tile avatar>
-                                  <v-list-tile-content>
-                                    <v-list-tile-title>C. Gregoretti</v-list-tile-title>
-                                    <v-list-tile-sub-title>Organiser</v-list-tile-sub-title>
-                                  </v-list-tile-content>
-                                </v-list-tile>
-                                <v-divider/>
-                              </v-list>
-                              <v-list two-line>
-                                <v-list-tile avatar>
-                                  <v-list-tile-content>
-                                    <v-list-tile-title>C. Gregoretti</v-list-tile-title>
-                                    <v-list-tile-sub-title>Organiser</v-list-tile-sub-title>
-                                  </v-list-tile-content>
-                                </v-list-tile>
-                              </v-list>
-                            </v-flex>
-                          </v-layout>
-                        </v-card-title>
-                      </v-card>
-                    </v-flex>
+                    <cme-organisers/>
                   </v-layout>
                 </v-flex>
                 <v-flex v-if="hasValue(currentPanel.panelType)" xs12 sm9>
@@ -103,20 +63,24 @@
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
 import CmeTimeline from "@/components/cme-online/CmeTimeline";
+import CmeOrganisers from "@/components/cme-online/CmeOrganisers";
 import CmeTabsPanel from "@/components/cme-online/CmeTabsPanel";
 import CmeQuestionPanel from "@/components/cme-online/CmeQuestionPanel";
 import CmeVideoPanel from "@/components/cme-online/CmeVideoPanel";
 import CmeReferencesPanel from "@/components/cme-online/CmeReferencesPanel";
+import CmeTestPanel from "@/components/cme-online/CmeTestPanel";
 import CmeNavigation from "@/components/cme-online/CmeNavigation";
 
 export default {
   name: "cme-module-detail",
   components: {
     CmeTimeline,
+    CmeOrganisers,
     CmeTabsPanel,
     CmeVideoPanel,
     CmeReferencesPanel,
     CmeQuestionPanel,
+    CmeTestPanel,
     CmeNavigation
   },
   mixins: [formMixin],

@@ -44,6 +44,8 @@ export default {
       currentPanel = state.currentStep.panels[data.selectedPanelIndex];
       currentPanel.startSimulation = data.startSimulation;
       currentPanel.selectedIndex = data.selectedPanelIndex;
+    } else {
+      currentPanel.panelType = "test";
     }
     state.currentPanel = currentPanel;
   },

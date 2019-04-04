@@ -94,6 +94,12 @@ export default [
     external: true
   },
   {
+    title: "&beta; Cme Online",
+    subtitle: "Currently in beta",
+    icon: ["icon-e-learn icon"],
+    path: "/cme-online"
+  },
+  {
     title: "Guidelines",
     icon: ["s7-way icon"],
     path: "/news/published-guidelines"
