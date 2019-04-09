@@ -6,8 +6,10 @@ import "intersection-observer";
 import Vue from "vue";
 import { sync } from "vuex-router-sync";
 import Vuetify from "vuetify";
+import VuePlyr from "vue-plyr";
 import "vuetify/dist/vuetify.min.css";
 import "viewerjs/dist/viewer.css";
+import "vue-plyr/dist/vue-plyr.css";
 
 import App from "./App.vue";
 import router from "./router";
@@ -15,6 +17,7 @@ import store from "./store";
 import "./plugins/registerServiceWorker";
 
 Vue.use(Vuetify, {});
+Vue.use(VuePlyr);
 
 import VueGtm from "vue-gtm";
 
