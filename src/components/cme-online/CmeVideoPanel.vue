@@ -13,11 +13,22 @@
         <p v-if="hasValue(currentPanel.description)">
           <span v-html="currentPanel.description"/>
         </p>
-        <iframe
-          src="https://www.ers-education.org/ersMade/webcasts/cmeonline/sleep-studies/player.html"
-          frameborder="0"
-          allowfullscreen
-        />
+        <p>
+          flash
+          <iframe
+            src="https://www.ers-education.org/ersMade/webcasts/cmeonline/sleep-studies/player.html"
+            frameborder="0"
+            allowfullscreen
+          />
+        </p>
+        <p>
+          No Flash
+          <iframe
+            src="https://www.ers-education.org/ersMade/webcasts/cmeonline/pseudomonas2/index.html"
+            frameborder="0"
+            allowfullscreen
+          />
+        </p>
       </v-card-text>
     </v-card>
   </div>
