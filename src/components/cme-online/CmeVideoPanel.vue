@@ -13,7 +13,7 @@
         <p v-if="hasValue(currentPanel.description)">
           <span v-html="currentPanel.description"/>
         </p>
-        <p>
+        <!-- <p>
           flash
           <iframe
             src="https://www.ers-education.org/ersMade/webcasts/cmeonline/sleep-studies/player.html"
@@ -28,7 +28,7 @@
             frameborder="0"
             allowfullscreen
           />
-        </p>
+        </p>-->
       </v-card-text>
     </v-card>
   </div>

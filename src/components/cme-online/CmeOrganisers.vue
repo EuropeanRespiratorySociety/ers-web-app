@@ -4,8 +4,12 @@
       <v-card-title>
         <v-layout justify-center row wrap>
           <v-flex xs12 class="text-xs-center">
-            <v-avatar v-if="hasValue(mainOrganiser.image)" size="84" class="object-center">
-              <img :src="mainOrganiser.image">
+            <v-avatar
+              v-if="(imageSource(mainOrganiser.image, mainOrganiser.externalImageLink)).isDefined"
+              size="84"
+              class="object-center"
+            >
+              <img :src="(imageSource(mainOrganiser.image, mainOrganiser.externalImageLink)).src">
             </v-avatar>
           </v-flex>
           <v-flex xs12>
