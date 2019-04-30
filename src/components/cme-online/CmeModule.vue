@@ -22,7 +22,7 @@
                 <v-flex d-flex xs12 sm3>
                   <v-layout row wrap>
                     <cme-timeline/>
-                    <cme-organisers/>
+                    <cme-organisers class="hidden-xs-only"/>
                   </v-layout>
                 </v-flex>
                 <v-flex v-if="hasValue(currentPanel.panelType)" xs12 sm9>
@@ -49,6 +49,7 @@
                     <v-divider/>
                     <cmeNavigation/>
                   </v-card>
+                  <cme-organisers class="hidden-sm-and-up"/>
                 </v-flex>
               </v-layout>
             </v-container>
