@@ -21,9 +21,16 @@
                   </v-flex>
                   <v-flex v-if="hasValue(tab.media)" xs12 sm5>
                     <viewer ref="viewer" class="viewer" @inited="inited">
-                      <img v-if="tab.media==='image'" :src="tab.imageBig" width="100%">
+                      <img
+                        v-if="tab.media==='image'"
+                        :src="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
+                        width="100%"
+                      >
                       <vue-plyr v-else>
-                        <video :poster="tab.imageBig" :src="tab.mediaUrl">
+                        <video
+                          :poster="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
+                          :src="tab.mediaUrl"
+                        >
                           <source :src="tab.mediaUrl" type="video/mp4">
                         </video>
                       </vue-plyr>

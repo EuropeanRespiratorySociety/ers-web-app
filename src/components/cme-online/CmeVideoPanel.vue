@@ -21,14 +21,6 @@
             allow="fullscreen"
           />
         </div>
-        <p>No Flash</p>
-        <div class="video_frame">
-          <iframe
-            src="https://www.ers-education.org/ersMade/webcasts/cmeonline/pseudomonas2/index.html"
-            frameborder="0"
-            allow="fullscreen"
-          />
-        </div>
       </v-card-text>
     </v-card>
   </div>

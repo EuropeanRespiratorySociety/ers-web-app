@@ -42,12 +42,7 @@
                     </div>
                   </v-flex>
                   <v-flex xs5 align-center>
-                    <v-img
-                      :src="mainOrganiserImage(cmeModule.cmeOrganisers)"
-                      height="100px"
-                      contain
-                      class="thumbnail"
-                    />
+                    <v-img :src="moduleImage(cmeModule)" height="100px" contain class="thumbnail"/>
                   </v-flex>
                 </v-layout>
               </v-card-text>
@@ -91,9 +86,9 @@ export default {
   },
   methods: {
     ...mapActions("cmeOnline", ["fetchCmeModulesPerPageNumber"]),
-    mainOrganiserImage(organisers) {
-      let mainOrganiser = organisers.find(organiser => organiser.isMain);
-      return mainOrganiser ? mainOrganiser.image : "";
+    moduleImage(cmeModule) {
+      if (cmeModule.externalImageLink) return cmeModule.externalImageLink;
+      return cmeModule.image;
     }
   }
 };
