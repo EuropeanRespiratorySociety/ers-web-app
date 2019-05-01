@@ -1,3 +1,4 @@
+
 <template>
   <div>
     <v-card flat class="mb-5">
@@ -77,10 +78,19 @@
 </template>
 
 <script>
+/* eslint-disable */
 import _ from "lodash";
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
 import Viewer from "v-viewer/src/component.vue";
+
+const initData = {
+  singleAnswer: "",
+  multiAnswers: [],
+  isValidate: false,
+  correctAnswer: "",
+  isCorrect: false
+};
 
 export default {
   name: "cme-question-panel",
@@ -98,15 +108,20 @@ export default {
     };
   },
   computed: {
-    ...mapState("cmeOnline", ["currentPanel"]),
+    currentPanel() {
+      const panel = this.$store.state.cmeOnline.currentPanel;
+      this.singleAnswer = "";
+      this.multiAnswers = [];
+      this.isValidate = false;
+      this.isCorrect = false;
+      this.correctAnswer = panel.question.answers
+        .filter(answer => answer.isCorrect === true)
+        .map(answer => answer.text);
+      return panel;
+    },
     solution() {
       return this.correctAnswer.join(", ");
     }
-  },
-  beforeMount() {
-    this.correctAnswer = this.currentPanel.question.answers
-      .filter(answer => answer.isCorrect === true)
-      .map(answer => answer.text);
   },
   methods: {
     checkAnswer() {
