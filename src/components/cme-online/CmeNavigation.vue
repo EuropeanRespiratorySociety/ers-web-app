@@ -15,11 +15,13 @@
         >PREVIOUS</v-btn>
         <v-btn
           v-if="!currentPanel.startSimulation && currentPanel.selectedIndex < simulationStepCount"
+          :disabled="hasAnsweredSimulation === false"
           color="info"
           v-on:click="navigateOnSimulation(1)"
         >CONTINUE</v-btn>
         <v-btn
           v-if="!currentPanel.startSimulation && currentPanel.selectedIndex === simulationStepCount"
+          :disabled="hasAnsweredSimulation === false"
           color="info"
           v-on:click="navigateOnStep(1)"
         >FINISH</v-btn>
@@ -57,7 +59,12 @@ import { mapState, mapActions, mapGetters } from "vuex";
 export default {
   name: "cme-navigation",
   computed: {
-    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"]),
+    ...mapState("cmeOnline", [
+      "cmeModule",
+      "currentStep",
+      "currentPanel",
+      "hasAnsweredSimulation"
+    ]),
     ...mapGetters("cmeOnline", ["simulationStepCount", "stepCount"])
   },
   methods: {

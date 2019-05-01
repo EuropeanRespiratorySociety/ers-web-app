@@ -81,16 +81,8 @@
 /* eslint-disable */
 import _ from "lodash";
 import { formMixin } from "@/mixins/formMixin";
-import { mapState } from "vuex";
+import { mapMutations } from "vuex";
 import Viewer from "v-viewer/src/component.vue";
-
-const initData = {
-  singleAnswer: "",
-  multiAnswers: [],
-  isValidate: false,
-  correctAnswer: "",
-  isCorrect: false
-};
 
 export default {
   name: "cme-question-panel",
@@ -124,6 +116,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations("cmeOnline", ["SET_HAS_ANSWERED_SIMULATION"]),
     checkAnswer() {
       this.isValidate = true;
       this.isCorrect = _.isEqual(
@@ -134,6 +127,7 @@ export default {
             : this.singleAnswer.split()
         )
       );
+      this.SET_HAS_ANSWERED_SIMULATION(true);
     },
     inited(viewer) {
       this.$viewer = viewer;

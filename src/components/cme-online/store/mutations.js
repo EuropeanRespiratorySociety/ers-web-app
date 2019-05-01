@@ -51,5 +51,8 @@ export default {
   },
   SET_TIMELINE(state, timeline) {
     state.timeline = timeline;
+  },
+  SET_HAS_ANSWERED_SIMULATION(state, hasAnsweredSimulation) {
+    state.hasAnsweredSimulation = hasAnsweredSimulation;
   }
 };

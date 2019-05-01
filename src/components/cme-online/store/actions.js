@@ -82,6 +82,10 @@ export const navigateOnSimulation = ({ commit, state }, direction) => {
     startSimulation:
       selectedPanelIndex === 0 ? state.currentStep.isSimulation : false
   });
+  commit(
+    "SET_HAS_ANSWERED_SIMULATION",
+    !(state.currentPanel.panelType === "question")
+  );
 };
 
 export const prepareStates = ({ commit, dispatch }) => {

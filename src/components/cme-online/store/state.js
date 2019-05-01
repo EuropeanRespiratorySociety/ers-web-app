@@ -51,5 +51,6 @@ export default {
       "Sleep/NIV",
       "Cystic Fibrosis"
     ]
-  }
+  },
+  hasAnsweredSimulation: false
 };
