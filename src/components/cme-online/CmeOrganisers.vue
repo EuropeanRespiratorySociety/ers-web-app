@@ -24,6 +24,9 @@
             <v-list v-for="(subOrganiser, index) in subOrganisers" :key="index" two-line>
               <v-divider/>
               <v-list-tile avatar>
+                <v-list-tile-avatar>
+                  <img :src="subOrganiser.image">
+                </v-list-tile-avatar>
                 <v-list-tile-content>
                   <v-list-tile-title>{{ subOrganiser.nameAndTitle }}</v-list-tile-title>
                   <v-list-tile-sub-title

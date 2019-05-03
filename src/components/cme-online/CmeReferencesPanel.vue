@@ -1,9 +1,11 @@
 <template>
-  <v-card>
-    <v-card-text>
-      <span v-html="currentPanel.references"/>
-    </v-card-text>
-  </v-card>
+  <div>
+    <v-card flat>
+      <v-card-text>
+        <span v-html="currentPanel.references"/>
+      </v-card-text>
+    </v-card>
+  </div>
 </template>
 
 <script>
