@@ -9,7 +9,7 @@
           <span v-html="currentPanel.description"/>
         </div>
       </div>
-      <v-tabs v-if="hasValue(currentPanel.tabs)" fixed-tabs>
+      <v-tabs v-if="hasValue(currentPanel.tabs)" v-model="activeTab" fixed-tabs grow>
         <v-tab v-for="(tab, index) in currentPanel.tabs" :key="index">{{ tab.title }}</v-tab>
         <v-tab-item v-for="(tab, index) in currentPanel.tabs" :key="index">
           <v-card flat>
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
 import Viewer from "v-viewer/src/component.vue";
@@ -57,8 +58,18 @@ export default {
     Viewer
   },
   mixins: [formMixin],
+  data() {
+    return {
+      activeTab: 0
+    };
+  },
   computed: {
-    ...mapState("cmeOnline", ["currentPanel"])
+    ...mapState("cmeOnline", ["currentPanel"]),
+    currentPanel() {
+      const panel = this.$store.state.cmeOnline.currentPanel;
+      this.activeTab = 0;
+      return panel;
+    }
   },
   methods: {
     inited(viewer) {
