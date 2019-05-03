@@ -49,7 +49,9 @@
                     <v-divider/>
                     <cmeNavigation/>
                   </v-card>
-                  <cme-organisers class="hidden-sm-and-up"/>
+                  <v-layout>
+                    <cme-organisers class="hidden-sm-and-up"/>
+                  </v-layout>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -100,5 +102,11 @@ export default {
 
 .display-flex {
   display: flex;
+}
+
+.v-stepper,
+.v-stepper__header {
+  -webkit-box-shadow: none;
+  box-shadow: none;
 }
 </style>

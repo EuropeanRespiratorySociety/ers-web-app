@@ -14,50 +14,52 @@
             v-if="hasValue(currentPanel.question.question)"
             class="subheading"
           >{{currentPanel.question.question}}</p>
-          <v-flex
-            :sm12="!hasValue(currentPanel.question.media)"
-            :sm7="hasValue(currentPanel.question.media)"
-            xs12
-          >
-            <v-list v-if="currentPanel.question.isMultiChoice">
-              <v-list-tile v-for="(answer, index) in currentPanel.question.answers" :key="index">
-                <v-checkbox
-                  v-model="multiAnswers"
-                  :value="answer.text"
-                  :label="answer.text"
-                  :readonly="isValidate"
-                />
-              </v-list-tile>
-            </v-list>
-            <v-list v-if="!currentPanel.question.isMultiChoice" subheader>
-              <v-radio-group
-                v-for="(answer, index) in currentPanel.question.answers"
-                v-model="singleAnswer"
-                :key="index"
-                class="ml-3"
-              >
-                <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate"/>
-              </v-radio-group>
-            </v-list>
-          </v-flex>
-          <v-flex v-if="hasValue(currentPanel.question.media)" xs12 sm5>
-            <viewer ref="viewer" class="viewer" @inited="inited">
-              <img
-                v-if="currentPanel.question.media==='image'"
-                :src="(imageSource(currentPanel.question.imageBig, currentPanel.question.externalImageBigLink)).src"
-                width="100%"
-              >
-              <vue-plyr v-else>
-                <video
-                  :poster="(imageSource(currentPanel.question.imageBig, currentPanel.question.externalImageBigLink)).src"
-                  :src="currentPanel.question.mediaUrl"
+          <v-layout wrap row>
+            <v-flex
+              :sm12="!hasValue(currentPanel.question.media)"
+              :sm7="hasValue(currentPanel.question.media)"
+              xs12
+            >
+              <v-list v-if="currentPanel.question.isMultiChoice">
+                <v-list-tile v-for="(answer, index) in currentPanel.question.answers" :key="index">
+                  <v-checkbox
+                    v-model="multiAnswers"
+                    :value="answer.text"
+                    :label="answer.text"
+                    :readonly="isValidate"
+                  />
+                </v-list-tile>
+              </v-list>
+              <v-list v-if="!currentPanel.question.isMultiChoice" subheader>
+                <v-radio-group
+                  v-for="(answer, index) in currentPanel.question.answers"
+                  v-model="singleAnswer"
+                  :key="index"
+                  class="ml-3"
                 >
-                  <source :src="currentPanel.question.mediaUrl" type="video/mp4">
-                </video>
-              </vue-plyr>
-            </viewer>
-          </v-flex>
-          <v-btn color="primary" v-on:click="checkAnswer">Validate</v-btn>
+                  <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate"/>
+                </v-radio-group>
+              </v-list>
+            </v-flex>
+            <v-flex v-if="hasValue(currentPanel.question.media)" xs12 sm5>
+              <viewer ref="viewer" class="viewer" @inited="inited">
+                <img
+                  v-if="currentPanel.question.media==='image'"
+                  :src="(imageSource(currentPanel.question.imageBig, currentPanel.question.externalImageBigLink)).src"
+                  width="100%"
+                >
+                <vue-plyr v-else>
+                  <video
+                    :poster="(imageSource(currentPanel.question.imageBig, currentPanel.question.externalImageBigLink)).src"
+                    :src="currentPanel.question.mediaUrl"
+                  >
+                    <source :src="currentPanel.question.mediaUrl" type="video/mp4">
+                  </video>
+                </vue-plyr>
+              </viewer>
+            </v-flex>
+          </v-layout>
+          <v-btn color="primary" v-on:click="checkAnswer">Answer</v-btn>
           <div v-if="isValidate">
             <h3>Answer:</h3>
             <div v-if="isCorrect">Correct !</div>
