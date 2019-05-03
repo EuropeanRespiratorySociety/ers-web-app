@@ -5,22 +5,17 @@
         <h3 class="title mb-0">{{ currentPanel.title }}</h3>
       </v-card-title>
       <v-card-text>
-        <vue-plyr>
+        <div v-if="currentPanel.mediaType === 'external'" class="video_frame">
+          <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen"/>
+        </div>
+        <vue-plyr v-else>
           <video :poster="currentPanel.image" :src="currentPanel.mediaUrl">
-            <source :src="currentPanel.mediaUrl" type="video/mp4">
+            <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType">
           </video>
         </vue-plyr>
         <p v-if="hasValue(currentPanel.description)">
           <span v-html="currentPanel.description"/>
         </p>
-        <p>flash</p>
-        <div class="video_frame">
-          <iframe
-            src="https://www.ers-education.org/ersMade/webcasts/cmeonline/sleep-studies/player.html"
-            frameborder="0"
-            allow="fullscreen"
-          />
-        </div>
       </v-card-text>
     </v-card>
   </div>
