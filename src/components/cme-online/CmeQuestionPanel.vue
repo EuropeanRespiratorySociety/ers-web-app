@@ -57,7 +57,7 @@
               </vue-plyr>
             </viewer>
           </v-flex>
-          <v-btn color="primary" v-on:click="checkAnswer">Validate</v-btn>
+          <v-btn :disabled="hasAnswer" color="primary" v-on:click="showResult">Validate</v-btn>
           <div v-if="isValidate">
             <h3>Answer:</h3>
             <div v-if="isCorrect">Correct !</div>
@@ -106,10 +106,15 @@ export default {
       this.multiAnswers = [];
       this.isValidate = false;
       this.isCorrect = false;
-      this.correctAnswer = panel.question.answers
-        .filter(answer => answer.isCorrect === true)
-        .map(answer => answer.text);
+      this.correctAnswer = panel.question
+        ? panel.question.answers
+            .filter(answer => answer.isCorrect === true)
+            .map(answer => answer.text)
+        : "";
       return panel;
+    },
+    hasAnswer() {
+      return !(this.singleAnswer !== "" || this.multiAnswers.length !== 0);
     },
     solution() {
       return this.correctAnswer.join(", ");
@@ -117,7 +122,7 @@ export default {
   },
   methods: {
     ...mapMutations("cmeOnline", ["SET_HAS_ANSWERED_SIMULATION"]),
-    checkAnswer() {
+    showResult() {
       this.isValidate = true;
       this.isCorrect = _.isEqual(
         _.sortBy(this.correctAnswer),
