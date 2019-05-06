@@ -49,25 +49,27 @@ import { mapState } from "vuex";
 export default {
   name: "cme-organisers",
   mixins: [formMixin],
+  data() {
+    return {
+      mainOrganiser: {},
+      subOrganisers: []
+    };
+  },
   computed: {
-    ...mapState("cmeOnline", ["cmeModule"]),
-    mainOrganiser() {
-      let main = this.cmeModule.cmeOrganisers.find(
-        organiser => organiser.isMain
-      );
-      main.nameAndTitle = this.buildOrganiserNameAndTitle(main);
-      return main;
-    },
-    subOrganisers() {
-      let sub = this.cmeModule.cmeOrganisers.filter(
-        organiser => !organiser.isMain
-      );
-      sub.map(
-        organiser =>
-          (organiser.nameAndTitle = this.buildOrganiserNameAndTitle(organiser))
-      );
-      return sub;
-    }
+    ...mapState("cmeOnline", ["cmeModule"])
+  },
+  mounted() {
+    let main = this.cmeModule.cmeOrganisers.find(organiser => organiser.isMain);
+    main.nameAndTitle = this.buildOrganiserNameAndTitle(main);
+    this.mainOrganiser = main;
+    let sub = this.cmeModule.cmeOrganisers.filter(
+      organiser => !organiser.isMain
+    );
+    sub.map(
+      organiser =>
+        (organiser.nameAndTitle = this.buildOrganiserNameAndTitle(organiser))
+    );
+    this.subOrganisers = sub;
   },
   methods: {
     buildOrganiserNameAndTitle(organiser) {

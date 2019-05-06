@@ -17,23 +17,16 @@ export const fetchCmeModules = async ({ commit, state }) => {
   }
 };
 
-export const fetchCmeModule = async ({ commit, getters }, slug) => {
-  let cmeModule = getters.getCmeModuleBySlug(slug);
+export const fetchCmeModule = async ({ commit }, slug) => {
+  const { ok, response, error } = await sureThing(
+    HTTP.get("/cme-online/" + slug)
+  );
 
-  if (cmeModule) {
-    commit("SET_CME_MODULE", cmeModule);
-    return cmeModule;
+  if (ok) {
+    commit("SET_CME_MODULE", response.data);
+    return response.data;
   } else {
-    const { ok, response, error } = await sureThing(
-      HTTP.get("/cme-online/" + slug)
-    );
-
-    if (ok) {
-      commit("SET_CME_MODULE", response.data);
-      return response.data;
-    } else {
-      console.log(error);
-    }
+    console.log(error);
   }
 };
 
