@@ -25,8 +25,14 @@ export const saveArticle = async ({ commit, state, rootState }, payload) => {
   const type = state.type;
   const { methods, diseases, skip = false } = payload;
   const p = !skip
-    ? { methods, diseases, type }
-    : { skippedBy: rootState.user.data.ContactId };
+    ? {
+        methods,
+        diseases,
+        type
+      }
+    : {
+        skippedBy: rootState.user.data.ContactId
+      };
 
   const { ok, response, error } = await sureThing(
     HTTP.patch(route, p, {
@@ -47,5 +53,7 @@ export const saveArticle = async ({ commit, state, rootState }, payload) => {
 };
 
 export const resetStatus = ({ commit }) => {
-  commit(types.SET_STATUS, { message: "" });
+  commit(types.SET_STATUS, {
+    message: ""
+  });
 };
