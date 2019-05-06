@@ -19,13 +19,13 @@
                 <v-btn flat color="primary">Cme Online List</v-btn>
               </router-link>
               <v-layout wrap row>
-                <v-flex d-flex xs12 sm3>
+                <v-flex d-flex md12 lg3>
                   <v-layout row wrap>
                     <cme-timeline/>
-                    <cme-organisers class="hidden-xs-only"/>
+                    <cme-organisers class="hidden-sm-and-down"/>
                   </v-layout>
                 </v-flex>
-                <v-flex v-if="hasValue(currentPanel.panelType)" xs12 sm9>
+                <v-flex v-if="hasValue(currentPanel.panelType)" md12 lg9>
                   <v-card>
                     <div v-if="currentStep.isSimulation && !currentPanel.startSimulation">
                       <v-stepper :value="currentPanel.selectedIndex">
@@ -50,7 +50,7 @@
                     <cmeNavigation/>
                   </v-card>
                   <v-layout>
-                    <cme-organisers class="hidden-sm-and-up"/>
+                    <cme-organisers class="hidden-md-and-up"/>
                   </v-layout>
                 </v-flex>
               </v-layout>
