@@ -1,13 +1,6 @@
 <template>
   <transition mode="out-in">
     <v-content>
-      <div>
-        <h6 class="subheading" style="line-height:1.2em;">
-          <router-link
-            :to="{ name: 'CmeModuleMock', params: { slug: 'content-test-7' } }"
-          >Go to Mock Detail</router-link>
-        </h6>
-      </div>
       <cme-module-filter/>
       <v-container align-center fluid grid-list-lg>
         <!-- container for wrap starts-->
