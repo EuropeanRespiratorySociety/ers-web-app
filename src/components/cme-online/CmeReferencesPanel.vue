@@ -2,7 +2,7 @@
   <div>
     <v-card flat>
       <v-card-text>
-        <span v-html="currentPanel.references"/>
+        <span v-html="formatLinkTargetBlank(currentPanel.references)"/>
       </v-card-text>
     </v-card>
   </div>

@@ -7,7 +7,7 @@
       </v-card-title>
       <v-card-text>
         <p v-if="hasValue(currentPanel.description)">
-          <span v-html="currentPanel.description"/>
+          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
         </p>
         <div v-if="hasValue(currentPanel.question)">
           <p
@@ -70,7 +70,7 @@
             <div v-if="hasValue(currentPanel.question.comment)">
               <h4>Comment</h4>
               <p>
-                <span v-html="currentPanel.question.comment"/>
+                <span v-html="formatLinkTargetBlank(currentPanel.question.comment)"/>
               </p>
             </div>
           </div>

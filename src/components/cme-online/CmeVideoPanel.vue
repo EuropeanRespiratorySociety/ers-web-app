@@ -14,7 +14,7 @@
           </video>
         </vue-plyr>
         <p v-if="hasValue(currentPanel.description)">
-          <span v-html="currentPanel.description"/>
+          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
         </p>
       </v-card-text>
     </v-card>

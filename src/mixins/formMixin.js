@@ -19,6 +19,10 @@ export const formMixin = {
         result.src = externalImage;
       }
       return result;
+    },
+    formatLinkTargetBlank(html) {
+      if (html) return html.replace(/<a /g, '<a target="_blank" ');
+      return html;
     }
   }
 };
