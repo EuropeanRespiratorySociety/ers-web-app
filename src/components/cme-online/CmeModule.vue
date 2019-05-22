@@ -15,9 +15,7 @@
           <v-flex>
             <!-- container for wrap starts-->
             <v-container fluid grid-list-lg>
-              <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
-                <v-btn flat color="primary">Cme Online List</v-btn>
-              </router-link>
+              <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Back to CME Modules</v-btn>
               <v-layout wrap row>
                 <v-flex d-flex md12 lg3>
                   <v-layout row wrap>

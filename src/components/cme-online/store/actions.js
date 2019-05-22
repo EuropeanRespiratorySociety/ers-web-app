@@ -14,6 +14,7 @@ export const fetchCmeModules = async ({ commit, state }) => {
     commit("SET_CME_MODULES_TOTAL", response._sys.total);
   } else {
     console.log(error);
+    return false;
   }
 };
 
@@ -22,11 +23,12 @@ export const fetchCmeModule = async ({ commit }, slug) => {
     HTTP.get("/cme-online/" + slug)
   );
 
-  if (ok) {
+  if (ok && response.status === 200) {
     commit("SET_CME_MODULE", response.data);
     return response.data;
   } else {
     console.log(error);
+    return false;
   }
 };
 
@@ -83,7 +85,7 @@ export const navigateOnSimulation = ({ commit, state }, direction) => {
 
 export const prepareStates = ({ commit, dispatch }) => {
   commit("RESET_CME_MODULE_STATES");
-  dispatch("fetchCmeModules");
+  return dispatch("fetchCmeModules");
 };
 
 export const resetCmeModules = ({ commit, dispatch }) => {

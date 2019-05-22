@@ -1,6 +1,7 @@
 const CmeOnline = () => import("./CmeOnlineApp.vue");
 const CmeModules = () => import("./CmeModulesApp.vue");
 const CmeModule = () => import("./CmeModuleApp.vue");
+const CmeError = () => import("./CmeErrorApp.vue");
 import store from "@/store";
 
 export default [
@@ -14,8 +15,12 @@ export default [
     name: "CmeModules",
     component: CmeModules,
     beforeEnter(routeTo, routeFrom, next) {
-      store.dispatch("cmeOnline/prepareStates").then(() => {
-        next();
+      store.dispatch("cmeOnline/prepareStates").then(result => {
+        if (result === false) {
+          next("/cme-error");
+        } else {
+          next();
+        }
       });
     }
   },
@@ -26,9 +31,18 @@ export default [
     beforeEnter(routeTo, routeFrom, next) {
       store
         .dispatch("cmeOnline/fetchCmeModule", routeTo.params.slug)
-        .then(() => {
-          next();
+        .then(result => {
+          if (result === false) {
+            next("/cme-error");
+          } else {
+            next();
+          }
         });
     }
+  },
+  {
+    path: "/cme-error",
+    name: "CmeError",
+    component: CmeError
   }
 ];

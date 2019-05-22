@@ -10,7 +10,8 @@ export const sureThing = promise =>
   promise
     .then(data => ({
       ok: true,
-      response: data.data
+      response: data.data,
+      status: data.status
     }))
     .catch(error => {
       if (error.response && error.response.data) {

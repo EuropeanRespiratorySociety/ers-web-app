@@ -52,9 +52,7 @@
                 feugiat augue. Nulla facilisi.
               </p>
               <div>
-                <router-link :to="{ name: 'CmeModules'}" style="text-decoration: none;">
-                  <v-btn flat color="primary">Visit the module list</v-btn>
-                </router-link>
+                <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Visit the module list</v-btn>
               </div>
             </v-flex>
             <v-flex xs12 lg4 class="pl-3">
