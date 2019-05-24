@@ -84,6 +84,7 @@ export const navigateOnSimulation = ({ commit, state }, direction) => {
 };
 
 export const prepareStates = ({ commit, dispatch }) => {
+  commit("RESET_STATIC_STATES");
   commit("RESET_CME_MODULE_STATES");
   return dispatch("fetchCmeModules");
 };
