@@ -10,7 +10,6 @@
                 :src="(imageSource(mainOrganiser.image, mainOrganiser.externalImageLink)).src"
                 height="100px"
                 contain
-                class="circular--square"
               >
             </v-flex>
           </v-flex>
@@ -32,7 +31,6 @@
                     :src="(imageSource(subOrganiser.image, subOrganiser.externalImageLink)).src"
                     height="48px"
                     contain
-                    class="circular--square"
                   >
                 </v-list-tile-action>
                 <v-list-tile-content>
