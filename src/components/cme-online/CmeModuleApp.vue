@@ -1,5 +1,5 @@
 <script>
-const Header = () => import("@/components/base/SimpleHeader.vue");
+const Header = () => import("./CmeHeader.vue");
 const CmeModule = () => import("./CmeModule.vue");
 const SiteFooter = () => import("@/components/base/SiteFooter.vue");
 

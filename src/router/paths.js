@@ -35,13 +35,13 @@ export default [
     icon: ["s7-light icon"],
     group: true,
     path: "/ai",
-    role: ["admin:*", "myERS:*"],
+    role: ["admin:*"],
     items: [
       {
         title: "Training tool",
         icon: ["s7-shuffle icon"],
         path: "/training-tool",
-        role: ["admin:*", "myERS:*"]
+        role: ["admin:*"]
       },
       {
         title: "Entity Extraction",
@@ -53,13 +53,13 @@ export default [
         title: "Recommender Demo",
         icon: ["s7-shuffle icon"],
         path: "/recommender",
-        role: ["myERS:*"]
+        role: ["admin:*"]
       },
       {
         title: "Classifier Demo",
         icon: ["s7-shuffle icon"],
         path: "/classifier",
-        role: ["myERS:*"]
+        role: ["admin:*"]
       }
     ]
   },
@@ -100,11 +100,6 @@ export default [
     path: "/cme-online"
   },
   {
-    title: "Guidelines",
-    icon: ["s7-way icon"],
-    path: "/news/published-guidelines"
-  },
-  {
     title: "Supported Websites",
     group: true,
     icon: ["s7-link icon"],
@@ -123,18 +118,10 @@ export default [
         external: true
       },
       {
-        title: "TB Consilium",
-        icon: ["icon-ers icon pull-left", "icon-who icon pull-right"],
-        path:
-          "http://www.europeanlung.org/en/projects-and-research/projects/healthy-lungs-for-life/home/",
-        external: true
-      },
-      {
         title: "FIRS",
         subtitle: "United For lung Health",
         icon: [],
-        path:
-          "http://www.europeanlung.org/en/projects-and-research/projects/healthy-lungs-for-life/home/",
+        path: "https://www.firsnet.org/",
         external: true
       }
     ]

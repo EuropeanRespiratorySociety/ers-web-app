@@ -1,24 +1,13 @@
 <script>
-import SimpleHeader from "@/components/base/SimpleHeader.vue";
-import CmeError from "./CmeError.vue";
-import SiteFooter from "@/components/base/SiteFooter.vue";
+const Header = () => import("./CmeHeader.vue");
+const CmeError = () => import("./CmeError.vue");
+const SiteFooter = () => import("@/components/base/SiteFooter.vue");
 
 export default {
   name: "error-app",
-
-  components: { SimpleHeader, CmeError, SiteFooter },
-
+  functional: true,
   render(h) {
-    return h(
-      "div",
-      {
-        style: {
-          width: "100%"
-        }
-      },
-      [h("simple-header"), h("cme-error")],
-      h(SiteFooter)
-    );
+    return [h(Header), h(CmeError), h(SiteFooter)];
   }
 };
 </script>

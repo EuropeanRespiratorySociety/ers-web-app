@@ -44,7 +44,7 @@ export default {
       },
       {
         id: "Non Case Based",
-        label: "Non Case gf Based"
+        label: "Non Case Based"
       }
     ],
     categories: [
