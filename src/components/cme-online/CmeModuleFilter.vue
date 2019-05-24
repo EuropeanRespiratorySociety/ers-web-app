@@ -20,7 +20,7 @@
                 color="#D0F8CE"
                 text-color="#0D5302"
               >{{method}}</v-chip>
-              <v-chip v-for="cmetype in filters.types" :key="cmetype" small>{{cmetype}}</v-chip>
+              <v-chip v-for="cmetype in filters.types" :key="cmetype.id" small>{{cmetype.label}}</v-chip>
               <v-chip v-for="categorie in filters.categories" :key="categorie" small>{{categorie}}</v-chip>
             </div>
             <v-spacer/>
@@ -81,6 +81,8 @@
                 <v-select
                   :items="filtersValues.types"
                   v-model="filters.types"
+                  item-text="label"
+                  item-value="id"
                   label="Types"
                   multiple
                   chips
@@ -90,11 +92,11 @@
                   <template slot="selection" slot-scope="data">
                     <v-chip
                       :selected="data.selected"
-                      :key="JSON.stringify(data.item)"
+                      :key="JSON.stringify(data.item.id)"
                       close
                       class="chip--select-multi"
-                      @input="data.parent.selectItem(data.item)"
-                    >{{ data.item }}</v-chip>
+                      @input="data.parent.selectItem(data.item.id)"
+                    >{{ data.item.label }}</v-chip>
                   </template>
                 </v-select>
               </v-flex>

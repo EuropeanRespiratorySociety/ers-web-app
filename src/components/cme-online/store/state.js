@@ -37,7 +37,16 @@ export default {
       "Surgery",
       "Transplantation"
     ],
-    types: ["Case Based", "Topic Based"],
+    types: [
+      {
+        id: "Case Based",
+        label: "Case Based"
+      },
+      {
+        id: "Non Case Based",
+        label: "Non Case gf Based"
+      }
+    ],
     categories: [
       "COPD",
       "Asthma",
@@ -45,10 +54,6 @@ export default {
       "Rare/Orphan Disease",
       "Pulmonary Fibrosis",
       "Pleural diseases",
-      "Respiratory critical care",
-      "PAH",
-      "Lung Cancer",
-      "Sleep/NIV",
       "Cystic Fibrosis"
     ]
   },

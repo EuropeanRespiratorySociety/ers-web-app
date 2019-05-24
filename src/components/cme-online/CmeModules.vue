@@ -26,7 +26,6 @@
               <v-card-text>
                 <v-layout>
                   <v-flex xs7>
-                    <v-chip label outline color="indigo darken-4">{{cmeModule.cmeType}}</v-chip>
                     <div class="grey--text">
                       <span v-for="(organiser, index) in cmeModule.cmeOrganisers" :key="index">
                         <br v-if="index !== 0">

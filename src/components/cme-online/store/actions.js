@@ -107,7 +107,14 @@ function setRoute(filters = null, page = 1, limit = 10) {
     );
   }
   if (filters && filters.types && filters.types.length > 0) {
-    params.push("types=" + filters.types.join(","));
+    params.push(
+      "types=" +
+        filters.types
+          .map(type => {
+            return type.id;
+          })
+          .join(",")
+    );
   }
   if (filters && filters.categories && filters.categories.length > 0) {
     params.push("categories=" + filters.categories.join(","));
