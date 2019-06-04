@@ -1,6 +1,7 @@
 <template>
   <v-navigation-drawer
     v-resize="onResize"
+    v-if="drawer"
     v-model="drawer"
     :mini-variant.sync="mini"
     style="max-height:100%!important"
@@ -8,7 +9,6 @@
     disable-route-watcher
     app
   >
-
     <v-toolbar :style="!mini? 'margin-bottom:10px;' : ''" flat class="transparent">
       <v-list class="pa-0">
         <v-list-tile avatar>
@@ -57,7 +57,7 @@
           </v-list-tile-action>
           <v-list-tile-content>
             <v-list-tile-title v-html="item.title"/>
-            <v-list-tile-sub-title v-if="item.subtitle"> {{ item.subtitle }} </v-list-tile-sub-title>
+            <v-list-tile-sub-title v-if="item.subtitle">{{ item.subtitle }}</v-list-tile-sub-title>
           </v-list-tile-content>
         </v-list-tile>
 
@@ -76,7 +76,7 @@
           >
             <v-list-tile-content>
               <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-              <v-list-tile-sub-title v-if="item.subtitle"> {{ item.subtitle }} </v-list-tile-sub-title>
+              <v-list-tile-sub-title v-if="item.subtitle">{{ item.subtitle }}</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
 
@@ -93,7 +93,7 @@
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{ subItem.title }}</v-list-tile-title>
-              <v-list-tile-sub-title v-if="subItem.subtitle"> {{ subItem.subtitle }} </v-list-tile-sub-title>
+              <v-list-tile-sub-title v-if="subItem.subtitle">{{ subItem.subtitle }}</v-list-tile-sub-title>
             </v-list-tile-content>
           </v-list-tile>
         </v-list-group>
@@ -127,6 +127,7 @@ export default {
         return this.$store.state.base.drawer;
       },
       set(value) {
+        console.log("here");
         this.setDrawer(value);
       }
     }
@@ -147,9 +148,11 @@ export default {
         ? true
         : item.private && this.isAuthenticated && item.role === undefined
         ? true
-        : !item.private && this.isAuthenticated && this.hasRole(item.role, this.permissions)
+        : !item.private &&
+          this.isAuthenticated &&
+          this.hasRole(item.role, this.permissions)
         ? true
-        : false
+        : false;
       /* eslint-enable */
     },
 
