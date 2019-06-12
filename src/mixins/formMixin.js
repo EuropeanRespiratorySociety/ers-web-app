@@ -1,6 +1,7 @@
 export const formMixin = {
   methods: {
-    hasValue(property) {
+    hasValue(property, isArray = false) {
+      if (isArray) return property && property.length > 0 ? true : false;
       return property ? true : false;
     },
     buildCmeOnlineComponentName(panelType) {

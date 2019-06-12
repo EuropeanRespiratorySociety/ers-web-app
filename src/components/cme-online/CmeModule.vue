@@ -74,6 +74,11 @@ import CmeNavigation from "@/components/cme-online/CmeNavigation";
 
 export default {
   name: "cme-module-detail",
+  metaInfo() {
+    return {
+      title: "ERS CME Online Module"
+    };
+  },
   components: {
     CmeTimeline,
     CmeOrganisers,

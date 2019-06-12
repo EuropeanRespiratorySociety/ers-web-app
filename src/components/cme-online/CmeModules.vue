@@ -55,6 +55,11 @@ import { mapState, mapGetters, mapActions } from "vuex";
 export default {
   name: "cme-modules",
   components: { CmeModuleFilter },
+  metaInfo() {
+    return {
+      title: "ERS CME Online Modules"
+    };
+  },
   computed: {
     ...mapState("cmeOnline", [
       "cmeModules",

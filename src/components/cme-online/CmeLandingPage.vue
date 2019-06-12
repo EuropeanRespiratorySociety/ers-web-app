@@ -90,6 +90,11 @@ export default {
         }
       ]
     };
+  },
+  metaInfo() {
+    return {
+      title: "ERS CME Online"
+    };
   }
 };
 </script>
