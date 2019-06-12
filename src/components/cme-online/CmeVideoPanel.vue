@@ -18,7 +18,7 @@
           </video>
           
         </vue-plyr>
-        <p v-if="hasValue(currentPanel.timetable)">
+        <p v-if="hasValue(currentPanel.timetable, true)">
           <ul>
             <li v-for="(item, index) in currentPanel.timetable" :key="index"><button class="text-xs-left" @click="setCurrentTime(item.time)">{{ item.label }}</button></li>
           </ul>
