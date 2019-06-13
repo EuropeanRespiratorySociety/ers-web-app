@@ -12,16 +12,19 @@ export default {
       active: null,
       images: [
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/squirrel.jpg"
+          //In CloudCMS folder cmeImage/carrousel1
+          src:
+            "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800"
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/sky.jpg"
+          //In CloudCMS folder cmeImage/carrousel2
+          src:
+            "https://cdn.ersnet.org/preview/node/o:ccad7c64b95819c33cc9?name=image1800&size=1800"
         },
         {
-          src: "https://cdn.vuetifyjs.com/images/carousel/bird.jpg"
-        },
-        {
-          src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg"
+          //In CloudCMS folder cmeImage/carrousel3
+          src:
+            "https://cdn.ersnet.org/preview/node/o:915cc06052da9f8add8f?name=image1800&size=1800"
         }
       ]
     };
