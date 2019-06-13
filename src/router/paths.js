@@ -94,12 +94,6 @@ export default [
     external: true
   },
   {
-    title: "&beta; Cme Online",
-    subtitle: "Currently in beta",
-    icon: ["icon-e-learn icon"],
-    path: "/cme-online"
-  },
-  {
     title: "Supported Websites",
     group: true,
     icon: ["s7-link icon"],

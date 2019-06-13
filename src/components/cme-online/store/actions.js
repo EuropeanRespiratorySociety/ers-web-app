@@ -83,10 +83,11 @@ export const navigateOnSimulation = ({ commit, state }, direction) => {
   );
 };
 
-export const prepareStates = ({ commit, dispatch }) => {
+export const prepareStates = async ({ commit, dispatch }) => {
+  var result = await dispatch("fetchCmeModules");
   commit("RESET_STATIC_STATES");
   commit("RESET_CME_MODULE_STATES");
-  return dispatch("fetchCmeModules");
+  return result;
 };
 
 export const resetCmeModules = ({ commit, dispatch }) => {

@@ -1,56 +1,54 @@
 <template>
-  <transition mode="out-in">
-    <v-content>
-      <cme-module-filter/>
-      <v-container align-center fluid grid-list-lg>
-        <!-- container for wrap starts-->
-        <v-layout row wrap>
-          <v-flex
-            v-for="cmeModule in cmeModules"
-            :key="cmeModule.slug"
-            :module="cmeModule"
-            xs12
-            sm6
-            md3
-          >
-            <v-card>
-              <v-card-title class="title-wrapper">
-                <div>
-                  <h6 class="subheading" style="line-height:1.2em;">
-                    <router-link
-                      :to="{ name: 'CmeModule', params: { slug: cmeModule.slug } }"
-                    >{{cmeModule.title}}</router-link>
-                  </h6>
-                </div>
-              </v-card-title>
-              <v-card-text>
-                <v-layout>
-                  <v-flex xs7>
-                    <div class="grey--text">
-                      <span v-for="(organiser, index) in cmeModule.cmeOrganisers" :key="index">
-                        <br v-if="index !== 0">
-                        {{organiser.name}}
-                      </span>
-                    </div>
-                    <div v-if="cmeModule.cmeType==='Case Based'">
-                      <br>
-                      <v-chip label outline color="indigo darken-4">{{cmeModule.cmeType}}</v-chip>
-                    </div>
-                  </v-flex>
-                  <v-flex xs5 align-center>
-                    <v-img :src="moduleImage(cmeModule)" height="100px" contain class="thumbnail"/>
-                  </v-flex>
-                </v-layout>
-              </v-card-text>
-            </v-card>
-          </v-flex>
-        </v-layout>
-        <v-layout v-if="hasPagination" justify-center>
-          <v-pagination :length="pagesTotal" v-model="page" :total-visible="8"/>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </transition>
+  <v-content>
+    <cme-module-filter/>
+    <v-container align-center fluid grid-list-lg>
+      <!-- container for wrap starts-->
+      <v-layout row wrap>
+        <v-flex
+          v-for="cmeModule in cmeModules"
+          :key="cmeModule.slug"
+          :module="cmeModule"
+          xs12
+          sm6
+          md3
+        >
+          <v-card>
+            <v-card-title class="title-wrapper">
+              <div>
+                <h6 class="subheading" style="line-height:1.2em;">
+                  <router-link
+                    :to="{ name: 'CmeModule', params: { slug: cmeModule.slug } }"
+                  >{{cmeModule.title}}</router-link>
+                </h6>
+              </div>
+            </v-card-title>
+            <v-card-text>
+              <v-layout>
+                <v-flex xs7>
+                  <div class="grey--text">
+                    <span v-for="(organiser, index) in cmeModule.cmeOrganisers" :key="index">
+                      <br v-if="index !== 0">
+                      {{organiser.name}}
+                    </span>
+                  </div>
+                  <div v-if="cmeModule.cmeType==='Case Based'">
+                    <br>
+                    <v-chip label outline color="indigo darken-4">{{cmeModule.cmeType}}</v-chip>
+                  </div>
+                </v-flex>
+                <v-flex xs5 align-center>
+                  <v-img :src="moduleImage(cmeModule)" height="100px" contain class="thumbnail"/>
+                </v-flex>
+              </v-layout>
+            </v-card-text>
+          </v-card>
+        </v-flex>
+      </v-layout>
+      <v-layout v-if="hasPagination" justify-center>
+        <v-pagination :length="pagesTotal" v-model="page" :total-visible="8"/>
+      </v-layout>
+    </v-container>
+  </v-content>
 </template>
 
 <script>
