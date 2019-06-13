@@ -32,6 +32,10 @@
                         {{organiser.name}}
                       </span>
                     </div>
+                    <div v-if="cmeModule.cmeType==='Case Based'">
+                      <br>
+                      <v-chip label outline color="indigo darken-4">{{cmeModule.cmeType}}</v-chip>
+                    </div>
                   </v-flex>
                   <v-flex xs5 align-center>
                     <v-img :src="moduleImage(cmeModule)" height="100px" contain class="thumbnail"/>
