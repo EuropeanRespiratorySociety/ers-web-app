@@ -14,7 +14,7 @@
         <v-flex>
           <!-- container for wrap starts-->
           <v-container fluid grid-list-lg>
-            <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Back to CME Modules</v-btn>
+            <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Back to CME Modules (test is Mobile: {{ isMobile }})</v-btn>
             <v-layout wrap row>
               <v-flex d-flex md12 lg3>
                 <v-layout row wrap>
@@ -89,7 +89,8 @@ export default {
   },
   mixins: [formMixin],
   computed: {
-    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"])
+    ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"]),
+    ...mapState("base", ["isMobile"])
   }
 };
 </script>
