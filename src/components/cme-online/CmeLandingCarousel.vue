@@ -1,9 +1,6 @@
 <template>
   <v-carousel height="500" class="pt-4">
-    <v-carousel-item v-for="image in images" :key="image.index" :src="image.src">
-      <!-- <div class="carousel-title">
-        <h1 :class="image.class">{{ image.title }}</h1>
-      </div>-->
+    <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
       <v-layout fill-height align-center class="carousel-title">
         <v-flex lg4 md5 sm6 xs10 offset-lg1 offset-sm1 offset-xs1>
           <h1 class="display-2 font-weight-thin">{{ image.title }}</h1>
@@ -14,6 +11,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 export default {
   name: "cme-landing-carousel",
   data() {
@@ -21,30 +19,45 @@ export default {
       active: null,
       images: [
         {
-          //In CloudCMS folder cmeImage/carrousel1
           src:
-            // "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
+            "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
+          title: "Study at your rhythm with ERS experts",
+          isMobile: true,
+          isDesktop: false
+        },
+        {
+          src:
             "https://cdn.ersnet.org/preview/node/o:2f0dbb4ad7a94041c3ff?name=image1800&size=1800",
-          title: "Study at your rhythm with ERS experts"
+          title: "Study at your rhythm with ERS experts",
+          isMobile: false,
+          isDesktop: true
         },
         {
-          //In CloudCMS folder cmeImage/carrousel2
           src:
-            "https://cdn.ersnet.org/preview/node/o:ccad7c64b95819c33cc9?name=image1800&size=1800",
-          title: "Take up interactive case studies"
+            "https://cdn.ersnet.org/preview/node/o:207178f4556d074e8122?name=image1800&size=1800",
+          title: "Take up interactive case studies",
+          isMobile: true,
+          isDesktop: true
         },
         {
-          //In CloudCMS folder cmeImage/carrousel3
           src:
             "https://cdn.ersnet.org/preview/node/o:915cc06052da9f8add8f?name=image1800&size=1800",
-          title: "Test your knowledge and collect CME credits"
+          title: "Test your knowledge and collect CME credits",
+          isMobile: true,
+          isDesktop: true
         }
       ]
     };
+  },
+  computed: {
+    ...mapState("base", ["isMobile"]),
+    carrouselImages() {
+      if (this.isMobile) return this.images.filter(image => image.isMobile);
+      return this.images.select(p => p.isDesktop);
+    }
   }
 };
 </script>
-
 <style scoped>
 .v-carousel {
   height: 400px;

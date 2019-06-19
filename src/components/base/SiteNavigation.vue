@@ -134,7 +134,7 @@ export default {
   },
 
   created() {
-    if (this.$vuetify.breakpoint.mdAndDown) {
+    if (this.$vuetify.breakpoint.smAndDown) {
       this.setMobile(true);
     }
   },
@@ -164,7 +164,7 @@ export default {
     },
 
     onResize() {
-      this.$vuetify.breakpoint.mdAndDown
+      this.$vuetify.breakpoint.smAndDown
         ? this.setMobile(true)
         : this.setMobile(false);
     }
