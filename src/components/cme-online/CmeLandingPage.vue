@@ -36,18 +36,39 @@ export default {
       active: null,
       sponsors: [
         {
-          src: "https://www.ers-education.org/media/39646/astrazeneca.jpg"
+          src:
+            "https://cdn.ersnet.org/preview/node/o:df2b29d2aed5e54396ef?name=image500&size=500"
+          // Astra Zeneca
         },
         {
           src:
-            "https://www.ers-education.org/media/680607/pfizer_vaccines_web.png"
+            "https://cdn.ersnet.org/preview/node/o:aafa1bbf3d61ecc0322e?name=image500&size=500"
+          // Phizer
         },
         {
           src:
-            "https://www.ers-education.org/media/103694/boehringe-logo-grey.jpg"
+            "https://cdn.ersnet.org/preview/node/o:94d510ce112eecd73527?name=image500&size=500"
+          // Boehringer
         },
         {
-          src: "https://www.ers-education.org/media/75309/pulmonx.jpg"
+          src:
+            "https://cdn.ersnet.org/preview/node/o:f34d05d5f9e820336904?name=image500&size=500"
+          // Pulmon
+        },
+        {
+          src:
+            "https://cdn.ersnet.org/preview/node/o:017e82ddf405bd55a9f7?name=image500&size=500"
+          // Roche
+        },
+        {
+          src:
+            "https://cdn.ersnet.org/preview/node/o:1c0b8a8fa26ca3ac92fa?name=image500&size=500"
+          // Novartis
+        },
+        {
+          src:
+            "https://cdn.ersnet.org/preview/node/o:ab2e84dfaae07557bfc8?name=image500&size=500"
+          // Teva
         }
       ]
     };
@@ -61,7 +82,7 @@ export default {
 </script>
 
 <style>
-#sponsor .v-card {
-  min-height: 120px;
+#sponsor .v-card .v-card__title {
+  padding: 0;
 }
 </style>

@@ -14,7 +14,7 @@
         <v-flex>
           <!-- container for wrap starts-->
           <v-container fluid grid-list-lg>
-            <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Back to CME Modules</v-btn>
+            <v-btn :to="{ name: 'CmeModules'}" append flat color="primary"> <v-icon dark left>arrow_back</v-icon>Back to CME Modules</v-btn>
             <v-layout wrap row>
               <v-flex d-flex md12 lg3>
                 <v-layout row wrap>

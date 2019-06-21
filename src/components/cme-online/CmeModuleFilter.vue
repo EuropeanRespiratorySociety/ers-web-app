@@ -1,7 +1,7 @@
 <template>
   <v-layout>
     <v-flex xs12>
-      <v-container grid-list-md fluid>
+      <v-container grid-list-md fluid style="padding-bottom:0;">
         <v-card>
           <v-card-actions>
             <p class="subheading ml-2 mr-2 font-weight-bold">Filters</p>
