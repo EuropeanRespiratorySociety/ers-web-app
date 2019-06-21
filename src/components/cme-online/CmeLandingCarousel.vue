@@ -3,7 +3,9 @@
     <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
       <v-layout fill-height align-center class="carousel-title">
         <v-flex lg4 md5 sm6 xs10 offset-lg1 offset-sm1 offset-xs1>
-          <h1 class="display-2 font-weight-thin">{{ image.title }}</h1>
+          <h1
+            class="display-2 font-weight-thin text-lg-left text-md-left text-sm-left text-xs-center"
+          >{{ image.title }}</h1>
         </v-flex>
       </v-layout>
     </v-carousel-item>
@@ -64,7 +66,7 @@ export default {
 }
 
 .carousel-title h1 {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.5);
   padding: 20px 25px;
   line-height: 54px !important ;
 }
