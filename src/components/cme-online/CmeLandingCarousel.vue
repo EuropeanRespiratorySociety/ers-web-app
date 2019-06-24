@@ -1,7 +1,8 @@
 <template>
   <v-carousel height="500" class="pt-4">
     <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
-      <v-layout fill-height align-center class="carousel-title">
+      <!-- <v-layout fill-height align-center class="carousel-title"> -->
+      <v-layout align-center justify-start row fill-height class="carousel-title">
         <v-flex lg4 md5 sm6 xs10 offset-lg1 offset-sm1 offset-xs1>
           <h1
             class="display-2 font-weight-thin text-lg-left text-md-left text-sm-left text-xs-center"
@@ -23,7 +24,7 @@ export default {
         {
           src:
             "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
-          title: "Study at your rhythm with ERS experts",
+          title: "Study at your rhythm with ERS experts Mobile",
           isMobile: true,
           isDesktop: false
         },
@@ -61,8 +62,7 @@ export default {
 };
 </script>
 <style scoped>
-.v-carousel {
-  height: 400px;
+.carousel-title {
 }
 
 .carousel-title h1 {
@@ -72,9 +72,6 @@ export default {
 }
 
 @media (max-width: 959px) {
-  .v-carousel {
-    height: 200px;
-  }
 }
 @media (max-width: 559px) {
   .carousel-title h1 {
