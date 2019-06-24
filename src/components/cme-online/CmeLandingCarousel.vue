@@ -55,7 +55,7 @@ export default {
     ...mapState("base", ["isMobile"]),
     carrouselImages() {
       if (this.isMobile) return this.images.filter(image => image.isMobile);
-      return this.images.select(p => p.isDesktop);
+      return this.images.filter(image => image.isDesktop);
     }
   }
 };
