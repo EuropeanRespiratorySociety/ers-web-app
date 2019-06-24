@@ -1,8 +1,8 @@
 <template>
   <v-carousel height="500" class="pt-4">
     <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
-      <!-- <v-layout fill-height align-center class="carousel-title"> -->
-      <v-layout align-center justify-start row fill-height class="carousel-title">
+      <!-- <v-layout align-center justify-start row fill-height class="carousel-title"> -->
+      <v-layout row class="carousel-title">
         <v-flex lg4 md5 sm6 xs10 offset-lg1 offset-sm1 offset-xs1>
           <h1
             class="display-2 font-weight-thin text-lg-left text-md-left text-sm-left text-xs-center"
@@ -63,6 +63,10 @@ export default {
 </script>
 <style scoped>
 .carousel-title {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100%;
 }
 
 .carousel-title h1 {
