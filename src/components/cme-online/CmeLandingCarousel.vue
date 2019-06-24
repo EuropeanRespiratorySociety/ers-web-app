@@ -64,12 +64,13 @@ export default {
 <style scoped>
 .carousel-title {
   display: flex;
+  -webkit-display: flex;
   justify-content: left;
   align-items: center;
   -webkit-align-items: center;
   height: 100%;
+  -webkit-height: 100%;
   box-sizing: border-box;
-  width: 100%;
 }
 
 .carousel-title h1 {
