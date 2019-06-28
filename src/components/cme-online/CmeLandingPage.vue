@@ -1,19 +1,28 @@
 <template>
   <v-content class="pt-4">
     <v-container>
-      <section>
-        <v-layout column wrap>
-          <v-flex flex xs12>
-            <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Visit the module list</v-btn>
-            <h5 class="my-3 headline font-weight-medium">Official sponsors of ERS CME Online</h5>
+      <v-container >
+        <v-layout column row wrap>
+          <v-flex xs12  class="px-5 mb-4">
+            <router-link :to="{ name: 'CmeModules'}" class="module-link">
+              <v-card dark style="background-color: #015291;">
+                <v-card-text class="title"><v-icon class="mr-2">assignment</v-icon>Visit the module list</v-card-text>
+              </v-card>
+            </router-link>
+            <!-- <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">Visit the module list</v-btn> -->
+          </v-flex>
+        </v-layout>
+        <v-layout column wrap class="mt-4">
+          <v-flex>
+            <h5 class="my-3 headline font-weight-medium text-xs-center">Official sponsors of ERS CME Online</h5>
             <p
-              subheading
+              subheading class="text-xs-center"
             >ERS CME Online modules are funded by an unrestricted grant. ERS alone is responsible for selecting the module topics and presenters.</p>
           </v-flex>
         </v-layout>
-      </section>
+      </v-container>
       <!-- container for the sponsor's logo-->
-      <v-container id="sponsor" fluid grid-list-lg class="mb-4">
+      <v-container id="sponsor" fluid grid-list-lg class="mb-4 mt-4">
         <v-layout row wrap>
           <v-flex v-for="(sponsor,key) in sponsors" :key="key" xs12 sm3>
             <v-card>
@@ -84,5 +93,9 @@ export default {
 <style>
 #sponsor .v-card .v-card__title {
   padding: 0;
+}
+
+a.module-link {
+  text-decoration: none;
 }
 </style>

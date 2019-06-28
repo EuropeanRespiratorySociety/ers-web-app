@@ -3,10 +3,16 @@
     <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
       <!-- <v-layout align-center justify-start row fill-height class="carousel-title"> -->
       <v-layout row class="carousel-title">
-        <v-flex lg4 md5 sm6 xs10 offset-lg1 offset-sm1 offset-xs1>
-          <h1
-            class="display-2 font-weight-thin text-lg-left text-md-left text-sm-left text-xs-center"
-          >{{ image.title }}</h1>
+        <v-flex lg4 md6 sm6 xs10 offset-lg1 offset-md3 offset-sm3 offset-xs1>
+          <div class="carousel-title-box">
+            <h1
+              class="display-2 font-weight-thin text-lg-left text-md-center text-sm-center text-xs-center mb-2"
+            >{{ image.title }}</h1>
+
+            <div class="text-lg-left text-md-center text-sm-center text-xs-center">
+              <v-btn :to="{ name: 'CmeModules'}" outline large color="grey darken-3">Visit</v-btn>
+            </div>
+          </div>
         </v-flex>
       </v-layout>
     </v-carousel-item>
@@ -24,7 +30,7 @@ export default {
         {
           src:
             "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
-          title: "Study at your rhythm with ERS experts Mobile",
+          title: "Study at your rhythm with ERS experts",
           isMobile: true,
           isDesktop: false
         },
@@ -37,9 +43,16 @@ export default {
         },
         {
           src:
-            "https://cdn.ersnet.org/preview/node/o:207178f4556d074e8122?name=image1800&size=1800",
+            "https://cdn.ersnet.org/preview/node/o:65e935e1a0087a331d50?name=image1800&size=1800",
           title: "Take up interactive case studies",
           isMobile: true,
+          isDesktop: false
+        },
+        {
+          src:
+            "https://cdn.ersnet.org/preview/node/o:207178f4556d074e8122?name=image1800&size=1800",
+          title: "Take up interactive case studies",
+          isMobile: false,
           isDesktop: true
         },
         {
@@ -64,26 +77,25 @@ export default {
 <style scoped>
 .carousel-title {
   display: flex;
-  -webkit-display: flex;
   justify-content: left;
   align-items: center;
-  -webkit-align-items: center;
-  height: 100%;
-  -webkit-height: 100%;
+  height: 500px;
   box-sizing: border-box;
 }
 
 .carousel-title h1 {
-  background: rgba(255, 255, 255, 0.5);
-  padding: 20px 25px;
   line-height: 54px !important ;
+}
+
+.carousel-title-box {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 30px 30px;
 }
 
 @media (max-width: 959px) {
 }
 @media (max-width: 559px) {
   .carousel-title h1 {
-    padding: 20px 25px;
     line-height: 42px !important ;
     font-size: 36px !important ;
   }
