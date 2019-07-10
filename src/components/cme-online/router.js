@@ -9,6 +9,9 @@ export default [
     path: "/cme-online",
     name: "CmeOnline",
     component: CmeOnline,
+    meta: {
+      gtm: "CmeOnlineLandingPage"
+    },
     beforeEnter(routeTo, routeFrom, next) {
       store.dispatch("base/setDrawer", false).then(() => next());
     }
@@ -17,6 +20,9 @@ export default [
     path: "/cme-online/modules",
     name: "CmeModules",
     component: CmeModules,
+    meta: {
+      gtm: "CmeOnlineListOfModulesPage"
+    },
     beforeEnter(routeTo, routeFrom, next) {
       store.dispatch("base/setDrawer", false);
       store.dispatch("cmeOnline/prepareStates").then(result => {
@@ -32,6 +38,9 @@ export default [
     path: "/cme-online/modules/:slug",
     name: "CmeModule",
     component: CmeModule,
+    meta: {
+      gtm: "CmeOnlineModule"
+    },
     beforeEnter(routeTo, routeFrom, next) {
       store.dispatch("base/setDrawer", false);
       store
