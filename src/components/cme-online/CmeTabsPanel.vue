@@ -10,7 +10,11 @@
         </div>
       </div>
       <v-tabs v-if="hasValue(currentPanel.tabs)" v-model="activeTab" fixed-tabs grow>
-        <v-tab v-for="(tab, index) in currentPanel.tabs" :key="index">{{ tab.title }}</v-tab>
+        <v-tab
+          v-for="(tab, index) in currentPanel.tabs"
+          :key="index"
+          class="tab-active-background"
+        >{{ tab.title }}</v-tab>
         <v-tab-item v-for="(tab, index) in currentPanel.tabs" :key="index">
           <v-card flat>
             <v-card-text>
@@ -82,5 +86,9 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+.tab-active-background a.v-tabs__item--active {
+  background-color: rgba(227, 242, 253, 0.3);
+  border-radius: 4px;
+}
 </style>

@@ -7,7 +7,7 @@
       <v-card-text>
         <p v-if="hasValue(currentPanel.description)">
           <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
-          <br >
+          <br>
         </p>
         <div v-if="currentPanel.mediaType === 'external'" class="video_frame">
           <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen"/>
@@ -16,13 +16,15 @@
           <video :poster="currentPanel.image" :src="currentPanel.mediaUrl">
             <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType">
           </video>
-          
         </vue-plyr>
-        <p v-if="hasValue(currentPanel.timetable, true)">
+        <div v-if="hasValue(currentPanel.timetable, true)" class="mt-3">
           <ul>
-            <li v-for="(item, index) in currentPanel.timetable" :key="index"><button class="text-xs-left" @click="setCurrentTime(item.time)">{{ item.label }}</button></li>
+            <li v-for="(item, index) in currentPanel.timetable" :key="index" class="pb-2">
+              <!-- <button class="text-xs-left" @click="setCurrentTime(item.time)">{{ item.label }}</button> -->
+              <a href="#" @click.prevent="setCurrentTime(item.time)">{{ item.label }}</a>
+            </li>
           </ul>
-        </p>
+        </div>
       </v-card-text>
     </v-card>
   </div>
