@@ -3,8 +3,31 @@ import { sureThing, HTTP } from "../http";
 const _HTTP = {
   get: function(arg) {
     return new Promise((resolve, reject) => {
-      if (arg) resolve({ data: { test: "sucessful" } });
-      reject({ response: { data: "something failed" } });
+      if (arg)
+        resolve({
+          data: {
+            test: "sucessful"
+          }
+        });
+      reject({
+        response: {
+          data: "something failed"
+        }
+      });
+    });
+  }
+};
+
+const _HTTP2 = {
+  get: function(arg) {
+    return new Promise((resolve, reject) => {
+      if (arg)
+        resolve({
+          data: {
+            test: "sucessful"
+          }
+        });
+      reject("something failed without response.data");
     });
   }
 };
@@ -20,6 +43,12 @@ describe("HTTP - sureThing", () => {
     const { ok, error } = await sureThing(_HTTP.get(false));
     expect(ok).toBe(false);
     expect(error).toEqual("something failed");
+  });
+
+  it("Returns not OK and an error without data", async () => {
+    const { ok, error } = await sureThing(_HTTP2.get(false));
+    expect(ok).toBe(false);
+    expect(error).toEqual("something failed without response.data");
   });
 });
 

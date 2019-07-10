@@ -3,13 +3,13 @@
     <v-content>
       <v-container fluid>
         <v-layout row>
-          <v-flex xs12 sm12 md6 lg6 offset-md3 offset-lg3>
+          <v-flex xs12 sm12 md9 lg9 offset-md3 offset-lg3>
             <congress-tools v-if="index.includes('congress')"/>
             <journal-tools v-if="index.includes('journal')"/>
             <v-container grid-list-md>
               <v-layout v-if="results" row wrap>
                 <v-flex v-for="post in results" :key="post.id" xs12 sm12>
-                  <card :post="post" />
+                  <card :post="post"/>
                 </v-flex>
               </v-layout>
             </v-container>
@@ -82,35 +82,12 @@ export default {
     }
   },
 
-  created() {
-    this.surveyMonkey();
-  },
-
   methods: {
     ...mapActions(["setPageNumber", "searchAll"]),
 
     setPages(amount) {
       const f = amount => limit => Math.ceil(amount / limit);
       return f(amount)(this.$store.state.base.limit);
-    },
-
-    surveyMonkey() {
-      (function(t, e, s, o) {
-        var n, a, c;
-        (t.SMCX = t.SMCX || []),
-          e.getElementById(o) ||
-            ((n = e.getElementsByTagName(s)),
-            (a = n[n.length - 1]),
-            (c = e.createElement(s)),
-            (c.type = "text/javascript"),
-            (c.async = !0),
-            (c.id = o),
-            (c.src = [
-              "https:" === location.protocol ? "https://" : "http://",
-              "widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd23T5PSOYBbHHr8dkWMsg_2B1COwL0pR7WrIQCsxQT1aPW.js"
-            ].join("")),
-            a.parentNode.insertBefore(c, a));
-      })(window, document, "script", "smcx-sdk");
     }
   }
 };

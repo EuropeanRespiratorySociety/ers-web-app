@@ -1,5 +1,8 @@
 const CmeOnline = () => import("./CmeOnlineApp.vue");
-const CmeModule = () => import("./CmeOnlineModuleApp.vue");
+const CmeModules = () => import("./CmeModulesApp.vue");
+const CmeModule = () => import("./CmeModuleApp.vue");
+const CmeError = () => import("./CmeErrorApp.vue");
+import store from "@/store";
 
 export default [
   {
@@ -7,17 +10,56 @@ export default [
     name: "CmeOnline",
     component: CmeOnline,
     meta: {
-      requiresAuth: true,
-      requiresRole: ["admin:*"]
+      gtm: "CmeOnlineLandingPage"
+    },
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("base/setDrawer", false).then(() => next());
     }
   },
   {
-    path: "/cme-online/:slug",
+    path: "/cme-online/modules",
+    name: "CmeModules",
+    component: CmeModules,
+    meta: {
+      gtm: "CmeOnlineListOfModulesPage"
+    },
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("base/setDrawer", false);
+      store.dispatch("cmeOnline/prepareStates").then(result => {
+        if (result === false) {
+          next("/cme-error");
+        } else {
+          next();
+        }
+      });
+    }
+  },
+  {
+    path: "/cme-online/modules/:slug",
     name: "CmeModule",
     component: CmeModule,
     meta: {
-      requiresAuth: true,
-      requiresRole: ["admin:*"]
+      gtm: "CmeOnlineModule"
+    },
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("base/setDrawer", false);
+      store
+        .dispatch("cmeOnline/fetchCmeModule", routeTo.params.slug)
+        .then(result => {
+          if (result === false) {
+            next("/cme-error");
+          } else {
+            next();
+          }
+        });
+    }
+  },
+  {
+    path: "/cme-error",
+    name: "CmeError",
+    component: CmeError,
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("base/setDrawer", false).then(() => next());
     }
   }
 ];
