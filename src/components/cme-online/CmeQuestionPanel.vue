@@ -20,26 +20,20 @@
               :sm7="hasValue(currentPanel.question.media)"
               xs12
             >
-              <v-list v-if="currentPanel.question.isMultiChoice">
-                <v-list-tile v-for="(answer, index) in currentPanel.question.answers" :key="index">
-                  <v-checkbox
-                    v-model="multiAnswers"
-                    :value="answer.text"
-                    :label="answer.text"
-                    :readonly="isValidate"
-                  />
-                </v-list-tile>
-              </v-list>
-              <v-list v-if="!currentPanel.question.isMultiChoice" subheader>
-                <v-radio-group
-                  v-for="(answer, index) in currentPanel.question.answers"
-                  v-model="singleAnswer"
-                  :key="index"
-                  class="ml-3"
-                >
-                  <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate"/>
-                </v-radio-group>
-              </v-list>
+              <v-checkbox  v-for="(answer, index) in currentPanel.question.answers" v-if="currentPanel.question.isMultiChoice" :key="index"
+                           v-model="multiAnswers"
+                           :value="answer.text"
+                           :label="answer.text"
+                           :readonly="isValidate"
+              />
+              <v-radio-group v-for="(answer, index) in currentPanel.question.answers"
+                             v-if="!currentPanel.question.isMultiChoice"
+                             v-model="singleAnswer"
+                             :key="index"
+                             class="ml-3"
+              >
+                <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate"/>
+              </v-radio-group>
             </v-flex>
             <v-flex v-if="hasValue(currentPanel.question.media)" xs12 sm5>
               <viewer ref="viewer" class="viewer" @inited="inited">
