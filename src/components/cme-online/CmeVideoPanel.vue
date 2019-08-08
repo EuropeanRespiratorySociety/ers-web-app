@@ -20,7 +20,7 @@
         <div v-if="hasValue(currentPanel.timetable, true)" class="mt-3">
           <ul>
             <li v-for="(item, index) in currentPanel.timetable" :key="index" class="pb-2">
-              <a href="#" @click.prevent="setCurrentTime(item.time)">{{ item.label }}</a>
+              <a href="#" @click.prevent="setCurrentTime(item.time)">{{ setLabelTime(item) }}</a>
             </li>
           </ul>
         </div>
@@ -32,6 +32,9 @@
 <script>
 import { formMixin } from "@/mixins/formMixin";
 import { mapState } from "vuex";
+import moment from "moment";
+// eslint-disable-next-line
+import durationFormat from "moment-duration-format";
 
 export default {
   name: "cme-video-panel",
@@ -45,6 +48,11 @@ export default {
   methods: {
     setCurrentTime(second) {
       this.player.currentTime = second;
+    },
+    setLabelTime(item) {
+      let duration = moment.duration({ seconds: item.time });
+      let formatted = duration.format("hh:mm:ss");
+      return formatted + " - " + item.label;
     }
   }
 };
