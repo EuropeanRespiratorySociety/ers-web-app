@@ -13,14 +13,13 @@
           <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen"/>
         </div>
         <vue-plyr v-else ref="plyr">
-          <video :poster="currentPanel.image" :src="currentPanel.mediaUrl">
+          <video :poster="(imageSource(currentPanel.image, currentPanel.externalImageLink)).src" :src="currentPanel.mediaUrl">
             <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType">
           </video>
         </vue-plyr>
         <div v-if="hasValue(currentPanel.timetable, true)" class="mt-3">
           <ul>
             <li v-for="(item, index) in currentPanel.timetable" :key="index" class="pb-2">
-              <!-- <button class="text-xs-left" @click="setCurrentTime(item.time)">{{ item.label }}</button> -->
               <a href="#" @click.prevent="setCurrentTime(item.time)">{{ item.label }}</a>
             </li>
           </ul>
