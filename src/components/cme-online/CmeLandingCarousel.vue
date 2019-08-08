@@ -1,6 +1,13 @@
 <template>
   <v-carousel height="500" class="pt-4">
-    <v-carousel-item v-for="image in carrouselImages" :key="image.index" :src="image.src">
+    <v-carousel-item
+      v-for="image in carrouselImages"
+      :key="image.index"
+      :src="image.src"
+      :position="image.backgroundPosition"
+      reverse-transition="fade-transition"
+      transition="fade-transition"
+    >
       <!-- <v-layout align-center justify-start row fill-height class="carousel-title"> -->
       <v-layout row class="carousel-title">
         <v-flex lg4 md6 sm6 xs10 offset-lg1 offset-md3 offset-sm3 offset-xs1>
@@ -8,9 +15,10 @@
             <h1
               class="display-2 font-weight-thin text-lg-left text-md-center text-sm-center text-xs-center mb-2"
             >{{ image.title }}</h1>
+            <p>{{image.backgroundPosition}}</p>
 
             <div class="text-lg-left text-md-center text-sm-center text-xs-center">
-              <v-btn :to="{ name: 'CmeModules'}" outline large color="grey darken-3">Visit</v-btn>
+              <v-btn :to="{ name: 'CmeModules'}" outline large color="grey darken-3">Start</v-btn>
             </div>
           </div>
         </v-flex>
@@ -31,6 +39,7 @@ export default {
           src:
             "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
           title: "Study at your rhythm with ERS experts",
+          backgroundPosition: "center center",
           isMobile: true,
           isDesktop: false
         },
@@ -38,6 +47,7 @@ export default {
           src:
             "https://cdn.ersnet.org/preview/node/o:2f0dbb4ad7a94041c3ff?name=image1800&size=1800",
           title: "Study at your rhythm with ERS experts",
+          backgroundPosition: "center center",
           isMobile: false,
           isDesktop: true
         },
@@ -45,13 +55,15 @@ export default {
           src:
             "https://cdn.ersnet.org/preview/node/o:65e935e1a0087a331d50?name=image1800&size=1800",
           title: "Take up interactive case studies",
+          backgroundPosition: "center center",
           isMobile: true,
           isDesktop: false
         },
         {
           src:
-            "https://cdn.ersnet.org/preview/node/o:207178f4556d074e8122?name=image1800&size=1800",
+            "https://cdn.ersnet.org/preview/node/o:3cae4cf7f0a1a83843ba?name=image1800&size=1800",
           title: "Take up interactive case studies",
+          backgroundPosition: "center right",
           isMobile: false,
           isDesktop: true
         },
@@ -59,6 +71,7 @@ export default {
           src:
             "https://cdn.ersnet.org/preview/node/o:915cc06052da9f8add8f?name=image1800&size=1800",
           title: "Test your knowledge and collect CME credits",
+          backgroundPosition: "center center",
           isMobile: true,
           isDesktop: true
         }
