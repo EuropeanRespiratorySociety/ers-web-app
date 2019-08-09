@@ -24,7 +24,7 @@
                   <cme-organisers class="hidden-sm-and-down"/>
                 </v-layout>
               </v-flex>
-              <v-flex v-if="hasValue(currentPanel.panelType)" md12 lg9 sm12>
+              <v-flex v-if="hasValue(currentPanel.panelType)" id="simulationAnchor" md12 lg9 sm12>
                 <v-card>
                   <div v-if="currentStep.isSimulation && !currentPanel.startSimulation">
                     <v-stepper :value="currentPanel.selectedIndex">
