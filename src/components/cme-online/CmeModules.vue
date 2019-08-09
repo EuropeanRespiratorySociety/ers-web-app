@@ -3,8 +3,8 @@
     <v-content>
       <cme-module-filter />
       <v-container align-center fluid grid-list-lg>
-        <v-btn :to="{ name: 'CmeOnline'}" append flat color="primary">
-          <v-icon dark left>arrow_back</v-icon>
+        <v-btn :to="{ name: 'CmeOnline'}" append dark style="background-color: #015291;">
+          <v-icon left>arrow_back</v-icon>
           <strong>Back to Main page</strong>
         </v-btn>
 

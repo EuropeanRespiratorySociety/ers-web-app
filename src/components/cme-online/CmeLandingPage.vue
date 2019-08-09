@@ -3,11 +3,11 @@
     <v-container>
       <v-container>
         <v-layout column row wrap>
-          <v-flex xs12 class="px-5 mb-4">
+          <v-flex xs12 class="mb-4 px-5">
             <router-link :to="{ name: 'CmeModules'}" class="module-link">
               <v-card dark style="background-color: #015291;">
                 <v-card-text class="title">
-                  <v-icon class="mr-2">assignment</v-icon>Visit the module list
+                  <v-icon class="mr-2 hidden-xs-only">assignment</v-icon>Browse the list of module
                 </v-card-text>
               </v-card>
             </router-link>

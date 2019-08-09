@@ -6,7 +6,7 @@
           <h3 class="title mb-0">{{currentPanel.title}}</h3>
         </v-card-title>
         <div v-if="hasValue(currentPanel.description)" class="mx-3 mb-4">
-          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
+          <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </div>
       </div>
       <v-tabs v-if="hasValue(currentPanel.tabs)" v-model="activeTab" fixed-tabs grow>
@@ -21,7 +21,7 @@
               <v-container>
                 <v-layout row wrap>
                   <v-flex :sm12="!hasValue(tab.media)" :sm7="hasValue(tab.media)" xs12>
-                    <span v-html="formatLinkTargetBlank(tab.description)"/>
+                    <span v-html="formatLinkTargetBlank(tab.description)" />
                   </v-flex>
                   <v-flex v-if="hasValue(tab.media)" xs12 sm5>
                     <viewer ref="viewer" class="viewer" @inited="inited">
@@ -35,7 +35,7 @@
                           :poster="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
                           :src="tab.mediaUrl"
                         >
-                          <source :src="tab.mediaUrl" type="video/mp4">
+                          <source :src="tab.mediaUrl" type="video/mp4" >
                         </video>
                       </vue-plyr>
                     </viewer>
@@ -88,7 +88,9 @@ export default {
 
 <style>
 .tab-active-background a.v-tabs__item--active {
-  background-color: rgba(227, 242, 253, 0.3);
+  background-color: rgba(227, 242, 253, 0.9);
   border-radius: 4px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
 }
 </style>
