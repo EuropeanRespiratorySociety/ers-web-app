@@ -15,13 +15,13 @@
           <!-- container for wrap starts-->
           <v-container fluid grid-list-lg>
             <v-btn :to="{ name: 'CmeModules'}" append flat color="primary">
-              <v-icon dark left>arrow_back</v-icon>Back to CME Modules
+              <v-icon dark left>arrow_back</v-icon><strong>Back to List of Modules</strong>
             </v-btn>
             <v-layout wrap row>
               <v-flex d-flex md12 lg3>
                 <v-layout row wrap>
-                  <cme-timeline/>
-                  <cme-organisers class="hidden-sm-and-down"/>
+                  <cme-timeline />
+                  <cme-organisers class="hidden-sm-and-down" />
                 </v-layout>
               </v-flex>
               <v-flex v-if="hasValue(currentPanel.panelType)" md12 lg9 sm12>
@@ -43,13 +43,13 @@
                       <h2>{{currentStep.title}}</h2>
                     </v-card-text>
                   </div>
-                  <v-divider/>
-                  <component :is="buildCmeOnlineComponentName(currentPanel.panelType)"/>
-                  <v-divider/>
-                  <cmeNavigation/>
+                  <v-divider />
+                  <component :is="buildCmeOnlineComponentName(currentPanel.panelType)" />
+                  <v-divider />
+                  <cmeNavigation />
                 </v-card>
                 <v-layout>
-                  <cme-organisers class="hidden-md-and-up"/>
+                  <cme-organisers class="hidden-md-and-up" />
                 </v-layout>
               </v-flex>
             </v-layout>

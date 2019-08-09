@@ -1,10 +1,11 @@
 <template>
   <transition mode="out-in">
     <v-content>
-      <cme-module-filter/>
+      <cme-module-filter />
       <v-container align-center fluid grid-list-lg>
         <v-btn :to="{ name: 'CmeOnline'}" append flat color="primary">
-          <v-icon dark left>arrow_back</v-icon>Back to Landing page
+          <v-icon dark left>arrow_back</v-icon>
+          <strong>Back to Main page</strong>
         </v-btn>
 
         <!-- container for wrap starts-->
@@ -17,10 +18,10 @@
             sm6
             md3
           >
-            <v-card>
+            <v-card class="elevation-2">
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6 class="subheading" style="line-height:1.2em;">
+                  <h6 class="subheading" style="line-height:1.2em; font-weight: 600;">
                     <router-link
                       :to="{ name: 'CmeModule', params: { slug: cmeModule.slug } }"
                     >{{cmeModule.title}}</router-link>
@@ -28,26 +29,42 @@
                 </div>
               </v-card-title>
               <v-card-text>
-                <v-layout>
-                  <v-flex xs7>
-                    <v-chip v-if="cmeModule.cmeType === 'Case Based'" label outline color="indigo darken-4">{{cmeModule.cmeType}}</v-chip>
-                    <div class="grey--text">
-                      <span v-for="(organiser, index) in cmeModule.cmeOrganisers" :key="index">
-                        <br v-if="index !== 0">
-                        {{organiser.name}}
-                      </span>
-                    </div>
-                  </v-flex>
-                  <v-flex xs5 align-center>
-                    <v-img :src="moduleImage(cmeModule)" height="100px" contain class="thumbnail"/>
-                  </v-flex>
-                </v-layout>
+                <div style="position: relative;">
+                  <v-layout>
+                    <v-flex xs7>
+                      <div style="position: absolute; bottom: 0;">
+                        <v-chip
+                          v-if="cmeModule.cmeType === 'Case Based'"
+                          outline
+                          label
+                          small
+                          color="indigo darken-4"
+                        >{{cmeModule.cmeType}}</v-chip>
+                        <div class="grey--text pl-2 pb-2">
+                          <span v-for="(organiser, index) in cmeModule.cmeOrganisers" :key="index">
+                            <br v-if="index !== 0" >
+                            {{organiser.name}}
+                          </span>
+                        </div>
+                      </div>
+                    </v-flex>
+
+                    <v-flex xs5 align-center>
+                      <v-img
+                        :src="moduleImage(cmeModule)"
+                        height="100px"
+                        contain
+                        class="thumbnail"
+                      />
+                    </v-flex>
+                  </v-layout>
+                </div>
               </v-card-text>
             </v-card>
           </v-flex>
         </v-layout>
         <v-layout v-if="hasPagination" justify-center>
-          <v-pagination :length="pagesTotal" v-model="page" :total-visible="8"/>
+          <v-pagination :length="pagesTotal" v-model="page" :total-visible="8" />
         </v-layout>
       </v-container>
     </v-content>

@@ -15,7 +15,6 @@
             <h1
               class="display-2 font-weight-thin text-lg-left text-md-center text-sm-center text-xs-center mb-2"
             >{{ image.title }}</h1>
-            <p>{{image.backgroundPosition}}</p>
 
             <div class="text-lg-left text-md-center text-sm-center text-xs-center">
               <v-btn :to="{ name: 'CmeModules'}" outline large color="grey darken-3">Start</v-btn>
