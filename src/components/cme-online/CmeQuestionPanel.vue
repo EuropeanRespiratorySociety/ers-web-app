@@ -53,14 +53,13 @@
               </viewer>
             </v-flex>
           </v-layout>
-          <v-btn :disabled="hasAnswer" color="primary" v-on:click="showResult">Answer</v-btn>
+          <v-btn id="answerScroll" :disabled="hasAnswer" color="primary" href="#answerScroll" v-on:click="showResult">Answer</v-btn>
           <div v-if="isValidate" class="mt-4">
             <div v-if="isCorrect" class="green--text text--darken-2 title">Your answer is correct!</div>
             <div v-else class="red--text text--darken-2 title">Your answer is incorrect!</div>
             <v-alert :value="true" color="success" icon="check_circle" outline class="mt-2 mb-4">
               <span class="font-weight-bold">Correct answer: {{solution}}</span>
             </v-alert>
-            <!-- <p>Correct answer: {{solution}}</p> -->
             <div v-if="hasValue(currentPanel.question.comment)">
               <h4>Comment</h4>
               <p>

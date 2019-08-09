@@ -6,23 +6,27 @@
         <v-btn
           v-if="currentPanel.startSimulation"
           color="info"
+          href="#simulationAnchor"
           v-on:click="navigateOnSimulation(1)"
         >START SIMULATION</v-btn>
         <v-btn
           v-if="!currentPanel.startSimulation"
           color="info"
+          href="#simulationAnchor"
           v-on:click="navigateOnSimulation(-1)"
         >PREVIOUS</v-btn>
         <v-btn
           v-if="!currentPanel.startSimulation && currentPanel.selectedIndex < simulationStepCount"
           :disabled="hasAnsweredSimulation === false"
           color="info"
+          href="#simulationAnchor"
           v-on:click="navigateOnSimulation(1)"
         >CONTINUE</v-btn>
         <v-btn
           v-if="!currentPanel.startSimulation && currentPanel.selectedIndex === simulationStepCount"
           :disabled="hasAnsweredSimulation === false"
           color="info"
+          href="#simulationAnchor"
           v-on:click="navigateOnStep(1)"
         >FINISH</v-btn>
       </div>
@@ -31,6 +35,7 @@
           :disabled="currentStep.selectedIndex === 0"
           icon
           style="float:left"
+          href="#simulationAnchor"
           v-on:click="navigateOnStep(-1)"
         >
           <v-icon>keyboard_arrow_left</v-icon>
@@ -39,6 +44,7 @@
           v-if="currentStep.selectedIndex !== stepCount"
           icon
           style="float:right"
+          href="#simulationAnchor"
           v-on:click="navigateOnStep(1)"
         >
           <v-icon>keyboard_arrow_right</v-icon>
