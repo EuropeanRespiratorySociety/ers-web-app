@@ -6,21 +6,32 @@
       </v-card-title>
       <v-card-text>
         <p v-if="hasValue(currentPanel.description)">
-          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
-          <br>
+          <span v-html="formatLinkTargetBlank(currentPanel.description)" />
+          <br >
         </p>
         <div v-if="currentPanel.mediaType === 'external'" class="video_frame">
-          <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen"/>
+          <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen" />
         </div>
         <vue-plyr v-else ref="plyr">
-          <video :poster="(imageSource(currentPanel.image, currentPanel.externalImageLink)).src" :src="currentPanel.mediaUrl">
-            <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType">
+          <video
+            :poster="(imageSource(currentPanel.image, currentPanel.externalImageLink)).src"
+            :src="currentPanel.mediaUrl"
+          >
+            <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType" >
           </video>
         </vue-plyr>
-        <div v-if="hasValue(currentPanel.timetable, true)" class="mt-3">
-          <ul>
-            <li v-for="(item, index) in currentPanel.timetable" :key="index" class="pb-2">
-              <a href="#" @click.prevent="setCurrentTime(item.time)">{{ setLabelTime(item) }}</a>
+        <div v-if="hasValue(currentPanel.timetable, true)" class="mt-4">
+          <ul style="padding-left: 5px;">
+            <li
+              v-for="(item, index) in currentPanel.timetable"
+              :key="index"
+              class="pb-2"
+              style="list-style-type: none; text-decoration: none; "
+            >
+              <v-icon style="vertical-align: middle;">playlist_play</v-icon>
+              <a href="#" style="text-decoration: none;" @click.prevent="setCurrentTime(item.time)">
+                <strong>{{ setLabelTime(item) }}</strong>
+              </a>
             </li>
           </ul>
         </div>
