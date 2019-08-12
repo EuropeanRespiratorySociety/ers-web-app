@@ -1,5 +1,5 @@
 <template>
-  <v-content>
+  <v-content style="background-color:#f4f4f4;">
     <v-layout>
       <v-flex>
         <v-card>

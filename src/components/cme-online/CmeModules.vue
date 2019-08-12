@@ -1,6 +1,6 @@
 <template>
   <transition mode="out-in">
-    <v-content>
+    <v-content style="background-color:#f4f4f4;">
       <cme-module-filter />
       <v-container align-center fluid grid-list-lg>
         <v-btn :to="{ name: 'CmeOnline'}" append dark style="background-color: #015291;">
@@ -18,7 +18,7 @@
             sm6
             md3
           >
-            <v-card class="elevation-2">
+            <v-card>
               <v-card-title class="title-wrapper">
                 <div>
                   <h6 class="subheading" style="line-height:1.2em; font-weight: 600;">
