@@ -12,7 +12,7 @@
               class="mb-3"
             >
               <v-layout justify-space-between>
-                <button class="text-xs-left" @click="fetchTimeline(index)">{{step.title}}</button>
+                <a href="#main" style="text-decoration:none" @click="fetchTimeline(index)">{{step.title}}</a>
               </v-layout>
             </v-timeline-item>
           </v-timeline>

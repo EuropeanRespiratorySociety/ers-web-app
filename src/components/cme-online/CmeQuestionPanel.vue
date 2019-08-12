@@ -53,7 +53,7 @@
               </viewer>
             </v-flex>
           </v-layout>
-          <v-btn id="answerScroll" :disabled="hasAnswer" color="primary" href="#answerScroll" v-on:click="showResult">Answer</v-btn>
+          <v-btn id="answer" :disabled="hasAnswer" color="primary" href="#answer" v-on:click="showResult">Answer</v-btn>
           <div v-if="isValidate" class="mt-4">
             <div v-if="isCorrect" class="green--text text--darken-2 title">Your answer is correct!</div>
             <div v-else class="red--text text--darken-2 title">Your answer is incorrect!</div>
