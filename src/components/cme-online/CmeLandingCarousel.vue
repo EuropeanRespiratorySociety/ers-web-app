@@ -1,5 +1,6 @@
 <template>
-  <v-carousel height="500" class="pt-4">
+  
+  <v-carousel v-resize="onResize" height="500" class="pt-4">
     <v-carousel-item
       v-for="image in carrouselImages"
       :key="image.index"
@@ -27,12 +28,11 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 export default {
   name: "cme-landing-carousel",
   data() {
     return {
-      active: null,
       images: [
         {
           src:
@@ -82,6 +82,15 @@ export default {
     carrouselImages() {
       if (this.isMobile) return this.images.filter(image => image.isMobile);
       return this.images.filter(image => image.isDesktop);
+    }
+  },
+  methods: {
+    ...mapActions("base", ["setMobile"]),
+    onResize() {
+      this.$vuetify.breakpoint.smAndDown
+        ? this.setMobile(true)
+        : this.setMobile(false);
+      this.$forceUpdate();
     }
   }
 };
