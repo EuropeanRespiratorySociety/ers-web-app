@@ -21,7 +21,7 @@
             <v-card>
               <v-card-title class="title-wrapper">
                 <div>
-                  <h6 class="subheading" style="line-height:1.2em; font-weight: 600;">
+                  <h6 class="subheading" style="line-height:1.2em">
                     <router-link
                       :to="{ name: 'CmeModule', params: { slug: cmeModule.slug } }"
                     >{{cmeModule.title}}</router-link>
