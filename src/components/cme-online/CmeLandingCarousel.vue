@@ -1,5 +1,4 @@
 <template>
-  
   <v-carousel v-resize="onResize" height="500" class="pt-4">
     <v-carousel-item
       v-for="image in carrouselImages"
@@ -18,7 +17,9 @@
             >{{ image.title }}</h1>
 
             <div class="text-lg-left text-md-center text-sm-center text-xs-center">
-              <v-btn :to="{ name: 'CmeModules'}" outline large color="grey darken-3">Start</v-btn>
+              <v-btn :to="{ name: 'CmeModules'}" outline large color="rgb(1, 82, 145)">
+                <strong>Start</strong>
+              </v-btn>
             </div>
           </div>
         </v-flex>
@@ -36,7 +37,8 @@ export default {
       images: [
         {
           src:
-            "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
+            "https://cdn.ersnet.org/preview/node/o:64f840924adec459f070?name=image1800&size=1800",
+          // "https://cdn.ersnet.org/preview/node/o:a9a9b5faa0188c1b652f?name=image1800&size=1800",
           title: "Study at your rhythm with ERS experts",
           backgroundPosition: "center center",
           isMobile: true,
@@ -82,6 +84,14 @@ export default {
     carrouselImages() {
       if (this.isMobile) return this.images.filter(image => image.isMobile);
       return this.images.filter(image => image.isDesktop);
+    },
+    fontSizeLandingBanner() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "3em";
+        default:
+          return "5em";
+      }
     }
   },
   methods: {
@@ -96,6 +106,9 @@ export default {
 };
 </script>
 <style scoped>
+.v-btn {
+  background-color: rgb(1, 82, 145, 0.5);
+}
 .carousel-title {
   display: flex;
   justify-content: left;
@@ -109,7 +122,7 @@ export default {
 }
 
 .carousel-title-box {
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
   padding: 30px 30px;
 }
 

@@ -6,7 +6,9 @@
           <v-flex xs12 class="mb-4 px-5">
             <router-link :to="{ name: 'CmeModules'}" class="module-link">
               <v-card dark style="background-color: #015291;">
-                <v-card-text class="title">
+                <v-card-text
+                  :class="[ $vuetify.breakpoint.xsOnly ? 'subtitle-1 font-weight-bold text-center' : 'title' ]"
+                >
                   <v-icon class="mr-2 hidden-xs-only">assignment</v-icon>Browse the list of module
                 </v-card-text>
               </v-card>

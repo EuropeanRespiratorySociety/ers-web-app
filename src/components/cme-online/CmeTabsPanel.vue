@@ -9,7 +9,13 @@
           <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </div>
       </div>
-      <v-tabs v-if="hasValue(currentPanel.tabs)" v-model="activeTab" fixed-tabs grow>
+      <v-tabs
+        v-if="hasValue(currentPanel.tabs)"
+        v-model="activeTab"
+        fixed-tabs
+        grow
+        class="tab-baseline"
+      >
         <v-tab
           v-for="(tab, index) in currentPanel.tabs"
           :key="index"
@@ -87,6 +93,21 @@ export default {
 </script>
 
 <style>
+.tab-baseline .v-tabs__container:after {
+  display: block;
+  content: "";
+  height: 2px;
+  background: #ddd;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.tab-baseline .v-tabs__slider-wrapper {
+  z-index: 1;
+}
+
 .tab-active-background a.v-tabs__item--active {
   background-color: rgba(227, 242, 253, 0.9);
   border-radius: 4px;
