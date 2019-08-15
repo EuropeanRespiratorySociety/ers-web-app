@@ -10,7 +10,7 @@
           <br >
         </p>
         <div v-if="currentPanel.mediaType === 'external'" class="video_frame">
-          <iframe :src="currentPanel.mediaUrl" frameborder="0" allow="fullscreen" />
+          <iframe :src="currentPanel.mediaUrl" frameborder="0" allowfullscreen />
         </div>
         <vue-plyr v-else ref="plyr">
           <video
@@ -77,6 +77,7 @@ export default {
   padding-top: 56.25%;
 }
 .video_frame iframe {
+  overflow: hidden;
   position: absolute;
   top: 0;
   left: 0;
