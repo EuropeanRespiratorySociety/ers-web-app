@@ -107,14 +107,6 @@ export default {
 .display-flex {
   display: flex;
 }
-.v-stepper__header {
-  overflow-x: scroll;
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: no-wrap;
-  justify-content: left;
-  -webkit-overflow-scrolling: touch;
-}
 
 .v-stepper,
 .v-stepper__header {
