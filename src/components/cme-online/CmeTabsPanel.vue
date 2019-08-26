@@ -2,10 +2,18 @@
   <div>
     <v-card flat class="mb-5">
       <div>
-        <v-card-title v-if="hasValue(currentPanel.title)" primary-title>
-          <h3 class="title mb-0">{{currentPanel.title}}</h3>
+        <v-card-title
+          v-if="hasValue(currentPanel.title)"
+          :class="{ 'mb-0': currentPanel.description, 'mb-3': !currentPanel.description }"
+          primary-title
+        >
+          <h3 class="title">{{currentPanel.title}}</h3>
         </v-card-title>
-        <div v-if="hasValue(currentPanel.description)" class="mx-3 mb-4">
+        <div
+          v-if="hasValue(currentPanel.description)"
+          :class="{'mt-3': !currentPanel.title }"
+          class="mx-3 mb-4"
+        >
           <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </div>
       </div>

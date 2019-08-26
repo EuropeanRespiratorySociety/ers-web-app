@@ -3,36 +3,40 @@
   <div>
     <v-card flat class="mb-5">
       <v-card-title v-if="hasValue(currentPanel.title)" primary-title>
-        <h3 class="title mb-0">{{ currentPanel.title }}</h3>
+        <h3 class="title">{{ currentPanel.title }}</h3>
       </v-card-title>
       <v-card-text>
         <p v-if="hasValue(currentPanel.description)">
-          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
+          <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </p>
-        <div v-if="hasValue(currentPanel.question)">
+        <div v-if="hasValue(currentPanel.question)" class="mt-5">
           <p
             v-if="hasValue(currentPanel.question.question)"
             class="subheading"
           >{{currentPanel.question.question}}</p>
-          <v-layout wrap row>
+          <v-layout wrap row class="mb-3">
             <v-flex
               :sm12="!hasValue(currentPanel.question.media)"
               :sm7="hasValue(currentPanel.question.media)"
               xs12
             >
-              <v-checkbox  v-for="(answer, index) in currentPanel.question.answers" v-if="currentPanel.question.isMultiChoice" :key="index"
-                           v-model="multiAnswers"
-                           :value="answer.text"
-                           :label="answer.text"
-                           :readonly="isValidate"
+              <v-checkbox
+                v-for="(answer, index) in currentPanel.question.answers"
+                v-if="currentPanel.question.isMultiChoice"
+                :key="index"
+                v-model="multiAnswers"
+                :value="answer.text"
+                :label="answer.text"
+                :readonly="isValidate"
               />
-              <v-radio-group v-for="(answer, index) in currentPanel.question.answers"
-                             v-if="!currentPanel.question.isMultiChoice"
-                             v-model="singleAnswer"
-                             :key="index"
-                             class="ml-3"
+              <v-radio-group
+                v-for="(answer, index) in currentPanel.question.answers"
+                v-if="!currentPanel.question.isMultiChoice"
+                v-model="singleAnswer"
+                :key="index"
+                class="ml-3"
               >
-                <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate"/>
+                <v-radio :value="answer.text" :label="answer.text" :readonly="isValidate" />
               </v-radio-group>
             </v-flex>
             <v-flex v-if="hasValue(currentPanel.question.media)" xs12 sm5>
@@ -47,13 +51,19 @@
                     :poster="(imageSource(currentPanel.question.imageBig, currentPanel.question.externalImageBigLink)).src"
                     :src="currentPanel.question.mediaUrl"
                   >
-                    <source :src="currentPanel.question.mediaUrl" type="video/mp4">
+                    <source :src="currentPanel.question.mediaUrl" type="video/mp4" >
                   </video>
                 </vue-plyr>
               </viewer>
             </v-flex>
           </v-layout>
-          <v-btn id="answer" :disabled="hasAnswer" color="primary" href="#answer" v-on:click="showResult">Answer</v-btn>
+          <v-btn
+            id="answer"
+            :disabled="hasAnswer"
+            color="primary"
+            href="#answer"
+            v-on:click="showResult"
+          >Answer</v-btn>
           <div v-if="isValidate" class="mt-4">
             <div v-if="isCorrect" class="green--text text--darken-2 title">Your answer is correct!</div>
             <div v-else class="red--text text--darken-2 title">Your answer is incorrect!</div>
@@ -63,7 +73,7 @@
             <div v-if="hasValue(currentPanel.question.comment)">
               <h4>Comment</h4>
               <p>
-                <span v-html="formatLinkTargetBlank(currentPanel.question.comment)"/>
+                <span v-html="formatLinkTargetBlank(currentPanel.question.comment)" />
               </p>
             </div>
           </div>
@@ -141,4 +151,11 @@ export default {
 </script>
 
 <style scoped>
+.v-input--selection-controls .v-input__slot {
+  margin-bottom: 0px;
+}
+
+.v-input--selection-controls {
+  margin-top: 0;
+}
 </style>
