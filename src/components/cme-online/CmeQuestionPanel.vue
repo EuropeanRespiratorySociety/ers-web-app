@@ -2,7 +2,7 @@
 <template>
   <div>
     <v-card flat class="mb-5">
-      <v-card-title v-if="hasValue(currentPanel.title)" primary-title>
+      <v-card-title v-if="hasValue(currentPanel.title)" primary-title class="pb-1">
         <h3 class="title">{{ currentPanel.title }}</h3>
       </v-card-title>
       <v-card-text>
