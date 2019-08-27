@@ -12,7 +12,7 @@
         <div v-if="hasValue(currentPanel.question)" class="mt-5">
           <p
             v-if="hasValue(currentPanel.question.question)"
-            class="subheading"
+            class="subheading mb-3"
           >{{currentPanel.question.question}}</p>
           <v-layout wrap row class="mb-3">
             <v-flex
@@ -150,10 +150,17 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 .v-input--selection-controls .v-input__slot {
   margin-bottom: 0px;
 }
+</style>
+
+
+<style scoped>
+/* .v-input--selection-controls .v-input__slot {
+  margin-bottom: 0px !important;
+} */
 
 .v-input--selection-controls {
   margin-top: 0;
