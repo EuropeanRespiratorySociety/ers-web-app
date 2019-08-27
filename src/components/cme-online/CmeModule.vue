@@ -77,7 +77,9 @@ export default {
   name: "cme-module-detail",
   metaInfo() {
     return {
-      title: "ERS CME Online Module"
+      title: "ERS CME Online Module",
+      link: [{ rel: "canonical", href: this.cmeModule.url }],
+      meta: [{ name: "keywords", content: this.setMetaKeywords() }]
     };
   },
   components: {
@@ -93,6 +95,15 @@ export default {
   mixins: [formMixin],
   computed: {
     ...mapState("cmeOnline", ["cmeModule", "currentStep", "currentPanel"])
+  },
+  methods: {
+    setMetaKeywords() {
+      let interests = [];
+      if (this.cmeModule.diseases && this.cmeModule.methods) {
+        interests = this.cmeModule.diseases.concat(this.cmeModule.methods);
+      }
+      return interests.join();
+    }
   }
 };
 </script>
