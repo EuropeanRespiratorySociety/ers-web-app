@@ -152,16 +152,12 @@ export default {
 
 <style>
 .v-input--selection-controls .v-input__slot {
-  margin-bottom: 0px;
+  margin-bottom: 5px;
 }
 </style>
 
 
 <style scoped>
-/* .v-input--selection-controls .v-input__slot {
-  margin-bottom: 0px !important;
-} */
-
 .v-input--selection-controls {
   margin-top: 0;
 }
