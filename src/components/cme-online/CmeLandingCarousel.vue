@@ -9,15 +9,15 @@
       transition="fade-transition"
     >
       <!-- <v-layout align-center justify-start row fill-height class="carousel-title"> -->
-      <v-layout row class="carousel-title">
+      <v-layout row class="carousel-title" white--text>
         <v-flex lg4 md6 sm6 xs10 offset-lg1 offset-md3 offset-sm3 offset-xs1>
           <div class="carousel-title-box">
             <h1
-              class="display-2 font-weight-thin text-lg-left text-md-center text-sm-center text-xs-center mb-2"
+              class="font-weight-medium display-3 text-lg-left text-md-center text-sm-center text-xs-center mb-2"
             >{{ image.title }}</h1>
 
             <div class="text-lg-left text-md-center text-sm-center text-xs-center">
-              <v-btn :to="{ name: 'CmeModules'}" outline large color="rgb(1, 82, 145)">
+              <v-btn :to="{ name: 'CmeModules'}" large dark style="background-color: #015291;">
                 <strong>Start</strong>
               </v-btn>
             </div>
@@ -106,9 +106,25 @@ export default {
 };
 </script>
 <style scoped>
-.v-btn {
-  background-color: rgb(1, 82, 145, 0.5);
+.carousel-title-box {
+  position: relative;
+  z-index: 1;
 }
+
+.carousel-title::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2); /* black filter on the carousel images*/
+}
+
+.carousel-title {
+  position: relative;
+}
+
 .carousel-title {
   display: flex;
   justify-content: left;
@@ -118,11 +134,12 @@ export default {
 }
 
 .carousel-title h1 {
-  line-height: 54px !important ;
+  line-height: 65px !important ;
+  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-title-box {
-  background: rgba(255, 255, 255, 0.7);
+  /* background: rgba(255, 255, 255, 0.7); */
   padding: 30px 30px;
 }
 
