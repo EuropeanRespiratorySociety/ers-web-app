@@ -118,7 +118,7 @@ export default {
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.2); /* black filter on the carousel images*/
+  background-color: rgba(0, 0, 0, 0.1); /* black filter on the carousel images*/
 }
 
 .carousel-title {
@@ -135,7 +135,7 @@ export default {
 
 .carousel-title h1 {
   line-height: 65px !important ;
-  text-shadow: 0px 0px 12px rgba(0, 0, 0, 0.2);
+  text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
 }
 
 .carousel-title-box {
@@ -149,6 +149,7 @@ export default {
   .carousel-title h1 {
     line-height: 42px !important ;
     font-size: 36px !important ;
+    text-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
   }
 }
 </style>
