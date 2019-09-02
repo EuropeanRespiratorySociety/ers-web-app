@@ -64,6 +64,23 @@ export default {
       let duration = moment.duration({ seconds: item.time });
       let formatted = duration.format("hh:mm:ss");
       return formatted + " - " + item.label;
+    },
+    imageSource(cdnImage, externalImage) {
+      let result = {
+        isDefined: false,
+        src: ""
+      };
+      if (this.hasValue(cdnImage)) {
+        result.isDefined = true;
+        result.src = cdnImage.replace(
+          "name=img500&size=500",
+          "name=img1500&size=1500"
+        );
+      } else if (this.hasValue(externalImage)) {
+        result.isDefined = true;
+        result.src = externalImage;
+      }
+      return result;
     }
   }
 };
