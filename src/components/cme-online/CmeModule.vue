@@ -19,7 +19,7 @@
               <strong>Back to List of Modules</strong>
             </v-btn>
             <v-layout wrap row>
-              <v-flex d-flex md12 lg3>
+              <v-flex md12 lg3>
                 <v-layout row wrap>
                   <cme-timeline />
                   <cme-organisers class="hidden-sm-and-down" />
