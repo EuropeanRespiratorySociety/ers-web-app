@@ -45,7 +45,7 @@
                     </v-card-text>
                   </div>
                   <v-divider />
-                  <component :is="buildCmeOnlineComponentName(currentPanel.panelType)" />
+                  <component :is="buildCmeOnlineComponentName(currentPanel.panelType)" :key="currentStep.selectedIndex + currentPanel.selectedIndex" />
                   <v-divider />
                   <cmeNavigation />
                 </v-card>

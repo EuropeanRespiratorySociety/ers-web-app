@@ -19,7 +19,6 @@
       </div>
       <v-tabs
         v-if="hasValue(currentPanel.tabs)"
-        v-model="activeTab"
         fixed-tabs
         grow
         class="tab-baseline"
@@ -76,16 +75,10 @@ export default {
     Viewer
   },
   mixins: [formMixin],
-  data() {
-    return {
-      activeTab: 0
-    };
-  },
   computed: {
     ...mapState("cmeOnline", ["currentPanel"]),
     currentPanel() {
       const panel = this.$store.state.cmeOnline.currentPanel;
-      this.activeTab = 0;
       return panel;
     }
   },

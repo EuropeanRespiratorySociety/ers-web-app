@@ -14,7 +14,7 @@
         </div>
         <vue-plyr v-else ref="plyr">
           <video
-            :poster="(imageSource(currentPanel.image, currentPanel.externalImageLink)).src"
+            :poster="imageSource(currentPanel.image, currentPanel.externalImageLink)"
             :src="currentPanel.mediaUrl"
           >
             <source :src="currentPanel.mediaUrl" :type="currentPanel.mediaType" >
@@ -51,7 +51,7 @@ export default {
   name: "cme-video-panel",
   mixins: [formMixin],
   computed: {
-    ...mapState("cmeOnline", ["currentPanel"]),
+    ...mapState("cmeOnline", ["currentStep", "currentPanel"]),
     player() {
       return this.$refs.plyr.player;
     }
@@ -66,21 +66,15 @@ export default {
       return formatted + " - " + item.label;
     },
     imageSource(cdnImage, externalImage) {
-      let result = {
-        isDefined: false,
-        src: ""
-      };
       if (this.hasValue(cdnImage)) {
-        result.isDefined = true;
-        result.src = cdnImage.replace(
+        return cdnImage.replace(
           "name=img500&size=500",
           "name=img1500&size=1500"
         );
       } else if (this.hasValue(externalImage)) {
-        result.isDefined = true;
-        result.src = externalImage;
+        return externalImage;
       }
-      return result;
+      return "";
     }
   }
 };
