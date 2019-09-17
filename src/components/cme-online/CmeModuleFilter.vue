@@ -83,7 +83,7 @@
                   v-model="filters.types"
                   item-text="label"
                   item-value="id"
-                  label="Types"
+                  label="Type"
                   multiple
                   chips
                   return-object

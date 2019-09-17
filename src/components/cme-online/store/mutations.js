@@ -31,11 +31,7 @@ export default {
       types: [
         {
           id: "Case Based",
-          label: "Case Based"
-        },
-        {
-          id: "Non Case Based",
-          label: "Non Case Based"
+          label: "Case based only"
         }
       ],
       categories: [
