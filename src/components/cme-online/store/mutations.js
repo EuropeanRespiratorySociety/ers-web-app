@@ -37,7 +37,6 @@ export default {
       categories: [
         "COPD",
         "Asthma",
-        "Infectious Diseases",
         "Rare/Orphan Disease",
         "Pulmonary Fibrosis",
         "Pleural diseases",
