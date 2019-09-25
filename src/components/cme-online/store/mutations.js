@@ -3,7 +3,7 @@
 export default {
   RESET_STATIC_STATES(state) {
     state.pageNumber = 1;
-    state.perPage = 25;
+    state.perPage = 24;
     state.filtersValues = {
       diseases: [
         "Airway diseases",
