@@ -161,4 +161,7 @@ export default {
 .v-input--selection-controls {
   margin-top: 0;
 }
+.plyr__poster {
+  background-color: #fff;
+}
 </style>
