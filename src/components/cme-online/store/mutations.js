@@ -3,7 +3,7 @@
 export default {
   RESET_STATIC_STATES(state) {
     state.pageNumber = 1;
-    state.perPage = 25;
+    state.perPage = 24;
     state.filtersValues = {
       diseases: [
         "Airway diseases",
@@ -31,17 +31,12 @@ export default {
       types: [
         {
           id: "Case Based",
-          label: "Case Based"
-        },
-        {
-          id: "Non Case Based",
-          label: "Non Case Based"
+          label: "Case based only"
         }
       ],
       categories: [
         "COPD",
         "Asthma",
-        "Infectious Diseases",
         "Rare/Orphan Disease",
         "Pulmonary Fibrosis",
         "Pleural diseases",

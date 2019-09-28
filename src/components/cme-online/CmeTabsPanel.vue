@@ -123,4 +123,8 @@ export default {
   font-weight: 600;
   color: rgba(0, 0, 0, 0.7);
 }
+
+.plyr__poster {
+  background-color: #fff;
+}
 </style>
