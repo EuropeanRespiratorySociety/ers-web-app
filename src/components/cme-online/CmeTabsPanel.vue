@@ -17,12 +17,7 @@
           <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </div>
       </div>
-      <v-tabs
-        v-if="hasValue(currentPanel.tabs)"
-        fixed-tabs
-        grow
-        class="tab-baseline"
-      >
+      <v-tabs v-if="hasValue(currentPanel.tabs)" fixed-tabs grow class="tab-baseline" show-arrows>
         <v-tab
           v-for="(tab, index) in currentPanel.tabs"
           :key="index"
@@ -37,7 +32,10 @@
                     <span v-html="formatLinkTargetBlank(tab.description)" />
                   </v-flex>
                   <v-flex v-if="hasValue(tab.media)" xs12 sm5>
-                    <viewer ref="viewer" class="viewer" @inited="inited">
+                    <viewer ref="viewer" class="viewer viewer-icon-parent" @inited="inited">
+                      <v-avatar size="30" color="grey" class="viewer-icon">
+                        <v-icon dark>zoom_in</v-icon>
+                      </v-avatar>
                       <img
                         v-if="tab.media==='image'"
                         :src="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
@@ -94,6 +92,16 @@ export default {
 </script>
 
 <style>
+.viewer-icon {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+
+.viewer-icon-parent {
+  position: relative;
+}
+
 .tab-baseline .v-tabs__container:after {
   display: block;
   content: "";
