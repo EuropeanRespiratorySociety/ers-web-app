@@ -22,7 +22,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "/search"
+      redirect: "/cme-online"
     },
     ...classifierRouter,
     ...cmeOnlineRouter,
