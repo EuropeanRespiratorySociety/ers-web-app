@@ -1,7 +1,7 @@
 export default {
   cmeModulesTotal: 0,
   pageNumber: 1,
-  perPage: 25,
+  perPage: 24,
   cmeModules: [],
   filters: {
     diseases: [],

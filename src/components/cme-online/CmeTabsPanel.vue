@@ -2,14 +2,22 @@
   <div>
     <v-card flat class="mb-5">
       <div>
-        <v-card-title v-if="hasValue(currentPanel.title)" primary-title>
-          <h3 class="title mb-0">{{currentPanel.title}}</h3>
+        <v-card-title
+          v-if="hasValue(currentPanel.title)"
+          :class="{ 'mb-0': currentPanel.description, 'mb-3': !currentPanel.description }"
+          primary-title
+        >
+          <h3 class="title">{{currentPanel.title}}</h3>
         </v-card-title>
-        <div v-if="hasValue(currentPanel.description)" class="mx-3 mb-4">
-          <span v-html="formatLinkTargetBlank(currentPanel.description)"/>
+        <div
+          v-if="hasValue(currentPanel.description)"
+          :class="{'mt-3': !currentPanel.title }"
+          class="mx-3 mb-4"
+        >
+          <span v-html="formatLinkTargetBlank(currentPanel.description)" />
         </div>
       </div>
-      <v-tabs v-if="hasValue(currentPanel.tabs)" v-model="activeTab" fixed-tabs grow>
+      <v-tabs v-if="hasValue(currentPanel.tabs)" fixed-tabs grow class="tab-baseline" show-arrows>
         <v-tab
           v-for="(tab, index) in currentPanel.tabs"
           :key="index"
@@ -21,10 +29,13 @@
               <v-container>
                 <v-layout row wrap>
                   <v-flex :sm12="!hasValue(tab.media)" :sm7="hasValue(tab.media)" xs12>
-                    <span v-html="formatLinkTargetBlank(tab.description)"/>
+                    <span v-html="formatLinkTargetBlank(tab.description)" />
                   </v-flex>
                   <v-flex v-if="hasValue(tab.media)" xs12 sm5>
-                    <viewer ref="viewer" class="viewer" @inited="inited">
+                    <viewer ref="viewer" class="viewer viewer-icon-parent" @inited="inited">
+                      <v-avatar size="30" color="grey" class="viewer-icon">
+                        <v-icon dark>zoom_in</v-icon>
+                      </v-avatar>
                       <img
                         v-if="tab.media==='image'"
                         :src="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
@@ -35,7 +46,7 @@
                           :poster="(imageSource(tab.imageBig, tab.externalImageBigLink)).src"
                           :src="tab.mediaUrl"
                         >
-                          <source :src="tab.mediaUrl" type="video/mp4">
+                          <source :src="tab.mediaUrl" type="video/mp4" >
                         </video>
                       </vue-plyr>
                     </viewer>
@@ -62,16 +73,10 @@ export default {
     Viewer
   },
   mixins: [formMixin],
-  data() {
-    return {
-      activeTab: 0
-    };
-  },
   computed: {
     ...mapState("cmeOnline", ["currentPanel"]),
     currentPanel() {
       const panel = this.$store.state.cmeOnline.currentPanel;
-      this.activeTab = 0;
       return panel;
     }
   },
@@ -87,8 +92,39 @@ export default {
 </script>
 
 <style>
+.viewer-icon {
+  position: absolute;
+  top: 3%;
+  left: 3%;
+}
+
+.viewer-icon-parent {
+  position: relative;
+}
+
+.tab-baseline .v-tabs__container:after {
+  display: block;
+  content: "";
+  height: 2px;
+  background: #ddd;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.tab-baseline .v-tabs__slider-wrapper {
+  z-index: 1;
+}
+
 .tab-active-background a.v-tabs__item--active {
-  background-color: rgba(227, 242, 253, 0.3);
+  background-color: rgba(227, 242, 253, 0.9);
   border-radius: 4px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.plyr__poster {
+  background-color: #fff;
 }
 </style>

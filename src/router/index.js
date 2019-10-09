@@ -12,12 +12,8 @@ import searchRouter from "@/components/search/router";
 import userRouter from "@/components/user/router";
 
 /* eslint-disable */
-
 const ErrorApp = () => import('@/components/errors/ErrorApp.vue')
 /* eslint-enable */
-
-// import store from '../vuex/store'
-
 Vue.use(Router);
 Vue.use(Meta);
 
@@ -26,7 +22,7 @@ const router = new Router({
   routes: [
     {
       path: "/",
-      redirect: "/search"
+      redirect: "/cme-online"
     },
     ...classifierRouter,
     ...cmeOnlineRouter,
@@ -35,7 +31,21 @@ const router = new Router({
     ...searchRouter,
     ...userRouter,
     ...errorsRouter
-  ]
+  ],
+  scrollBehavior(to, from, savedPosition) {
+    if (to.hash) {
+      return {
+        selector: to.hash
+      };
+    } else if (savedPosition) {
+      return savedPosition;
+    } else {
+      return {
+        x: 0,
+        y: 0
+      };
+    }
+  }
 });
 router.beforeEach((to, from, next) => beforeEach(to, from, next));
 router.afterEach(() => afterEach());
@@ -51,7 +61,9 @@ export function beforeEach(to, from, next) {
     if (!authenticated) {
       next({
         path: "/user/login",
-        query: { redirect: to.fullPath }
+        query: {
+          redirect: to.fullPath
+        }
       });
       return;
     }
@@ -59,7 +71,9 @@ export function beforeEach(to, from, next) {
     if (to.meta.requiresRole && !hasPermission) {
       next({
         path: "/not-authorized",
-        query: { redirect: to.fullPath }
+        query: {
+          redirect: to.fullPath
+        }
       });
       return;
     }
@@ -85,7 +99,9 @@ export function afterEach() {
   // Auto close navigation drawer after
   // navigation on mobile devices.
   if (store.state.base.isMobile === true) {
-    store.dispatch("base/setDrawer", false, { root: true });
+    store.dispatch("base/setDrawer", false, {
+      root: true
+    });
   }
 }
 

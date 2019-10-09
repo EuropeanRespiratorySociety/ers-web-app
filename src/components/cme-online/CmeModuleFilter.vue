@@ -5,27 +5,9 @@
         <v-card>
           <v-card-actions>
             <p class="subheading ml-2 mr-2 font-weight-bold">Filters</p>
-            <!-- <div v-if="!showFilters" class="text-xs-left">
-              <v-chip
-                v-for="disease in filters.diseases"
-                :key="disease"
-                small
-                color="#F3E5F5"
-                text-color="#4A148C"
-              >{{disease}}</v-chip>
-              <v-chip
-                v-for="method in filters.methods"
-                :key="method"
-                small
-                color="#D0F8CE"
-                text-color="#0D5302"
-              >{{method}}</v-chip>
-              <v-chip v-for="cmetype in filters.types" :key="cmetype.id" small>{{cmetype.label}}</v-chip>
-              <v-chip v-for="categorie in filters.categories" :key="categorie" small>{{categorie}}</v-chip>
-            </div>-->
             <v-spacer/>
-            <v-btn color="info" flat @click="resetCmeModules">Reset</v-btn>
-            <v-btn icon @click="reverseShowFilters">
+            <v-btn color="info" flat @click.prevent="resetCmeModules">Reset</v-btn>
+            <v-btn icon @click.prevent="reverseShowFilters">
               <v-icon>{{ icon }}</v-icon>
             </v-btn>
           </v-card-actions>
@@ -101,7 +83,7 @@
                   v-model="filters.types"
                   item-text="label"
                   item-value="id"
-                  label="Types"
+                  label="Type"
                   multiple
                   chips
                   return-object
@@ -155,7 +137,7 @@ export default {
   data() {
     return {
       showFilters: false,
-      icon: "keyboard_arrow_up"
+      icon: "keyboard_arrow_down"
     };
   },
   computed: {
@@ -169,8 +151,8 @@ export default {
     reverseShowFilters() {
       this.showFilters = !this.showFilters;
       this.icon = this.showFilters
-        ? "keyboard_arrow_down"
-        : "keyboard_arrow_up";
+        ? "keyboard_arrow_up"
+        : "keyboard_arrow_down";
     }
   }
 };
