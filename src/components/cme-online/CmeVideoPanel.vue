@@ -62,7 +62,9 @@ export default {
     },
     setLabelTime(item) {
       let duration = moment.duration({ seconds: item.time });
-      let formatted = duration.format("hh:mm:ss");
+      let formatted = duration.format("mm:ss", {
+        trim: false
+      });
       return formatted + " - " + item.label;
     },
     imageSource(cdnImage, externalImage) {
