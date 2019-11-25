@@ -76,8 +76,13 @@ export default {
   methods: {
     ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"]),
     takeCmeTest() {
+      // Old version
+      // window.open(
+      //   "https://education.ersnet.org/course/view.php?id=" +
+      //     this.cmeModule.moodleCmeId
+      // );
       window.open(
-        "https://education.ersnet.org/course/view.php?id=" +
+        "https://www.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
           this.cmeModule.moodleCmeId
       );
     }
