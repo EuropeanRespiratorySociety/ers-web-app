@@ -12,7 +12,7 @@
               class="mb-3"
             >
               <v-layout justify-space-between>
-                <a :href="step.href" style="text-decoration:none" @click="fetchTimeline(index)">{{step.title}}</a>
+                <a :href="step.href" :target="step.target" style="text-decoration:none" @click="fetchTimeline(index)">{{step.title}}</a>
               </v-layout>
             </v-timeline-item>
           </v-timeline>

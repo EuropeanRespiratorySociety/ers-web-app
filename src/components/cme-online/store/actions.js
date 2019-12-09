@@ -50,7 +50,8 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
     return {
       title: step.title,
       color: "grey",
-      href: "#main"
+      href: "#main",
+      target: ""
     };
   });
   timeline.push({
@@ -58,7 +59,8 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
     color: "grey",
     href:
       "https://www.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
-      state.cmeModule.moodleCmeId
+      state.cmeModule.moodleCmeId,
+    target: "_blank"
   });
   timeline[selectedStepIndex].color = "primary";
   commit("SET_TIMELINE", timeline);
