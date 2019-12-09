@@ -49,12 +49,16 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   let timeline = state.cmeModule.cmeOnlineModule.map(step => {
     return {
       title: step.title,
-      color: "grey"
+      color: "grey",
+      href: "#main"
     };
   });
   timeline.push({
     title: "Take a CME TEST",
-    color: "grey"
+    color: "grey",
+    href:
+      "https://www.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
+      state.cmeModule.moodleCmeId
   });
   timeline[selectedStepIndex].color = "primary";
   commit("SET_TIMELINE", timeline);

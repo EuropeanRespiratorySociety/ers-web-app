@@ -41,7 +41,7 @@
           <v-icon>keyboard_arrow_left</v-icon>
         </v-btn>
         <v-btn
-          v-if="currentStep.selectedIndex !== stepCount"
+          v-if="currentStep.selectedIndex !== stepCount -1"
           icon
           style="float:right"
           href="#main"
@@ -50,11 +50,11 @@
           <v-icon>keyboard_arrow_right</v-icon>
         </v-btn>
         <v-btn
-          v-if="currentStep.selectedIndex === stepCount"
+          v-if="currentStep.selectedIndex === stepCount - 1"
           outline
           color="indigo"
           v-on:click="takeCmeTest"
-        >Go to CME Test</v-btn>
+        >Take a CME Test</v-btn>
       </div>
     </v-card-actions>
   </div>
@@ -76,11 +76,6 @@ export default {
   methods: {
     ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"]),
     takeCmeTest() {
-      // Old version
-      // window.open(
-      //   "https://education.ersnet.org/course/view.php?id=" +
-      //     this.cmeModule.moodleCmeId
-      // );
       window.open(
         "https://www.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
           this.cmeModule.moodleCmeId
