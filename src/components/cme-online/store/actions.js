@@ -1,11 +1,22 @@
-import { HTTP, sureThing } from "@/helpers/http";
+/* eslint-disable */
+import {
+  HTTP,
+  sureThing
+} from "@/helpers/http";
 
-export const fetchCmeModules = async ({ commit, state }) => {
+export const fetchCmeModules = async ({
+  commit,
+  state
+}) => {
   const page = state.pageNumber;
   const perPage = state.perPage;
   const filters = state.filters;
   const queryString = setRoute(filters, page, perPage);
-  const { ok, response, error } = await sureThing(
+  const {
+    ok,
+    response,
+    error
+  } = await sureThing(
     HTTP.get("/cme-online?" + queryString)
   );
 
@@ -18,8 +29,14 @@ export const fetchCmeModules = async ({ commit, state }) => {
   }
 };
 
-export const fetchCmeModule = async ({ commit }, slug) => {
-  const { ok, response, error } = await sureThing(
+export const fetchCmeModule = async ({
+  commit
+}, slug) => {
+  const {
+    ok,
+    response,
+    error
+  } = await sureThing(
     HTTP.get("/cme-online/" + slug)
   );
 
@@ -32,20 +49,28 @@ export const fetchCmeModule = async ({ commit }, slug) => {
   }
 };
 
-export const fetchCmeModulesPerPageNumber = (
-  { commit, dispatch },
+export const fetchCmeModulesPerPageNumber = ({
+    commit,
+    dispatch
+  },
   pageNumber
 ) => {
   commit("SET_PAGE_NUMBER", pageNumber);
   dispatch("fetchCmeModules");
 };
 
-export const fetchCmeModulesPerFilters = ({ commit, dispatch }) => {
+export const fetchCmeModulesPerFilters = ({
+  commit,
+  dispatch
+}) => {
   commit("SET_PAGE_NUMBER", 1);
   dispatch("fetchCmeModules");
 };
 
-export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
+export const fetchTimeline = ({
+  commit,
+  state
+}, selectedStepIndex) => {
   let timeline = state.cmeModule.cmeOnlineModule.map(step => {
     return {
       title: step.title,
@@ -57,8 +82,7 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   timeline.push({
     title: "Take a CME TEST",
     color: "grey",
-    href:
-      "https://www.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
+    href: "https://admin.ers-education.org/sdi/cmeOnline/login.aspx?id=" +
       state.cmeModule.moodleCmeId,
     target: "_blank"
   });
@@ -71,17 +95,22 @@ export const fetchTimeline = ({ commit, state }, selectedStepIndex) => {
   });
 };
 
-export const navigateOnStep = ({ dispatch, state }, direction) => {
+export const navigateOnStep = ({
+  dispatch,
+  state
+}, direction) => {
   let selectedStepIndex = state.currentStep.selectedIndex + direction;
   dispatch("fetchTimeline", selectedStepIndex);
 };
 
-export const navigateOnSimulation = ({ commit, state }, direction) => {
+export const navigateOnSimulation = ({
+  commit,
+  state
+}, direction) => {
   let selectedPanelIndex = state.currentPanel.selectedIndex + direction;
   commit("SET_CURRENT_PANEL", {
     selectedPanelIndex: selectedPanelIndex,
-    startSimulation:
-      selectedPanelIndex === 0 ? state.currentStep.isSimulation : false
+    startSimulation: selectedPanelIndex === 0 ? state.currentStep.isSimulation : false
   });
   commit(
     "SET_HAS_ANSWERED_SIMULATION",
@@ -89,14 +118,20 @@ export const navigateOnSimulation = ({ commit, state }, direction) => {
   );
 };
 
-export const prepareStates = async ({ commit, dispatch }) => {
+export const prepareStates = async ({
+  commit,
+  dispatch
+}) => {
   var result = await dispatch("fetchCmeModules");
   commit("RESET_STATIC_STATES");
   commit("RESET_CME_MODULE_STATES");
   return result;
 };
 
-export const resetCmeModules = ({ commit, dispatch }) => {
+export const resetCmeModules = ({
+  commit,
+  dispatch
+}) => {
   commit("RESET_RESULTS");
   dispatch("fetchCmeModules");
 };
@@ -117,11 +152,11 @@ function setRoute(filters = null, page = 1, limit = 10) {
   if (filters && filters.types && filters.types.length > 0) {
     params.push(
       "types=" +
-        filters.types
-          .map(type => {
-            return type.id;
-          })
-          .join(",")
+      filters.types
+      .map(type => {
+        return type.id;
+      })
+      .join(",")
     );
   }
   if (filters && filters.categories && filters.categories.length > 0) {
