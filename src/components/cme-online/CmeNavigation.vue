@@ -77,7 +77,7 @@ export default {
     ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"]),
     takeCmeTest() {
       window.open(
-        "https://www.ers-education.org/lr/cme-login/?id=" +
+        "https://dev.ers-education.org/lr/cme-login/?id=" +
           this.cmeModule.moodleCmeId
       );
     }
