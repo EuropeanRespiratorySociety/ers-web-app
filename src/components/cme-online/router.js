@@ -2,6 +2,7 @@ const CmeOnline = () => import("./CmeOnlineApp.vue");
 const CmeModules = () => import("./CmeModulesApp.vue");
 const CmeModule = () => import("./CmeModuleApp.vue");
 const CmeError = () => import("./CmeErrorApp.vue");
+const CmeMaintenance = () => import("./CmeMaintenanceApp.vue");
 import store from "@/store";
 
 export default [
@@ -58,6 +59,14 @@ export default [
     path: "/cme-error",
     name: "CmeError",
     component: CmeError,
+    beforeEnter(routeTo, routeFrom, next) {
+      store.dispatch("base/setDrawer", false).then(() => next());
+    }
+  },
+  {
+    path: "/cme-maintenance",
+    name: "CmeMaintenance",
+    component: CmeMaintenance,
     beforeEnter(routeTo, routeFrom, next) {
       store.dispatch("base/setDrawer", false).then(() => next());
     }
