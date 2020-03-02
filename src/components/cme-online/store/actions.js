@@ -82,9 +82,9 @@ export const fetchTimeline = ({
   timeline.push({
     title: "Take a CME TEST",
     color: "grey",
-    // href: "https://dev.ers-education.org/lr/cme-login/?id=" +
-    //   state.cmeModule.moodleCmeId,
-    href:"/cme-maintenance",
+    href: "https://www.ers-education.org/lr/cme-login/?id=" +
+       state.cmeModule.moodleCmeId,
+   // href:"/cme-maintenance",
     target: "_blank"
   });
   timeline[selectedStepIndex].color = "primary";

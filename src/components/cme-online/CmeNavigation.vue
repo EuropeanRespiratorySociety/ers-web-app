@@ -76,12 +76,11 @@ export default {
   methods: {
     ...mapActions("cmeOnline", ["navigateOnSimulation", "navigateOnStep"]),
     takeCmeTest() {
-      // window.open(
-      //   "https://dev.ers-education.org/lr/cme-login/?id=" +
-      //     this.cmeModule.moodleCmeId
-
-      //  );
-      window.open("/cme-maintenance");
+      window.open(
+        "https://www.ers-education.org/lr/cme-login/?id=" +
+          this.cmeModule.moodleCmeId
+      );
+      //window.open("/cme-maintenance");
     }
   }
 };
