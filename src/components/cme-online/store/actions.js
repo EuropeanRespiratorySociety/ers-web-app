@@ -82,7 +82,7 @@ export const fetchTimeline = ({
   timeline.push({
     title: "Take a CME TEST",
     color: "grey",
-    href: "https://www.ers-education.org/lr/cme-login/?id=" +
+    href: "https://www.ers-education.org/sdi/cmeonline/login.aspx?id=" +
        state.cmeModule.moodleCmeId,
    // href:"/cme-maintenance",
     target: "_blank"
