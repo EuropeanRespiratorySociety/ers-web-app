@@ -85,6 +85,11 @@ export default {
           src:
             "https://cdn.ersnet.org/preview/node/o:ab2e84dfaae07557bfc8?name=image500&size=500"
           // Teva
+        },
+        {
+          src:
+            "https://cdn.ersnet.org/preview/node/o:3cab661f043c3f694cdf?name=image500&size=500"
+          // MSD
         }
       ]
     };
