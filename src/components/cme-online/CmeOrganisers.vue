@@ -92,6 +92,8 @@ export default {
 .circular--square {
   border-radius: 50%;
 }
+</style>
+<style>
 img {
   image-rendering: -webkit-optimize-contrast;
 }
