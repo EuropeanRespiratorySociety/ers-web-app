@@ -95,6 +95,6 @@ export default {
 </style>
 <style>
 img {
-  image-rendering: -webkit-optimize-contrast;
+  image-rendering: pixelated;
 }
 </style>
