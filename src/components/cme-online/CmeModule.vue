@@ -124,4 +124,7 @@ export default {
   -webkit-box-shadow: none;
   box-shadow: none;
 }
+img {
+  image-rendering: pixelated;
+}
 </style>

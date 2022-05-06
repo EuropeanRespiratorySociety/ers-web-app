@@ -93,8 +93,3 @@ export default {
   border-radius: 50%;
 }
 </style>
-<style>
-img {
-  image-rendering: pixelated;
-}
-</style>
