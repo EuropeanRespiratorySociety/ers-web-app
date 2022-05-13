@@ -125,6 +125,7 @@ export default {
   box-shadow: none;
 }
 img {
-  image-rendering: pixelated;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 </style>
