@@ -68,8 +68,8 @@ export default {
         },
         {
           src:
-            "https://cdn.ersnet.org/preview/node/o:f34d05d5f9e820336904?name=image500&size=500"
-          // Pulmon
+            "https://cdn.ersnet.org/preview/node/o:693d8a3bd4724309c74d?name=image500&size=500"
+          // GSK
         },
         {
           src:
